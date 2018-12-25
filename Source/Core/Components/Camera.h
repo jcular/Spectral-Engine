@@ -4,7 +4,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <memory>
 
-#include "Core/Components/GameObjectComponent.h"
+#include "GameObjectComponent.h"
 
 class GameObject;
 

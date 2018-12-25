@@ -3,8 +3,8 @@
 #include <string>
 #include <vector>
 
-#include "Core/Texture.h"
-#include "Core/Shader/ShaderProgram.h"
+#include "Texture.h"
+#include "Shader/ShaderProgram.h"
 
 Material::Material(GameObject * gameObject) : GameObjectComponent(gameObject) {
 }

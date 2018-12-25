@@ -1,5 +1,5 @@
 #include "GameObject.h"
-#include "Core/Components/GameObjectComponent.h"
+#include "Components/GameObjectComponent.h"
 
 GameObject::GameObject() {
 	GameObject::gameObjectCollection.push_back(this);

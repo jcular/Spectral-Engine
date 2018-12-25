@@ -6,9 +6,9 @@
 #include <string>
 #include <vector>
 
-#include "Core/Components/GameObjectComponent.h"
-#include "Core/Texture.h"
-#include "Core/Shader/ShaderProgram.h"
+#include "Components/GameObjectComponent.h"
+#include "Texture.h"
+#include "Shader/ShaderProgram.h"
 
 class Material : public GameObjectComponent {
 public:

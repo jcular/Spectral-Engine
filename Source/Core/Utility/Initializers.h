@@ -9,7 +9,8 @@
 #include "Core/Components/Material.h"
 #include "Core/Components/Transform.h"
 #include "Core/Components/Renderer.h"
-
+#include "Core/Components/Camera.h"
+#include "Core/GameObject/GameObject.h"
 
 constexpr unsigned int SCR_WIDTH = 800;
 constexpr unsigned int SCR_HEIGHT = 600;
@@ -27,9 +28,10 @@ void initScene(std::string const & executablePath) {
 	}
 
 	std::string const rootPath{ executablePath.substr(0, executablePath.find_last_of("\\")) };
+	std::string const shadersFolderPath{ rootPath + std::string{"/../../../Source/Core/ShaderFiles"} };
+	std::string const vertexShaderPath{ shadersFolderPath + std::string{ "/vertex_shader.txt" } };
+	std::string const fragmentShaderPath{ shadersFolderPath + std::string{ "/fragment_shader.txt" } };
 	std::string const resourcesFolderPath{ rootPath + std::string{ "/../../../Resources/Resources" } };
-	std::string const vertexShaderPath{ resourcesFolderPath + std::string{ "/Shaders/vertex_shader.txt" } };
-	std::string const fragmentShaderPath{ resourcesFolderPath + std::string{ "/Shaders/fragment_shader.txt" } };
 	std::string const texturePathArray[2]{
 		resourcesFolderPath + std::string{ "/Art/wall.png" },
 		resourcesFolderPath + std::string{ "/Art/awesomeface.png" }
@@ -38,7 +40,9 @@ void initScene(std::string const & executablePath) {
 	constexpr int numberOfObjects = (sizeof(cubePositions) / sizeof(cubePositions[0]));
 	GameObject * gameObjects = new GameObject[numberOfObjects];
 
-	for (int i = 0; i < numberOfObjects; ++i) {
+	int const numberOfBoxes = numberOfObjects - 1;
+
+	for (int i = 0; i < numberOfBoxes; ++i) {
 		std::weak_ptr<Material> material = gameObjects[i].addComponent<Material>();
 		if (auto materialShared = material.lock()) {
 			constexpr int numberOfTextures = sizeof(texturePathArray) / sizeof(std::string);
@@ -47,13 +51,23 @@ void initScene(std::string const & executablePath) {
 
 		std::weak_ptr<Renderer> renderer = gameObjects[i].addComponent<Renderer>();
 		if (auto rendererShared = renderer.lock()) {
-			rendererShared->initRenderer(vertices, sizeof(vertices), indices, sizeof(indices));
+			rendererShared->initRenderer(vertices, sizeof(vertices), indices, sizeof(indices), true);
 		}
 
 		std::weak_ptr<Transform> transform = gameObjects[i].addComponent<Transform>();
 		if (auto transformShared = transform.lock()) {
 			transformShared->setPosition(cubePositions[i]);
 		}
+	}
+
+	int const lightSourceIndex = numberOfObjects - 1;
+
+	GameObject * lightSource = new GameObject[numberOfObjects];
+	std::string const vertexLightingShaderPath{ resourcesFolderPath + std::string{ "/Shaders/vertex_lighting_shader.txt" } };
+	std::string const fragmentLightingShaderPath{ resourcesFolderPath + std::string{ "/Shaders/fragment_lighting_shader.txt" } };
+	std::weak_ptr<Material> material = lightSource->addComponent<Material>();
+	if (auto materialShared = material.lock()) {
+		
 	}
 }
 

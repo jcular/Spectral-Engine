@@ -1,10 +1,22 @@
+#include <glad/glad.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <memory>
+#include <string>
+
 #include "Renderer.h"
+#include "Components/Camera.h"
+#include "Components/Material.h"
+#include "Texture.h"
+#include "Components/Transform.h"
+#include "Shader/ShaderProgram.h"
+#include "GameObject/GameObject.h"
 
 Renderer::Renderer(GameObject * const gameObjectOwner) : GameObjectComponent(gameObjectOwner) {
 }
 
-void Renderer::initRenderer(float const * const vertices, int const vertexCount, unsigned int const * const elementIndices, int const indexCount) {
-	this->initializeVertexData(vertices, vertexCount, elementIndices, indexCount);
+void Renderer::initRenderer(float const * const vertices, int const vertexCount, unsigned int const * const elementIndices, int const indexCount, bool const uvCoordsIncluded) {
+	this->initializeVertexData(vertices, vertexCount, elementIndices, indexCount, uvCoordsIncluded);
 }
 
 void Renderer::renderObject() {
@@ -29,14 +41,19 @@ void Renderer::renderObject() {
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 }
 
-void Renderer::initializeVertexData(float const * const vertices, int const vertexCount, unsigned int const * const elementIndices, int const indexCount) {
+void Renderer::initializeVertexData(
+	float const * const vertices, int const vertexCount, unsigned int const * const elementIndices, int const indexCount, bool const uvCoordsIncluded) {
 	glGenVertexArrays(1, &this->VAO);
 	glBindVertexArray(this->VAO);
 
 	glGenBuffers(1, &this->VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, this->VBO);
 
-	int stride = 5 * sizeof(float);
+	int stride = 3 * sizeof(float);
+	if (uvCoordsIncluded) {
+		stride += (2 * sizeof(float));
+	}
+
 	void const * const VBOPointer = (void *)0;
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, stride, VBOPointer);
 	glEnableVertexAttribArray(0);

@@ -7,7 +7,7 @@
 #include "Core/Utility/CameraInputHandler.h"
 
 #include "Core/Utility/Vertices.h"
-
+#include "Core/Components/Renderer.h"
 
 
 int main(int argc, char** argv) {

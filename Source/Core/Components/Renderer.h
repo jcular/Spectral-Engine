@@ -1,26 +1,17 @@
 #pragma once
 
-#include <glad/glad.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <memory>
-#include <string>
+#include "Components/GameObjectComponent.h"
 
-#include "Core/Components/Camera.h"
-#include "Core/Components/GameObjectComponent.h"
-#include "Core/Components/Material.h"
-#include "Core/Texture.h"
-#include "Core/Components/Transform.h"
-#include "Core/Shader/ShaderProgram.h"
+class GameObject;
 
 class Renderer : public GameObjectComponent {
 public:
 	Renderer(GameObject * const gameObjectOwner);
-	void initRenderer(float const * const vertices, int const vertexCount, unsigned int const * const elementIndices, int const indexCount);
+	void initRenderer(float const * const vertices, int const vertexCount, unsigned int const * const elementIndices, int const indexCount, bool const uvCoordsIncluded);
 	void renderObject();
 
 private:
-	void initializeVertexData(float const * const vertices, int const vertexCount, unsigned int const * const elementIndices, int const indexCount);
+	void initializeVertexData(float const * const vertices, int const vertexCount, unsigned int const * const elementIndices, int const indexCount, bool const uvCoordsIncluded);
 
 private:
 	unsigned int VAO;
