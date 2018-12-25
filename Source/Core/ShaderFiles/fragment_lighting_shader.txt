@@ -1,10 +1,17 @@
 #version 330 core
 
+in vec2 texCoordinates;
 out vec4 FragColor;
 
+uniform sampler2D tex0;
+uniform sampler2D tex1;
 uniform vec3 objectColor;
 uniform vec3 lightColor;
 
-void main() {
-	FragColor = vec4(objectColor, 1.0F);
+void main()
+{
+	float ambientStrength = 0.4F;
+	vec3 ambient = ambientStrength * objectColor;
+	vec4 texColor = mix(texture(tex0, texCoordinates), texture(tex1, texCoordinates), 0.75);
+	FragColor = vec4(ambient, 1.0F) * texColor;
 }

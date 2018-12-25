@@ -30,7 +30,7 @@ void initScene(std::string const & executablePath) {
 	std::string const rootPath{ executablePath.substr(0, executablePath.find_last_of("\\")) };
 	std::string const shadersFolderPath{ rootPath + std::string{"/../../../Source/Core/ShaderFiles"} };
 	std::string const vertexShaderPath{ shadersFolderPath + std::string{ "/vertex_shader.txt" } };
-	std::string const fragmentShaderPath{ shadersFolderPath + std::string{ "/fragment_shader.txt" } };
+	std::string const fragmentShaderPath{ shadersFolderPath + std::string{ "/fragment_lighting_shader.txt" } };
 	std::string const resourcesFolderPath{ rootPath + std::string{ "/../../../Resources/Resources" } };
 	std::string const texturePathArray[2]{
 		resourcesFolderPath + std::string{ "/Art/wall.png" },
@@ -47,6 +47,12 @@ void initScene(std::string const & executablePath) {
 		if (auto materialShared = material.lock()) {
 			constexpr int numberOfTextures = sizeof(texturePathArray) / sizeof(std::string);
 			materialShared->initMaterial(vertexShaderPath, fragmentShaderPath, texturePathArray, numberOfTextures);
+			
+			auto shaderProgramWeak = materialShared->getShaderProgram();
+			if (auto shaderProgramShared = shaderProgramWeak.lock()) {
+				shaderProgramShared->setVec3("objectColor", 1.0F, 0.3F, 0.12F);
+				shaderProgramShared->setVec3("lightColor", 0.3F, 0.3F, 0.3F);
+			}
 		}
 
 		std::weak_ptr<Renderer> renderer = gameObjects[i].addComponent<Renderer>();
@@ -63,7 +69,7 @@ void initScene(std::string const & executablePath) {
 
 	GameObject * lightSourceGameObject = new GameObject;
 	std::string const vertexLightingShaderPath{ shadersFolderPath + std::string{ "/vertex_lighting_shader.txt" } };
-	std::string const fragmentLightingShaderPath{ shadersFolderPath + std::string{ "/fragment_lighting_shader.txt" } };
+	std::string const fragmentLightingShaderPath{ shadersFolderPath + std::string{ "/fragment_lamp_shader.txt" } };
 	std::weak_ptr<Material> material = lightSourceGameObject->addComponent<Material>();
 	if (auto materialShared = material.lock()) {
 		const int numberOfTextures = 0;
@@ -72,6 +78,7 @@ void initScene(std::string const & executablePath) {
 		auto shaderProgramWeak = materialShared->getShaderProgram();
 		if (auto shaderProgramShared = shaderProgramWeak.lock()) {
 			shaderProgramShared->setVec3("objectColor", 1.0F, 0.3F, 0.12F);
+			shaderProgramShared->setVec3("lightColor", 0.3F, 0.3F, 0.3F);
 		}
 	}
 

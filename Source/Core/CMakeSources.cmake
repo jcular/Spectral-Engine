@@ -52,7 +52,8 @@ set (OxygEngine_Vertex_Shaders_SRC
 
 set (OxygEngine_Fragment_Shaders_SRC
 	"ShaderFiles/fragment_shader.txt"
-	"ShaderFiles/fragment_lighting_shader.txt")
+	"ShaderFiles/fragment_lighting_shader.txt"
+	"ShaderFiles/fragment_lamp_shader.txt")
 
 	
 set(OxygEngine_Core_Files
