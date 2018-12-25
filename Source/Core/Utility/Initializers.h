@@ -60,20 +60,30 @@ void initScene(std::string const & executablePath) {
 		}
 	}
 
-	int const lightSourceIndex = numberOfObjects - 1;
 
-	GameObject * lightSource = new GameObject[numberOfObjects];
+	GameObject * lightSourceGameObject = new GameObject;
 	std::string const vertexLightingShaderPath{ shadersFolderPath + std::string{ "/vertex_lighting_shader.txt" } };
 	std::string const fragmentLightingShaderPath{ shadersFolderPath + std::string{ "/fragment_lighting_shader.txt" } };
-	std::weak_ptr<Material> material = lightSource->addComponent<Material>();
+	std::weak_ptr<Material> material = lightSourceGameObject->addComponent<Material>();
 	if (auto materialShared = material.lock()) {
 		const int numberOfTextures = 0;
 		materialShared->initMaterial(vertexLightingShaderPath, fragmentLightingShaderPath, NULL, numberOfTextures);
+
+		auto shaderProgramWeak = materialShared->getShaderProgram();
+		if (auto shaderProgramShared = shaderProgramWeak.lock()) {
+			shaderProgramShared->setVec3("objectColor", 1.0F, 0.3F, 0.12F);
+		}
 	}
 
-	std::weak_ptr<Renderer> rendererWeak = lightSource->getComponent<Renderer>();
+	std::weak_ptr<Renderer> rendererWeak = lightSourceGameObject->addComponent<Renderer>();
 	if (auto rendererShared = rendererWeak.lock()) {
 		rendererShared->initRenderer(vertices, sizeof(vertices), indices, sizeof(indices), true);
+	}
+
+	std::weak_ptr<Transform> transformWeak = lightSourceGameObject->addComponent<Transform>();
+	if (auto transformShared = transformWeak.lock()) {
+		int const lightSourceIndex = numberOfObjects - 1;
+		transformShared->setPosition(cubePositions[lightSourceIndex]);
 	}
 }
 

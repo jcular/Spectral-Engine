@@ -12,6 +12,7 @@ public:
 	void setInt(std::string const & name, int value) const;
 	void setFloat(std::string const & name, float value) const;
 	void setMatrix4fv(std::string const & name, float const * const matrix) const;
+	void setVec3(std::string const & name, float x, float y, float z) const;
 
 private:
 	unsigned int id;
