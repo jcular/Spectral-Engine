@@ -27,12 +27,12 @@ void initScene(std::string const & executablePath) {
 	}
 
 	std::string const rootPath{ executablePath.substr(0, executablePath.find_last_of("\\")) };
-	std::string const resourcesFolderPath{ rootPath + std::string{ "/../../../../Resources" } };
-	std::string const vertexShaderPath{ resourcesFolderPath + std::string{ "/vertex_shader.txt" } };
-	std::string const fragmentShaderPath{ resourcesFolderPath + std::string{ "/fragment_shader.txt" } };
+	std::string const resourcesFolderPath{ rootPath + std::string{ "/../../../Resources/Resources" } };
+	std::string const vertexShaderPath{ resourcesFolderPath + std::string{ "/Shaders/vertex_shader.txt" } };
+	std::string const fragmentShaderPath{ resourcesFolderPath + std::string{ "/Shaders/fragment_shader.txt" } };
 	std::string const texturePathArray[2]{
-		resourcesFolderPath + std::string{ "/wall.png" },
-		resourcesFolderPath + std::string{ "/awesomeface.png" }
+		resourcesFolderPath + std::string{ "/Art/wall.png" },
+		resourcesFolderPath + std::string{ "/Art/awesomeface.png" }
 	};
 
 	constexpr int numberOfObjects = (sizeof(cubePositions) / sizeof(cubePositions[0]));

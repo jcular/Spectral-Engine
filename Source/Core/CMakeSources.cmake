@@ -38,9 +38,6 @@ set(OxygEngine_Core_GameObject_SRC
 set(OxygEngine_Core_GameObject_HEADER
 	"Core/GameObject/GameObject.h")
 
-set(OxygEngine_Core_Files
-	"Core/CMakeSources.cmake")
-
 set(OxygEngine_Libraries_SRC
 	"Libraries/source/glad/glad.c")
 
@@ -51,6 +48,9 @@ set(OxygEngine_Core_Utility_HEADER
 	"Core/Utility/Initializers.h"
 	"Core/Utility/Vertices.h"
 	"Core/Utility/CameraInputHandler.h")
+	
+set(OxygEngine_Core_Files
+	"Core/CMakeSources.cmake")
 
 source_group("Source Files\\Components" FILES ${OxygEngine_Core_Components_SRC})
 source_group("Header Files\\Components" FILES ${OxygEngine_Core_Components_HEADER})

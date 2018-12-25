@@ -17,17 +17,11 @@ target_link_libraries(OxygEngine ${CMAKE_CURRENT_SOURCE_DIR}/Libraries/lib/glfw3
 
 set(LIBRARIES_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Libraries/Header)
 
-target_include_directories(OxygEngine PRIVATE ${LIBRARIES_INCLUDE_DIR}/Glm)
-target_include_directories(OxygEngine PRIVATE ${LIBRARIES_INCLUDE_DIR}/Glad)
-target_include_directories(OxygEngine PRIVATE ${LIBRARIES_INCLUDE_DIR}/KHR)
-target_include_directories(OxygEngine PRIVATE ${LIBRARIES_INCLUDE_DIR}/STB_Image)
-target_include_directories(OxygEngine PRIVATE ${LIBRARIES_INCLUDE_DIR}/GLFW)
-
-target_include_directories(Core PRIVATE ${LIBRARIES_INCLUDE_DIR}/Glm)
-target_include_directories(Core PRIVATE ${LIBRARIES_INCLUDE_DIR}/Glad)
-target_include_directories(Core PRIVATE ${LIBRARIES_INCLUDE_DIR}/KHR)
+target_include_directories(Core PUBLIC ${LIBRARIES_INCLUDE_DIR}/Glm)
+target_include_directories(Core PUBLIC ${LIBRARIES_INCLUDE_DIR}/Glad)
+target_include_directories(Core PUBLIC ${LIBRARIES_INCLUDE_DIR}/KHR)
+target_include_directories(Core PUBLIC ${LIBRARIES_INCLUDE_DIR}/GLFW)
 target_include_directories(Core PRIVATE ${LIBRARIES_INCLUDE_DIR}/STB_Image)
-target_include_directories(Core PRIVATE ${LIBRARIES_INCLUDE_DIR}/GLFW)
 target_include_directories(Core PRIVATE "./")
 
 target_include_directories(OpenGL PRIVATE ${LIBRARIES_INCLUDE_DIR}/Glad)
