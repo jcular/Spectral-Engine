@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "Shader.h"
 #include "FileReader.h"
 #include "Shader/ShaderCompilationException.h"
@@ -17,6 +19,7 @@ Shader::Shader(std::string const & filePath, GLenum const type) : type{ type } {
 	if (!success) {
 		char infoLog[512];
 		glGetShaderInfoLog(this->id, sizeof(infoLog), NULL, infoLog);
+		std::cout << infoLog;
 		throw ShaderCompilationException{ this->id, this->type, infoLog };
 	}
 }

@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "ShaderProgram.h"
 #include "Shader/ShaderProgramLinkingException.h"
 #include "Shader/Shader.h"
@@ -18,6 +20,7 @@ ShaderProgram::ShaderProgram(std::string vertexShaderPath, std::string fragmentS
 	if (!success) {
 		char infoLog[512];
 		glGetProgramInfoLog(this->id, 512, NULL, infoLog);
+		std::cout << infoLog;
 		throw ShaderProgramLinkingException{ this->id, infoLog };
 	}
 

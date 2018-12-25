@@ -63,11 +63,17 @@ void initScene(std::string const & executablePath) {
 	int const lightSourceIndex = numberOfObjects - 1;
 
 	GameObject * lightSource = new GameObject[numberOfObjects];
-	std::string const vertexLightingShaderPath{ resourcesFolderPath + std::string{ "/Shaders/vertex_lighting_shader.txt" } };
-	std::string const fragmentLightingShaderPath{ resourcesFolderPath + std::string{ "/Shaders/fragment_lighting_shader.txt" } };
+	std::string const vertexLightingShaderPath{ shadersFolderPath + std::string{ "/vertex_lighting_shader.txt" } };
+	std::string const fragmentLightingShaderPath{ shadersFolderPath + std::string{ "/fragment_lighting_shader.txt" } };
 	std::weak_ptr<Material> material = lightSource->addComponent<Material>();
 	if (auto materialShared = material.lock()) {
-		
+		const int numberOfTextures = 0;
+		materialShared->initMaterial(vertexLightingShaderPath, fragmentLightingShaderPath, NULL, numberOfTextures);
+	}
+
+	std::weak_ptr<Renderer> rendererWeak = lightSource->getComponent<Renderer>();
+	if (auto rendererShared = rendererWeak.lock()) {
+		rendererShared->initRenderer(vertices, sizeof(vertices), indices, sizeof(indices), true);
 	}
 }
 
