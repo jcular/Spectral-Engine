@@ -5,9 +5,6 @@
 #include <string>
 #include <iostream>
 
-#include "Core/FileReader.h"
-#include "Core/Shader/ShaderCompilationException.h"
-
 class Shader {
 public:
 	Shader(std::string const & filePath, GLenum const);

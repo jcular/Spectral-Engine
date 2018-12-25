@@ -3,8 +3,6 @@
 #include <memory>
 #include <vector>
 
-#include "Core/Components/GameObjectComponent.h"
-
 class GameObjectComponent;
 
 class GameObject {

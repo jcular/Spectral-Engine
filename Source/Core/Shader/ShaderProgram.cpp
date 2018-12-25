@@ -1,4 +1,6 @@
 #include "ShaderProgram.h"
+#include "Core/Shader/ShaderProgramLinkingException.h"
+#include "Core/Shader/Shader.h"
 
 ShaderProgram::ShaderProgram(std::string vertexShaderPath, std::string fragmentShaderPath) {
 	this->id = glCreateProgram();

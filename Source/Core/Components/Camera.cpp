@@ -1,4 +1,7 @@
 #include "Camera.h"
+#include "Core/GameObject/GameObject.h"
+#include "Core/Components/GameObjectComponent.h"
+#include "Core/Components/Transform.h"
 
 std::shared_ptr<Camera> Camera::mainCamera;
 

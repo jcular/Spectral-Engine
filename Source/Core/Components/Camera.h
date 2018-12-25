@@ -4,9 +4,9 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <memory>
 
-#include "Core/GameObject/GameObject.h"
 #include "Core/Components/GameObjectComponent.h"
-#include "Core/Components/Transform.h"
+
+class GameObject;
 
 class Camera : public GameObjectComponent {
 public:

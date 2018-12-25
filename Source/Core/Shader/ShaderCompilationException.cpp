@@ -1,3 +1,5 @@
+#include <sstream>
+
 #include "ShaderCompilationException.h"
 
 ShaderCompilationException::ShaderCompilationException(unsigned int const shaderId, GLenum shaderType, char infoLog[512])

@@ -1,4 +1,6 @@
 #include "Shader.h"
+#include "Core/FileReader.h"
+#include "Core/Shader/ShaderCompilationException.h"
 
 Shader::Shader(std::string const & filePath, GLenum const type) : type{ type } {
 	this->id = glCreateShader(this->type);

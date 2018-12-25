@@ -1,4 +1,6 @@
 #include "CameraInputHandler.h"
+#include "Core/Components/Camera.h"
+#include "Core/Components/Transform.h"
 
 glm::vec3 CameraInputHandler::worldUp = glm::vec3(0.0F, 1.0F, 0.0F);
 bool CameraInputHandler::firstMouse = true;

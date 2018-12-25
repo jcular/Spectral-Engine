@@ -2,9 +2,6 @@
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 
-#include "Core/Components/Camera.h"
-#include "Core/Components/Transform.h"
-
 class CameraInputHandler {
 public:
 	static void processCameraInput(GLFWwindow *window, float deltaTime);

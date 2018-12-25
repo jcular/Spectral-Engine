@@ -1,5 +1,6 @@
-#include "ShaderProgramLinkingException.h"
+#include <sstream>
 
+#include "ShaderProgramLinkingException.h"
 
 ShaderProgramLinkingException::ShaderProgramLinkingException(unsigned int const programId, char const infoLog[])
 	: programId{ programId }, infoLog{ std::string{infoLog} } {

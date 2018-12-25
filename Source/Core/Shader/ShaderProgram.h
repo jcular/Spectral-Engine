@@ -1,7 +1,6 @@
 #pragma once
 
-#include "ShaderProgramLinkingException.h"
-#include "Shader.h"
+#include <string>
 
 class ShaderProgram {
 public:
