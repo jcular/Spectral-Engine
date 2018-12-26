@@ -14,7 +14,7 @@ class Material : public GameObjectComponent {
 public:
 	Material(GameObject * gameObject);
 	void initMaterial(std::string const & vertexShaderPath, std::string const & fragmentShaderPath, std::string const texturePaths[], int textureCount);
-	void use(glm::mat4x4 const & mvpMatrix) const;
+	void use(glm::mat4x4 const & mvpMatrix, glm::mat4x4 const & modelMatrix) const;
 	std::weak_ptr<ShaderProgram> getShaderProgram() const;
 
 private:

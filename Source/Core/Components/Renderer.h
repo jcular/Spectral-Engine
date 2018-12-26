@@ -3,15 +3,16 @@
 #include "Components/GameObjectComponent.h"
 
 class GameObject;
+class VertexData;
 
 class Renderer : public GameObjectComponent {
 public:
 	Renderer(GameObject * const gameObjectOwner);
-	void initRenderer(float const * const vertices, int const vertexCount, unsigned int const * const elementIndices, int const indexCount, bool const uvCoordsIncluded);
+	void initRenderer(VertexData const & vertexData);
 	void renderObject();
 
 private:
-	void initializeVertexData(float const * const vertices, int const vertexCount, unsigned int const * const elementIndices, int const indexCount, bool const uvCoordsIncluded);
+	void initializeVertexData(VertexData const & vertexData);
 
 private:
 	unsigned int VAO;

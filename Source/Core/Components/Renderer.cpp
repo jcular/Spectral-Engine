@@ -11,62 +11,70 @@
 #include "Components/Transform.h"
 #include "Shader/ShaderProgram.h"
 #include "GameObject/GameObject.h"
+#include "Utility/VertexData.h"
 
 Renderer::Renderer(GameObject * const gameObjectOwner) : GameObjectComponent(gameObjectOwner) {
 }
 
-void Renderer::initRenderer(float const * const vertices, int const vertexCount, unsigned int const * const elementIndices, int const indexCount, bool const uvCoordsIncluded) {
-	this->initializeVertexData(vertices, vertexCount, elementIndices, indexCount, uvCoordsIncluded);
+void Renderer::initRenderer(VertexData const & vertexData) {
+	this->initializeVertexData(vertexData);
 }
 
 void Renderer::renderObject() {
 	auto material = this->gameObjectOwner->getComponent<Material>();
 
 	glm::mat4x4 mvpMatrix{ 1.0F };
+	glm::mat4x4 modelMatrix{ 1.0F };
 	auto transformWeak = this->gameObjectOwner->getComponent<Transform>();
 	if (auto transformShared = transformWeak.lock()) {
 		glm::vec3 position = transformShared->getPosition();
-		glm::mat4x4 model{ 1.0F };
-		model = glm::translate(model, position);
+		modelMatrix = glm::translate(modelMatrix, position);
 
 		auto cameraShared = Camera::getMainCamera();
-		mvpMatrix = (cameraShared->getProjectionMatrix() * (cameraShared->getViewMatrix() * model));
+		mvpMatrix = (cameraShared->getProjectionMatrix() * (cameraShared->getViewMatrix() * modelMatrix));
 	}
 
 	if (std::shared_ptr<Material> materialShared = material.lock()) {
-		material.lock()->use(mvpMatrix);
+		material.lock()->use(mvpMatrix, modelMatrix);
 	}
 
 	glBindVertexArray(this->VAO);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 }
 
-void Renderer::initializeVertexData(
-	float const * const vertices, int const vertexCount, unsigned int const * const elementIndices, int const indexCount, bool const uvCoordsIncluded) {
+void Renderer::initializeVertexData(VertexData const & vertexData) {
 	glGenVertexArrays(1, &this->VAO);
 	glBindVertexArray(this->VAO);
 
 	glGenBuffers(1, &this->VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, this->VBO);
 
-	int stride = 3 * sizeof(float);
-	if (uvCoordsIncluded) {
-		stride += (2 * sizeof(float));
+	int const stride = vertexData.getStride() * sizeof(float);
+	int attribArrayIndex = 0;
+
+	glVertexAttribPointer(attribArrayIndex, 3, GL_FLOAT, GL_FALSE, stride, (void *)0);
+	glEnableVertexAttribArray(attribArrayIndex++);
+	int step = 3;
+
+	if (vertexData.hasUVCoords()) {
+		void const * const stepPointer = (void *)(step * sizeof(float));
+		glVertexAttribPointer(attribArrayIndex, 2, GL_FLOAT, GL_FALSE, stride, stepPointer);
+		glEnableVertexAttribArray(attribArrayIndex++);
+		step += 2;
 	}
 
-	void const * const VBOPointer = (void *)0;
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, stride, VBOPointer);
-	glEnableVertexAttribArray(0);
+	if (vertexData.hasNormalCoords()) {
+		void const * const stepPointer = (void *)(step * sizeof(float));
+		glVertexAttribPointer(attribArrayIndex, 3, GL_FLOAT, GL_FALSE, stride, stepPointer);
+		glEnableVertexAttribArray(attribArrayIndex++);
+		step += 3;
+	}
 
-	void const * const EBOPointer = (void *)(3 * sizeof(float));
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, stride, EBOPointer);
-	glEnableVertexAttribArray(1);
-
-	glBufferData(GL_ARRAY_BUFFER, vertexCount, vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, vertexData.getDataArraySize() * sizeof(float), vertexData.getDataArray(), GL_STATIC_DRAW);
 	
 	glGenBuffers(1, &this->EBO);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexCount, elementIndices, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, vertexData.getIndexCount() * sizeof(int), vertexData.getIndexArray(), GL_STATIC_DRAW);
 
 	glBindVertexArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);

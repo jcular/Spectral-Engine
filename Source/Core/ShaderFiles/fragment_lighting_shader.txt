@@ -1,17 +1,19 @@
 #version 330 core
-
-in vec2 texCoordinates;
 out vec4 FragColor;
 
-uniform sampler2D tex0;
-uniform sampler2D tex1;
+in vec3 Normal;
+in vec3 FragPos;
+
 uniform vec3 objectColor;
 uniform vec3 lightColor;
+uniform vec3 lightPos;
 
 void main()
 {
-	float ambientStrength = 0.4F;
-	vec3 ambient = ambientStrength * objectColor;
-	vec4 texColor = mix(texture(tex0, texCoordinates), texture(tex1, texCoordinates), 0.75);
-	FragColor = vec4(ambient, 1.0F) * texColor;
+	vec3 lightDir = (lightPos - FragPos);
+	float diffuseIntensity = max(0, dot(normalize(Normal), normalize(lightDir)));
+	vec3 diffuseLight = diffuseIntensity * lightColor;
+	float ambientStrength = 0.2F;
+	vec3 light = (diffuseLight  + ambientStrength) * objectColor;
+	FragColor = vec4(light, 1.0F);
 }

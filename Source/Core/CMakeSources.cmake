@@ -3,14 +3,16 @@ set(OxygEngine_Core_Components_SRC
 	"Components/GameObjectComponent.cpp"
 	"Components/Material.cpp"
 	"Components/Renderer.cpp" 
-	"Components/Transform")
+	"Components/Transform.cpp"
+	"Components/Light.cpp")
 
 set(OxygEngine_Core_Components_HEADER
 	"Components/Camera.h"
 	"Components/GameObjectComponent.h"
 	"Components/Material.h"
 	"Components/Renderer.h"
-	"Components/Transform")
+	"Components/Transform.h"
+	"Components/Light.h")
 
 set(OxygEngine_Core_Shader_SRC
 	"Shader/ShaderCompilationException.cpp"
@@ -39,12 +41,14 @@ set(OxygEngine_Core_GameObject_HEADER
 	"GameObject/GameObject.h")
 
 set(OxygEngine_Core_Utility_SRC
-	"Utility/CameraInputHandler.cpp")
+	"Utility/CameraInputHandler.cpp"
+	"Utility/VertexData.cpp")
 
 set(OxygEngine_Core_Utility_HEADER
 	"Utility/Initializers.h"
 	"Utility/Vertices.h"
-	"Utility/CameraInputHandler.h")
+	"Utility/CameraInputHandler.h"
+	"Utility/VertexData.h")
 
 set (OxygEngine_Vertex_Shaders_SRC
 	"ShaderFiles/vertex_shader.txt"

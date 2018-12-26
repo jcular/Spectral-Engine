@@ -18,10 +18,11 @@ void Material::initMaterial(std::string const & vertexShaderPath, std::string co
 	}
 }
 
-void Material::use(glm::mat4x4 const & mvpMatrix) const {
+void Material::use(glm::mat4x4 const & mvpMatrix, glm::mat4x4 const & modelMatrix) const {
 	this->shaderProgram->use();
 
 	this->shaderProgram->setMatrix4fv("mvpMatrix", glm::value_ptr(mvpMatrix));
+	this->shaderProgram->setMatrix4fv("modelMatrix", glm::value_ptr(modelMatrix));
 
 	for (unsigned int i = 0; i < this->textureVector.size(); ++i) {
 		GLenum const activeTexture = (GL_TEXTURE0 + i);
