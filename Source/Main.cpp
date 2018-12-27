@@ -24,8 +24,6 @@ int main(int argc, char** argv) {
 
 	float lastFrame = static_cast<float>(glfwGetTime());
 
-
-
 	while (!glfwWindowShouldClose(window)) {
 		float currentFrame = static_cast<float>(glfwGetTime());
 		float deltaTime = currentFrame - lastFrame;

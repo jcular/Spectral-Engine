@@ -39,21 +39,19 @@ void initScene(std::string const & executablePath) {
 	};
 
 	constexpr int numberOfObjects = (sizeof(cubePositions) / sizeof(cubePositions[0]));
-	GameObject * gameObjects = new GameObject[numberOfObjects];
-	VertexData vertexData{ verticesNormal, (int)(sizeof(verticesNormal)/sizeof(float)), indices, (int)(sizeof(indices)/sizeof(int)), false, true };
 
 	GameObject * lightSourceGameObject = new GameObject;
 	std::string const vertexLightingShaderPath{ shadersFolderPath + std::string{ "/vertex_shader.txt" } };
-	std::string const fragmentLightingShaderPath{ shadersFolderPath + std::string{ "/fragment_shader.txt" } };
+	std::string const fragmentLightingShaderPath{ shadersFolderPath + std::string{ "/fragment_lamp_shader.txt" } };
 	std::weak_ptr<Material> material = lightSourceGameObject->addComponent<Material>();
 	if (auto materialShared = material.lock()) {
-		const int numberOfTextures = 0;
-		materialShared->initMaterial(vertexLightingShaderPath, fragmentLightingShaderPath, NULL, numberOfTextures);
+		const int numberOfTextures = 2;
+		materialShared->initMaterial(vertexLightingShaderPath, fragmentLightingShaderPath, texturePathArray, numberOfTextures);
 	}
 
 	std::weak_ptr<Renderer> rendererWeak = lightSourceGameObject->addComponent<Renderer>();
 	if (auto rendererShared = rendererWeak.lock()) {
-		VertexData vertexData{ verticesUV, (int)sizeof(sizeof(verticesUV) / sizeof(float)), indices, (int)sizeof(indices), true, false };
+		VertexData vertexData{ verticesUV, (int)(sizeof(verticesUV) / sizeof(float)), indices, (int)sizeof(indices), true, false };
 		rendererShared->initRenderer(vertexData);
 	}
 
@@ -64,9 +62,10 @@ void initScene(std::string const & executablePath) {
 	}
 
 	int const numberOfBoxes = numberOfObjects - 1;
-
+	GameObject * boxObjects = new GameObject[numberOfBoxes];
+	
 	for (int i = 0; i < numberOfBoxes; ++i) {
-		std::weak_ptr<Material> material = gameObjects[i].addComponent<Material>();
+		std::weak_ptr<Material> material = boxObjects[i].addComponent<Material>();
 		if (auto materialShared = material.lock()) {
 			constexpr int numberOfTextures = sizeof(texturePathArray) / sizeof(std::string);
 			materialShared->initMaterial(vertexShaderPath, fragmentShaderPath, texturePathArray, numberOfTextures);
@@ -82,12 +81,13 @@ void initScene(std::string const & executablePath) {
 			}
 		}
 
-		std::weak_ptr<Renderer> renderer = gameObjects[i].addComponent<Renderer>();
+		std::weak_ptr<Renderer> renderer = boxObjects[i].addComponent<Renderer>();
 		if (auto rendererShared = renderer.lock()) {
+			VertexData vertexData{ verticesNormal, (int)(sizeof(verticesNormal) / sizeof(float)), indices, (int)(sizeof(indices) / sizeof(int)), false, true };
 			rendererShared->initRenderer(vertexData);
 		}
 
-		std::weak_ptr<Transform> transform = gameObjects[i].addComponent<Transform>();
+		std::weak_ptr<Transform> transform = boxObjects[i].addComponent<Transform>();
 		if (auto transformShared = transform.lock()) {
 			transformShared->setPosition(cubePositions[i]);
 		}
