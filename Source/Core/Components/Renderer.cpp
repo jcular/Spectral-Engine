@@ -27,8 +27,7 @@ void Renderer::renderObject() {
 	glm::mat4x4 modelMatrix{ 1.0F };
 	auto transformWeak = this->gameObjectOwner->getComponent<Transform>();
 	if (auto transformShared = transformWeak.lock()) {
-		glm::vec3 position = transformShared->getPosition();
-		modelMatrix = glm::translate(modelMatrix, position);
+		modelMatrix = transformShared->getTransformMatrix();
 
 		auto cameraShared = Camera::getMainCamera();
 		mvpMatrix = (cameraShared->getProjectionMatrix() * (cameraShared->getViewMatrix() * modelMatrix));

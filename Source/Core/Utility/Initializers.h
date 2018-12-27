@@ -12,6 +12,7 @@
 #include "Core/Components/Camera.h"
 #include "Core/GameObject/GameObject.h"
 #include "Core/Utility/VertexData.h"
+#include "Core/Components/Rotator.h"
 
 constexpr unsigned int SCR_WIDTH = 800;
 constexpr unsigned int SCR_HEIGHT = 600;
@@ -79,6 +80,10 @@ void initScene(std::string const & executablePath) {
 					shaderProgramShared->setVec3("lightPos", lightPos.x, lightPos.y, lightPos.z);
 				}
 			}
+		}
+
+		if (i % 2) {
+			boxObjects[i].addComponent<Rotator>();
 		}
 
 		std::weak_ptr<Renderer> renderer = boxObjects[i].addComponent<Renderer>();

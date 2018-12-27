@@ -4,7 +4,8 @@ set(OxygEngine_Core_Components_SRC
 	"Components/Material.cpp"
 	"Components/Renderer.cpp" 
 	"Components/Transform.cpp"
-	"Components/Light.cpp")
+	"Components/Light.cpp"
+	"Components/Rotator.cpp")
 
 set(OxygEngine_Core_Components_HEADER
 	"Components/Camera.h"
@@ -12,7 +13,8 @@ set(OxygEngine_Core_Components_HEADER
 	"Components/Material.h"
 	"Components/Renderer.h"
 	"Components/Transform.h"
-	"Components/Light.h")
+	"Components/Light.h"
+	"Components/Rotator.h")
 
 set(OxygEngine_Core_Shader_SRC
 	"Shader/ShaderCompilationException.cpp"
