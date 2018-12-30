@@ -11,12 +11,8 @@ include(CmakeSources.cmake)
 set(LIBRARIES_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Libraries/Header)
 
 add_subdirectory(Core)
+
 target_link_libraries(SpectralEngine Core)
-
-add_library(OpenGL STATIC ${SpectralEngine_Libraries_SRC})
-target_include_directories(OpenGL PRIVATE ${LIBRARIES_INCLUDE_DIR}/Glad)
-target_include_directories(OpenGL PRIVATE ${LIBRARIES_INCLUDE_DIR}/KHR)
-
 target_link_libraries(SpectralEngine ${CMAKE_CURRENT_SOURCE_DIR}/Libraries/lib/glfw3.lib)
 
 set(EXECUTABLE_OUTPUT_PATH "../bin/executable")

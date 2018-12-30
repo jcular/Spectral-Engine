@@ -13,7 +13,7 @@ vec3 getDiffuseLight()
 {	
 	vec3 lightDir = (lightPos - FragPos);
 	float diffuseIntensity = max(0, dot(normalize(Normal), normalize(lightDir)));
-	vec3 diffuseLight = pow(diffuseIntensity, 3) * lightColor;
+	vec3 diffuseLight = pow(diffuseIntensity, 2) * lightColor;
 	return diffuseLight;
 }
 

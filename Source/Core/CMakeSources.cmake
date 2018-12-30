@@ -61,6 +61,8 @@ set (SpectralEngine_Fragment_Shaders_SRC
 	"ShaderFiles/fragment_lighting_shader.txt"
 	"ShaderFiles/fragment_lamp_shader.txt")
 
+set(SpectralEngine_Glad_SRC
+	"Glad/glad.c")
 	
 set(SpectralEngine_Core_Files
 	"CMakeSources.cmake")
@@ -89,4 +91,5 @@ set(SpectralEngine_Core_SRC
 	${SpectralEngine_Core_Utility_HEADER}
 	${SpectralEngine_Vertex_Shaders_SRC}
 	${SpectralEngine_Fragment_Shaders_SRC}
+	${SpectralEngine_Glad_SRC}
 	${SpectralEngine_Core_Files})

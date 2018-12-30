@@ -5,9 +5,6 @@ include(CopyShaderFiles.cmake)
 
 add_library(Core STATIC ${SpectralEngine_Core_SRC})
 
-find_package(OpenGL REQUIRED)
-target_link_libraries(Core OpenGL)
-
 target_include_directories(Core PUBLIC ${LIBRARIES_INCLUDE_DIR}/Glm)
 target_include_directories(Core PUBLIC ${LIBRARIES_INCLUDE_DIR}/Glad)
 target_include_directories(Core PUBLIC ${LIBRARIES_INCLUDE_DIR}/KHR)
