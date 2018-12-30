@@ -1,2 +1,2 @@
-set(OxygEngine_Libraries_SRC
+set(SpectralEngine_Libraries_SRC
 	"Libraries/source/glad/glad.c")

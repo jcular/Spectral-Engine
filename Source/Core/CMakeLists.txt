@@ -3,7 +3,7 @@ cmake_minimum_required (VERSION 3.8)
 include(CMakeSources.cmake)
 include(CopyShaderFiles.cmake)
 
-add_library(Core STATIC ${OxygEngine_Core_SRC})
+add_library(Core STATIC ${SpectralEngine_Core_SRC})
 
 find_package(OpenGL REQUIRED)
 target_link_libraries(Core OpenGL)

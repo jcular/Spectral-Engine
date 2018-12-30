@@ -73,8 +73,8 @@ void initScene(std::string const & executablePath) {
 			
 			auto shaderProgramWeak = materialShared->getShaderProgram();
 			if (auto shaderProgramShared = shaderProgramWeak.lock()) {
-				shaderProgramShared->setVec3("objectColor", 0.4F, 0.3F, 0.12F);
-				shaderProgramShared->setVec3("lightColor", 0.3F, 0.3F, 0.3F);
+				shaderProgramShared->setVec3("objectColor", 0.8F, 0.3F, 0.12F);
+				shaderProgramShared->setVec3("lightColor", 0.2F, 0.3F, 0.89F);
 				if (auto lightSourceTransformShared = lightSourceTransformWeak.lock()) {
 					auto lightPos = lightSourceTransformShared->getPosition();
 					shaderProgramShared->setVec3("lightPos", lightPos.x, lightPos.y, lightPos.z);
@@ -97,7 +97,6 @@ void initScene(std::string const & executablePath) {
 			transformShared->setPosition(cubePositions[i]);
 		}
 	}
-
 }
 
 GLFWwindow * setupWindow() {
@@ -134,7 +133,7 @@ GLFWwindow * initGLFWwindow() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	GLFWwindow * window = glfwCreateWindow(800, 600, "Opengl tutorial", NULL, NULL);
+	GLFWwindow * window = glfwCreateWindow(800, 600, "Spectral Engine", NULL, NULL);
 
 	return window;
 }
