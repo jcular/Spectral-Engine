@@ -19,28 +19,7 @@ constexpr unsigned int SCR_HEIGHT = 600;
 
 GLFWwindow * initGLFWwindow();
 
-void initScene(std::string const & executablePath) {
-	GameObject * const cameraGameObject = new GameObject();
-	auto cameraTransformWeak = cameraGameObject->addComponent<Transform>();
-	auto cameraWeak = cameraGameObject->addComponent<Camera>();
-
-	if (auto cameraShared = cameraWeak.lock()) {
-		cameraShared->initCamera(glm::radians(45.0F), SCR_WIDTH, SCR_HEIGHT);
-		Camera::setMainCamera(cameraShared);
-	}
-
-	std::string const rootPath{ executablePath.substr(0, executablePath.find_last_of("\\")) };
-	std::string const shadersFolderPath{ rootPath + std::string{"/../../../Source/Core/ShaderFiles"} };
-	std::string const vertexShaderPath{ shadersFolderPath + std::string{ "/vertex_lighting_shader.txt" } };
-	std::string const fragmentShaderPath{ shadersFolderPath + std::string{ "/fragment_lighting_shader.txt" } };
-	std::string const resourcesFolderPath{ rootPath + std::string{ "/../../../Resources/Resources" } };
-	std::string const texturePathArray[2]{
-		resourcesFolderPath + std::string{ "/Art/wall.png" },
-		resourcesFolderPath + std::string{ "/Art/awesomeface.png" }
-	};
-
-	constexpr int numberOfObjects = (sizeof(cubePositions) / sizeof(cubePositions[0]));
-
+GameObject * createLight(std::string const & shadersFolderPath, std::string const texturePathArray[], int const lightSourceIndex) {
 	GameObject * lightSourceGameObject = new GameObject;
 	std::string const vertexLightingShaderPath{ shadersFolderPath + std::string{ "/vertex_shader.txt" } };
 	std::string const fragmentLightingShaderPath{ shadersFolderPath + std::string{ "/fragment_lamp_shader.txt" } };
@@ -58,25 +37,30 @@ void initScene(std::string const & executablePath) {
 
 	std::weak_ptr<Transform> lightSourceTransformWeak = lightSourceGameObject->addComponent<Transform>();
 	if (auto transformShared = lightSourceTransformWeak.lock()) {
-		int const lightSourceIndex = numberOfObjects - 1;
 		transformShared->setPosition(cubePositions[lightSourceIndex]);
 	}
 
-	int const numberOfBoxes = numberOfObjects - 1;
+	return lightSourceGameObject;
+}
+
+void createBoxObjects(
+	std::string const texturePathArray[], std::string const & vertexShaderPath, std::string const & fragmentShaderPath,
+	int numberOfBoxes, std::weak_ptr<Transform> cameraTransformWeak, std::weak_ptr<Transform> lightSourceTrnasformWeak) {
+
 	GameObject * boxObjects = new GameObject[numberOfBoxes];
-	
+
 	for (int i = 0; i < numberOfBoxes; ++i) {
 		std::weak_ptr<Material> material = boxObjects[i].addComponent<Material>();
 		if (auto materialShared = material.lock()) {
 			constexpr int numberOfTextures = sizeof(texturePathArray) / sizeof(std::string);
 			materialShared->initMaterial(vertexShaderPath, fragmentShaderPath, texturePathArray, numberOfTextures);
-			
+
 			auto shaderProgramWeak = materialShared->getShaderProgram();
 			if (auto shaderProgramShared = shaderProgramWeak.lock()) {
 				shaderProgramShared->setVec3("objectColor", 0.8F, 0.3F, 0.12F);
 				shaderProgramShared->setVec3("lightColor", 0.5F, 0.6F, 0.89F);
-				
-				if (auto lightSourceTransformShared = lightSourceTransformWeak.lock()) {
+
+				if (auto lightSourceTransformShared = lightSourceTrnasformWeak.lock()) {
 					auto lightPos = lightSourceTransformShared->getPosition();
 					shaderProgramShared->setVec3("lightPos", lightPos.x, lightPos.y, lightPos.z);
 				}
@@ -103,6 +87,34 @@ void initScene(std::string const & executablePath) {
 			transformShared->setPosition(cubePositions[i]);
 		}
 	}
+}
+
+void initScene(std::string const & executablePath) {
+	GameObject * const cameraGameObject = new GameObject();
+	auto cameraTransformWeak = cameraGameObject->addComponent<Transform>();
+	auto cameraWeak = cameraGameObject->addComponent<Camera>();
+
+	if (auto cameraShared = cameraWeak.lock()) {
+		cameraShared->initCamera(glm::radians(45.0F), SCR_WIDTH, SCR_HEIGHT);
+		Camera::setMainCamera(cameraShared);
+	}
+
+	std::string const rootPath{ executablePath.substr(0, executablePath.find_last_of("\\")) };
+	std::string const shadersFolderPath{ rootPath + std::string{"/../../../Source/Core/ShaderFiles"} };
+	std::string const vertexShaderPath{ shadersFolderPath + std::string{ "/vertex_lighting_shader.txt" } };
+	std::string const fragmentShaderPath{ shadersFolderPath + std::string{ "/fragment_lighting_shader.txt" } };
+	std::string const resourcesFolderPath{ rootPath + std::string{ "/../../../Resources/Resources" } };
+	std::string const texturePathArray[2]{
+		resourcesFolderPath + std::string{ "/Art/wall.png" },
+		resourcesFolderPath + std::string{ "/Art/awesomeface.png" }
+	};
+
+	constexpr int numberOfObjects = (sizeof(cubePositions) / sizeof(cubePositions[0]));
+	GameObject * lightSourceGameObject = createLight(shadersFolderPath, texturePathArray, numberOfObjects - 1);
+
+	int const numberOfBoxes = numberOfObjects - 1;
+	std::weak_ptr<Transform> lightSourceTransformWeak = lightSourceGameObject->getComponent<Transform>();
+	createBoxObjects(texturePathArray, vertexShaderPath, fragmentShaderPath, numberOfBoxes, cameraTransformWeak, lightSourceTransformWeak);
 }
 
 GLFWwindow * setupWindow() {
