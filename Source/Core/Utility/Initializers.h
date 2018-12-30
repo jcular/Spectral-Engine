@@ -21,7 +21,7 @@ GLFWwindow * initGLFWwindow();
 
 void initScene(std::string const & executablePath) {
 	GameObject * const cameraGameObject = new GameObject();
-	cameraGameObject->addComponent<Transform>();
+	auto cameraTransformWeak = cameraGameObject->addComponent<Transform>();
 	auto cameraWeak = cameraGameObject->addComponent<Camera>();
 
 	if (auto cameraShared = cameraWeak.lock()) {
@@ -74,10 +74,16 @@ void initScene(std::string const & executablePath) {
 			auto shaderProgramWeak = materialShared->getShaderProgram();
 			if (auto shaderProgramShared = shaderProgramWeak.lock()) {
 				shaderProgramShared->setVec3("objectColor", 0.8F, 0.3F, 0.12F);
-				shaderProgramShared->setVec3("lightColor", 0.2F, 0.3F, 0.89F);
+				shaderProgramShared->setVec3("lightColor", 0.5F, 0.6F, 0.89F);
+				
 				if (auto lightSourceTransformShared = lightSourceTransformWeak.lock()) {
 					auto lightPos = lightSourceTransformShared->getPosition();
 					shaderProgramShared->setVec3("lightPos", lightPos.x, lightPos.y, lightPos.z);
+				}
+
+				if (auto cameraTransformShared = cameraTransformWeak.lock()) {
+					auto cameraPos = cameraTransformShared->getPosition();
+					shaderProgramShared->setVec3("cameraPos", cameraPos.x, cameraPos.y, cameraPos.z);
 				}
 			}
 		}

@@ -7,13 +7,32 @@ in vec3 FragPos;
 uniform vec3 objectColor;
 uniform vec3 lightColor;
 uniform vec3 lightPos;
+uniform vec3 cameraPos;
+
+vec3 getDiffuseLight() 
+{	
+	vec3 lightDir = (lightPos - FragPos);
+	float diffuseIntensity = max(0, dot(normalize(Normal), normalize(lightDir)));
+	vec3 diffuseLight = pow(diffuseIntensity, 3) * lightColor;
+	return diffuseLight;
+}
+
+vec3 getSpecular()
+{
+	vec3 lightDir = (lightPos - FragPos);
+	vec3 viewDir = (cameraPos - FragPos);
+	vec3 reflectedDir = reflect(-lightDir, Normal);
+	float specIntensity = max(0, dot(normalize(reflectedDir), normalize(viewDir)));
+	float specIntPow = pow(specIntensity, 32);
+	return specIntPow * 0.8 * lightColor;
+}
 
 void main()
 {
-	vec3 lightDir = (lightPos - FragPos);
-	float diffuseIntensity = max(0, dot(normalize(Normal), normalize(lightDir)));
-	vec3 diffuseLight = diffuseIntensity * lightColor;
-	float ambientStrength = 0.4F;
-	vec3 totalLight = (diffuseLight  + ambientStrength) * objectColor;
+	vec3 diffuseLight = getDiffuseLight();
+	vec3 specular = getSpecular();
+	float ambientStrength = 0.1F;
+	vec3 totalLight = (diffuseLight  + ambientStrength + specular) * objectColor;
 	FragColor = vec4(totalLight, 1.0F);
 }
+

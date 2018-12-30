@@ -25,16 +25,24 @@ void Renderer::renderObject() {
 
 	glm::mat4x4 mvpMatrix{ 1.0F };
 	glm::mat4x4 modelMatrix{ 1.0F };
+	glm::vec3 cameraPos{ 0.0F };
 	auto transformWeak = this->gameObjectOwner->getComponent<Transform>();
 	if (auto transformShared = transformWeak.lock()) {
 		modelMatrix = transformShared->getTransformMatrix();
 
 		auto cameraShared = Camera::getMainCamera();
 		mvpMatrix = (cameraShared->getProjectionMatrix() * (cameraShared->getViewMatrix() * modelMatrix));
+		if (auto cameraTransformShared = cameraShared->getGameObject()->getComponent<Transform>().lock()) {
+			cameraPos = cameraTransformShared->getPosition();
+		}
 	}
 
 	if (std::shared_ptr<Material> materialShared = material.lock()) {
-		material.lock()->use(mvpMatrix, modelMatrix);
+		materialShared->use(mvpMatrix, modelMatrix);
+		
+		if (auto shaderProgram = materialShared->getShaderProgram().lock()) {
+			shaderProgram->setVec3("cameraPos", cameraPos.x, cameraPos.y, cameraPos.z);
+		}
 	}
 
 	glBindVertexArray(this->VAO);
