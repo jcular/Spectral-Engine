@@ -58,6 +58,7 @@ GameObject * createLight(std::string const & shadersFolderPath, std::string cons
 	std::weak_ptr<Transform> lightSourceTransformWeak = lightSourceGameObject->addComponent<Transform>();
 	if (auto transformShared = lightSourceTransformWeak.lock()) {
 		transformShared->setPosition(cubePositions[lightSourceIndex]);
+		transformShared->setScale(glm::vec3{ 0.2F });
 	}
 
 	return lightSourceGameObject;

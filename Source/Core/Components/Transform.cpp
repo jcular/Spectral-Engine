@@ -4,7 +4,8 @@
 
 Transform::Transform(GameObject * const gameObjectOwner) :
 	GameObjectComponent(gameObjectOwner),
-	position{ 0.0F } {
+	position{ 0.0F },
+	scale{ 1.0F } {
 }
 
 glm::vec3 const Transform::getPosition() const {
@@ -21,6 +22,7 @@ glm::mat4x4 const Transform::getTransformMatrix() const {
 	transformMatrix = glm::rotate(transformMatrix, this->rotationEuler.x, glm::vec3{ 1.0F, 0.0F, 0.0F });
 	transformMatrix = glm::rotate(transformMatrix, this->rotationEuler.y, glm::vec3{ 0.0F, 1.0F, 0.0F });
 	transformMatrix = glm::rotate(transformMatrix, this->rotationEuler.z, glm::vec3{ 0.0F, 0.0F, 1.0F });
+	transformMatrix = glm::scale(transformMatrix, this->scale);
 
 	return transformMatrix;
 }
@@ -31,6 +33,10 @@ glm::vec3 Transform::getRotationEuler() const {
 
 void Transform::setRotationEuler(glm::vec3 const & rotation) {
 	this->rotationEuler = rotation;
+}
+
+void Transform::setScale(glm::vec3 const & scale) {
+	this->scale = scale;
 }
 
 glm::mat4x4 const Transform::getTranslationMatrix() const {

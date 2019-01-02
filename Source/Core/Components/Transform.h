@@ -13,10 +13,12 @@ public:
 	glm::mat4x4 const getTransformMatrix() const;
 	glm::vec3 getRotationEuler() const;
 	void setRotationEuler(glm::vec3 const & rotation);
+	void setScale(glm::vec3 const & scale);
 
 private:
 	glm::mat4x4 const getTranslationMatrix() const;
 	glm::vec3 position;
 	glm::vec3 rotationEuler;
+	glm::vec3 scale;
 };
 
