@@ -3,7 +3,7 @@
 
 #include "Core/Utility/Initializers.h"
 #include "Core/Components/Material.h"
-#include "Core/Components/Renderer.h"1
+#include "Core/Components/Renderer.h"
 #include "Core/Utility/CameraInputHandler.h"
 
 #include "Core/Utility/Vertices.h"

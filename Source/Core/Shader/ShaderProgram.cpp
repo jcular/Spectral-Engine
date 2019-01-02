@@ -26,10 +26,6 @@ ShaderProgram::ShaderProgram(std::string vertexShaderPath, std::string fragmentS
 
 	glDeleteShader(vertexShader.getId());
 	glDeleteShader(fragmentShader.getId());
-
-	this->use();
-	this->setInt("tex0", 0);
-	this->setInt("tex1", 1);
 }
 
 ShaderProgram::~ShaderProgram() {

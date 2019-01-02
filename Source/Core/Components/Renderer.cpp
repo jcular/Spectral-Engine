@@ -63,18 +63,18 @@ void Renderer::initializeVertexData(VertexData const & vertexData) {
 	glEnableVertexAttribArray(attribArrayIndex++);
 	int step = 3;
 
-	if (vertexData.hasUVCoords()) {
-		void const * const stepPointer = (void *)(step * sizeof(float));
-		glVertexAttribPointer(attribArrayIndex, 2, GL_FLOAT, GL_FALSE, stride, stepPointer);
-		glEnableVertexAttribArray(attribArrayIndex++);
-		step += 2;
-	}
-
 	if (vertexData.hasNormalCoords()) {
 		void const * const stepPointer = (void *)(step * sizeof(float));
 		glVertexAttribPointer(attribArrayIndex, 3, GL_FLOAT, GL_FALSE, stride, stepPointer);
 		glEnableVertexAttribArray(attribArrayIndex++);
 		step += 3;
+	}
+
+	if (vertexData.hasUVCoords()) {
+		void const * const stepPointer = (void *)(step * sizeof(float));
+		glVertexAttribPointer(attribArrayIndex, 2, GL_FLOAT, GL_FALSE, stride, stepPointer);
+		glEnableVertexAttribArray(attribArrayIndex++);
+		step += 2;
 	}
 
 	glBufferData(GL_ARRAY_BUFFER, vertexData.getDataArraySize() * sizeof(float), vertexData.getDataArray(), GL_STATIC_DRAW);
