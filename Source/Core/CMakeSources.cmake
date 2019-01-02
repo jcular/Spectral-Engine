@@ -53,19 +53,20 @@ set(SpectralEngine_Core_Utility_HEADER
 	"Utility/VertexData.h")
 
 set (SpectralEngine_Vertex_Shaders_SRC
-	"ShaderFiles/vertex_shader.txt"
-	"ShaderFiles/vertex_lighting_shader.txt")
+	"ShaderFiles/vertex_shader.glsl"
+	"ShaderFiles/vertex_lighting_shader.glsl")
 
 set (SpectralEngine_Fragment_Shaders_SRC
-	"ShaderFiles/fragment_shader.txt"
-	"ShaderFiles/fragment_lighting_shader.txt"
-	"ShaderFiles/fragment_lamp_shader.txt")
-
+	"ShaderFiles/fragment_shader.glsl"
+	"ShaderFiles/fragment_lighting_shader.glsl"
+	"ShaderFiles/fragment_lamp_shader.glsl")
+	
 set(SpectralEngine_Glad_SRC
 	"Glad/glad.c")
 	
 set(SpectralEngine_Core_Files
-	"CMakeSources.cmake")
+	"CMakeSources.cmake"
+	"CopyShaderFiles.cmake")
 
 source_group("Source Files\\Components" FILES ${SpectralEngine_Core_Components_SRC})
 source_group("Header Files\\Components" FILES ${SpectralEngine_Core_Components_HEADER})
@@ -77,6 +78,7 @@ source_group("Source Files\\Utility" FILES ${SpectralEngine_Core_Utility_SRC})
 source_group("Header Files\\Utility" FILES ${SpectralEngine_Core_Utility_HEADER})
 source_group("Shader Files\\Vertex" FILES ${SpectralEngine_Vertex_Shaders_SRC})
 source_group("Shader Files\\Fragment" FILES ${SpectralEngine_Fragment_Shaders_SRC})
+source_group("Glad" FILES ${SpectralEngine_Glad_SRC})
 
 set(SpectralEngine_Core_SRC
 	${SpectralEngine_Core_Components_SRC}
