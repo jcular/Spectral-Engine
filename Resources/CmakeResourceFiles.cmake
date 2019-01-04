@@ -2,7 +2,8 @@ set(SpectralEngine_ResourceFiles_Art
 	"Art/awesomeface.png"
 	"Art/wall.png"
 	"Art/wall.jpg"
-	"Art/container.png")
+	"Art/container.png"
+	"Art/specular_map_container.png")
 
 set(SpectralEngine_ResourceFiles_Shaders
 	"Shaders/fragment_shader.txt"

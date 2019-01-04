@@ -41,6 +41,7 @@ void Renderer::renderObject() {
 		materialShared->use(mvpMatrix, modelMatrix);
 		
 		if (auto shaderProgram = materialShared->getShaderProgram().lock()) {
+			shaderProgram->use();
 			shaderProgram->setVec3("cameraPos", cameraPos.x, cameraPos.y, cameraPos.z);
 		}
 	}

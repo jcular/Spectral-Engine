@@ -65,7 +65,7 @@ GameObject * createLight(std::string const & shadersFolderPath, std::string cons
 }
 
 void createBoxObjects(
-	std::string const diffuseMapTexturePath, std::string const & vertexShaderPath, std::string const & fragmentShaderPath,
+	std::string const & specularMapTexturePath, std::string const & diffuseMapTexturePath, std::string const & vertexShaderPath, std::string const & fragmentShaderPath,
 	int numberOfBoxes, std::weak_ptr<Transform> cameraTransformWeak, std::weak_ptr<Transform> lightSourceTrnasformWeak) {
 
 	GameObject * boxObjects = new GameObject[numberOfBoxes];
@@ -79,6 +79,7 @@ void createBoxObjects(
 
 			auto shaderProgramWeak = materialShared->getShaderProgram();
 			if (auto shaderProgramShared = shaderProgramWeak.lock()) {
+				shaderProgramShared->use();
 				shaderProgramShared->setVec3("lightColor", 0.5F, 0.6F, 0.89F);
 
 				if (auto lightSourceTransformShared = lightSourceTrnasformWeak.lock()) {
@@ -93,6 +94,7 @@ void createBoxObjects(
 			}
 
 			materialShared->setDiffuseMap(diffuseMapTexturePath);
+			materialShared->setSpecularMap(specularMapTexturePath);
 		}
 
 		if (i % 2) {
@@ -128,6 +130,7 @@ void initScene(std::string const & executablePath) {
 	std::string const fragmentShaderPath{ shadersFolderPath + std::string{ "/fragment_lighting_shader.glsl" } };
 	std::string const resourcesFolderPath{ rootPath + std::string{ "/../../../Resources/Resources" } };
 	std::string const diffuseMapPath = resourcesFolderPath + std::string{ "/Art/container.png" };
+	std::string const specularMapPath = resourcesFolderPath + std::string{ "/Art/specular_map_container.png" };
 	std::string const texturePathArray[2]{
 		resourcesFolderPath + std::string{ "/Art/wall.png" },
 		resourcesFolderPath + std::string{ "/Art/awesomeface.png" }
@@ -138,7 +141,7 @@ void initScene(std::string const & executablePath) {
 
 	int const numberOfBoxes = numberOfObjects - 1;
 	std::weak_ptr<Transform> lightSourceTransformWeak = lightSourceGameObject->getComponent<Transform>();
-	createBoxObjects(diffuseMapPath, vertexShaderPath, fragmentShaderPath, numberOfBoxes, cameraTransformWeak, lightSourceTransformWeak);
+	createBoxObjects(specularMapPath, diffuseMapPath, vertexShaderPath, fragmentShaderPath, numberOfBoxes, cameraTransformWeak, lightSourceTransformWeak);
 }
 
 GLFWwindow * setupWindow() {

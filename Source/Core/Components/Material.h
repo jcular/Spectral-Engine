@@ -23,6 +23,7 @@ public:
 	void setSpecular(glm::vec3 const & specularColor);
 	void setShinines(float const shininess);
 	void setDiffuseMap(std::string const & texturePath);
+	void setSpecularMap(std::string const & texturePath);
 
 private:
 	glm::vec3 ambientColor;
@@ -31,4 +32,5 @@ private:
 	float shininess;
 	std::shared_ptr<ShaderProgram> shaderProgram;
 	std::unique_ptr<Texture> diffuseMapTexture;
+	std::unique_ptr<Texture> specularMapTexture;
 };
