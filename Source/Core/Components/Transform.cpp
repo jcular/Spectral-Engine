@@ -31,6 +31,16 @@ glm::vec3 Transform::getRotationEuler() const {
 	return this->rotationEuler;
 }
 
+glm::vec3 Transform::getDirection() const {
+	glm::vec3 dir;
+	glm::vec3 eulerAngles = getRotationEuler();
+	dir.x = glm::cos(glm::radians(eulerAngles.x)) * cos(glm::radians(eulerAngles.y));
+	dir.y = glm::sin(glm::radians(eulerAngles.x)) * cos(glm::radians(eulerAngles.y));
+	dir.z = glm::sin(glm::radians(eulerAngles.y));
+
+	return dir;
+}
+
 void Transform::setRotationEuler(glm::vec3 const & rotation) {
 	this->rotationEuler = rotation;
 }

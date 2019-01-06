@@ -12,6 +12,7 @@ public:
 	void setPosition(glm::vec3 const & positon);
 	glm::mat4x4 const getTransformMatrix() const;
 	glm::vec3 getRotationEuler() const;
+	glm::vec3 getDirection() const;
 	void setRotationEuler(glm::vec3 const & rotation);
 	void setScale(glm::vec3 const & scale);
 

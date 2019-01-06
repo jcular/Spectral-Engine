@@ -28,10 +28,10 @@ void setRandomColors(std::weak_ptr<Material> materialWeak) {
 		glm::vec3 ambient{ 0.2F };
 		materialShared->setAmbient(ambient);
 		
-		glm::vec3 diffuse{ distribution(generator), distribution(generator), distribution(generator) };
+		glm::vec3 diffuse{ distribution(generator) };
 		materialShared->setDiffuse(diffuse);
 
-		glm::vec3 specular{ distribution(generator), distribution(generator), distribution(generator) };
+		glm::vec3 specular{ distribution(generator) };
 		materialShared->setSpecular(specular);
 
 		float shininess{ 1.0F + 31 * distribution(generator) };
@@ -80,7 +80,7 @@ void createBoxObjects(
 			auto shaderProgramWeak = materialShared->getShaderProgram();
 			if (auto shaderProgramShared = shaderProgramWeak.lock()) {
 				shaderProgramShared->use();
-				shaderProgramShared->setVec3("lightColor", 0.5F, 0.6F, 0.89F);
+				shaderProgramShared->setVec3("lightColor", 1.5F, 1.6F, 1.89F);
 
 				if (auto lightSourceTransformShared = lightSourceTrnasformWeak.lock()) {
 					auto lightPos = lightSourceTransformShared->getPosition();

@@ -20,10 +20,15 @@ uniform Material material;
 uniform vec3 lightColor;
 uniform vec3 lightPos;
 uniform vec3 cameraPos;
+uniform vec3 cameraDir;
 
 vec3 getLightDir()
 {
 	return (lightPos - FragPos);
+}
+
+float getAtentuation(float distance) {
+	return 1 / (1.0F + 0.14 * distance + 0.05 * distance * distance);
 }
 
 vec3 getDiffuseLight() 
@@ -33,7 +38,8 @@ vec3 getDiffuseLight()
 	vec3 normalNormalized = normalize(Normal);
 	float lightNormalDot =  dot(normalNormalized, lightDirNormalized);
 	
-	float diffuseIntensity = max(0, lightNormalDot) * 5 / length(lightDir);
+
+	float diffuseIntensity = max(0, lightNormalDot) * getAtentuation(length(getLightDir()));
 
 	vec3 diffuseLight = diffuseIntensity * vec3(texture(material.diffuseMapTex, TexCoords)) * lightColor;
 	return diffuseLight;
@@ -51,11 +57,29 @@ vec3 getSpecular()
 	return specIntensity * material.specular * lightColor * vec3(texture(material.specularMapTex, TexCoords));
 }
 
+vec3 getFlashlightValue() {
+	vec3 lightDirNormalized = normalize(FragPos - cameraPos);
+	vec3 viewDirNormalized = -normalize(cameraDir);
+	float dotProd = dot(lightDirNormalized, viewDirNormalized);
+
+	if (dotProd < 0.95) {
+		return vec3(0.0F, 0.0F, 0.0F);
+	}
+
+	float reducer = 1.0F;
+
+	if (dotProd < 0.99) {
+		reducer = dotProd;
+	}
+
+	return getAtentuation(length(FragPos - cameraPos)) * vec3(texture(material.diffuseMapTex, TexCoords)) * reducer;
+}
+
 void main()
 {
 	vec3 diffuseLight = getDiffuseLight();
 	vec3 specular = getSpecular();
-	vec3 ambientColor = material.ambient * vec3(texture(material.diffuseMapTex, TexCoords));
-	vec3 totalLight = (ambientColor + diffuseLight + specular);
+	vec3 ambientColor = material.ambient * vec3(texture(material.diffuseMapTex, TexCoords)) * getAtentuation(length(getLightDir()));
+	vec3 totalLight = (ambientColor + diffuseLight + specular + getFlashlightValue());
 	FragColor = vec4(totalLight, 1.0F);
 }

@@ -26,6 +26,7 @@ void Renderer::renderObject() {
 	glm::mat4x4 mvpMatrix{ 1.0F };
 	glm::mat4x4 modelMatrix{ 1.0F };
 	glm::vec3 cameraPos{ 0.0F };
+	glm::vec3 cameraDir{ 0.0F };
 	auto transformWeak = this->gameObjectOwner->getComponent<Transform>();
 	if (auto transformShared = transformWeak.lock()) {
 		modelMatrix = transformShared->getTransformMatrix();
@@ -34,6 +35,7 @@ void Renderer::renderObject() {
 		mvpMatrix = (cameraShared->getProjectionMatrix() * (cameraShared->getViewMatrix() * modelMatrix));
 		if (auto cameraTransformShared = cameraShared->getGameObject()->getComponent<Transform>().lock()) {
 			cameraPos = cameraTransformShared->getPosition();
+			cameraDir = -cameraTransformShared->getDirection();
 		}
 	}
 
@@ -43,6 +45,7 @@ void Renderer::renderObject() {
 		if (auto shaderProgram = materialShared->getShaderProgram().lock()) {
 			shaderProgram->use();
 			shaderProgram->setVec3("cameraPos", cameraPos.x, cameraPos.y, cameraPos.z);
+			shaderProgram->setVec3("cameraDir", cameraDir.x, cameraDir.y, cameraDir.z);
 		}
 	}
 
