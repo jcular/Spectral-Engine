@@ -6,10 +6,10 @@ namespace sp {
 	Radian::Radian() : value{ 0.0F } {
 	}
 
-	Radian::Radian(float value) : value{ value } {
+	Radian::Radian(float const value) : value{ value } {
 	}
 
-	Radian::Radian(Degree degree) {
+	Radian::Radian(Degree const degree) {
 		this->value = degree.getValueRadians();
 	}
 }

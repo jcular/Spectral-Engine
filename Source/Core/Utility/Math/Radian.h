@@ -5,8 +5,8 @@ namespace sp {
 	public:
 		Radian();
 		Radian(Radian const & radian) = default;
-		Radian(float value);
-		Radian(Degree degree);
+		Radian(float const value);
+		Radian(Degree const degree);
 
 	public:
 		constexpr float const getValueRadians() const {
