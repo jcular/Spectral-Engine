@@ -46,6 +46,20 @@ set(SpectralEngine_Core_Utility_SRC
 	"Utility/CameraInputHandler.cpp"
 	"Utility/VertexData.cpp")
 
+set(SpectralEngine_Core_Math_SRC
+	"Utility/Math/SpMath.cpp"
+	"Utility/Math/Radian.cpp"
+	"Utility/Math/Degree.cpp"
+	"Utility/Math/Vector3.cpp"
+	"Utility/Math/Quaternion.cpp")
+
+set(SpectralEngine_Core_Math_HEADER
+	"Utility/Math/SpMath.h"
+	"Utility/Math/Radian.h"
+	"Utility/Math/Degree.h"
+	"Utility/Math/Vector3.h"
+	"Utility/Math/Quaternion.h")
+
 set(SpectralEngine_Core_Utility_HEADER
 	"Utility/Initializers.h"
 	"Utility/Vertices.h"
@@ -76,6 +90,8 @@ source_group("Header Files\\GameObject" FILES ${SpectralEngine_Core_GameObject_H
 source_group("Source Files\\GameObject" FILES ${SpectralEngine_Core_GameObject_SRC})
 source_group("Source Files\\Utility" FILES ${SpectralEngine_Core_Utility_SRC})
 source_group("Header Files\\Utility" FILES ${SpectralEngine_Core_Utility_HEADER})
+source_group("Source Files\\Utility\\Math" FILES ${SpectralEngine_Core_Math_SRC})
+source_group("Header Files\\Utility\\Math" FILES ${SpectralEngine_Core_Math_HEADER})
 source_group("Shader Files\\Vertex" FILES ${SpectralEngine_Vertex_Shaders_SRC})
 source_group("Shader Files\\Fragment" FILES ${SpectralEngine_Fragment_Shaders_SRC})
 source_group("Glad" FILES ${SpectralEngine_Glad_SRC})
@@ -91,6 +107,8 @@ set(SpectralEngine_Core_SRC
 	${SpectralEngine_Core_GameObject_SRC}
 	${SpectralEngine_Core_Utility_SRC}
 	${SpectralEngine_Core_Utility_HEADER}
+	${SpectralEngine_Core_Math_SRC}
+	${SpectralEngine_Core_Math_HEADER}
 	${SpectralEngine_Vertex_Shaders_SRC}
 	${SpectralEngine_Fragment_Shaders_SRC}
 	${SpectralEngine_Glad_SRC}
