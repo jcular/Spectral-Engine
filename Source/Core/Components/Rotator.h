@@ -1,12 +1,14 @@
 #include "Components/GameObjectComponent.h"
 
-class Rotator : public GameObjectComponent {
-public:
-	Rotator(GameObject * const gameObjectOwner);
+namespace sp {
+	class Rotator : public GameObjectComponent {
+	public:
+		Rotator(GameObject * const gameObjectOwner);
 
-public:
-	void update(float deltaTime) override;
+	public:
+		void update(float deltaTime) override;
 
-private:
-	float passedTime = 0.0F;
-};
+	private:
+		float passedTime = 0.0F;
+	};
+}

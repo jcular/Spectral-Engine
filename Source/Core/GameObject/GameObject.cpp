@@ -1,40 +1,42 @@
 #include "GameObject.h"
 #include "Components/GameObjectComponent.h"
 
-GameObject::GameObject() {
-	GameObject::gameObjectCollection.push_back(this);
-}
-
-GameObject::~GameObject() {
-	int index = GameObject::getGameObjectIndex(this);
-	auto iterator = GameObject::gameObjectCollection.begin() + index;
-	GameObject::gameObjectCollection.erase(iterator);
-}
-
-void GameObject::updateComponents(float const deltaTime) {
-	for (auto & component : this->components) {
-		component->update(deltaTime);
+namespace sp {
+	GameObject::GameObject() {
+		GameObject::gameObjectCollection.push_back(this);
 	}
-}
 
-void GameObject::updateGameObjects(float const deltaTime) {
-	for (auto & gameObject : gameObjectCollection) {
-		gameObject->updateComponents(deltaTime);
+	GameObject::~GameObject() {
+		int index = GameObject::getGameObjectIndex(this);
+		auto iterator = GameObject::gameObjectCollection.begin() + index;
+		GameObject::gameObjectCollection.erase(iterator);
 	}
-}
 
-std::vector<GameObject*> GameObject::getGameObjectCollection() {
-	return GameObject::gameObjectCollection;
-}
-
-int GameObject::getGameObjectIndex(GameObject *gameObject) {
-	for (unsigned int i = 0; i < GameObject::gameObjectCollection.size(); ++i) {
-		if (GameObject::gameObjectCollection.at(i) == gameObject) {
-			return i;
+	void GameObject::updateComponents(float const deltaTime) {
+		for (auto & component : this->components) {
+			component->update(deltaTime);
 		}
 	}
 
-	return -1;
-}
+	void GameObject::updateGameObjects(float const deltaTime) {
+		for (auto & gameObject : gameObjectCollection) {
+			gameObject->updateComponents(deltaTime);
+		}
+	}
 
-std::vector<GameObject *> GameObject::gameObjectCollection;
+	std::vector<GameObject*> GameObject::getGameObjectCollection() {
+		return GameObject::gameObjectCollection;
+	}
+
+	int GameObject::getGameObjectIndex(GameObject *gameObject) {
+		for (unsigned int i = 0; i < GameObject::gameObjectCollection.size(); ++i) {
+			if (GameObject::gameObjectCollection.at(i) == gameObject) {
+				return i;
+			}
+		}
+
+		return -1;
+	}
+
+	std::vector<GameObject *> GameObject::gameObjectCollection;
+}

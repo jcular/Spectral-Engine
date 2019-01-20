@@ -1,4 +1,6 @@
 #include "Components/GameObjectComponent.h"
 
-class Light : GameObjectComponent {
-};
+namespace sp {
+	class Light : GameObjectComponent {
+	};
+}

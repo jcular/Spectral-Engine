@@ -2,13 +2,14 @@
 
 #include <string>
 
-class ShaderProgramLinkingException {
-public:
-	ShaderProgramLinkingException(unsigned int const programId, char const infoLog[]);
-	std::string what();
+namespace sp {
+	class ShaderProgramLinkingException {
+	public:
+		ShaderProgramLinkingException(unsigned int const programId, char const infoLog[]);
+		std::string what();
 
-private:
-	unsigned int const programId;
-	std::string const infoLog;
-};
-
+	private:
+		unsigned int const programId;
+		std::string const infoLog;
+	};
+}

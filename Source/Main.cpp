@@ -11,14 +11,14 @@
 
 
 int main(int argc, char** argv) {
-	auto window = setupWindow();
+	auto window = sp::setupWindow();
 
 	if (window == nullptr) {
 		return -1;
 	}
 
-	glfwSetCursorPosCallback(window, CameraInputHandler::mouse_callback);
-	initScene(argv[0]);
+	glfwSetCursorPosCallback(window, sp::CameraInputHandler::mouse_callback);
+	sp::initScene(argv[0]);
 
 	glEnable(GL_DEPTH_TEST);
 
@@ -27,10 +27,10 @@ int main(int argc, char** argv) {
 	while (!glfwWindowShouldClose(window)) {
 		float currentFrame = static_cast<float>(glfwGetTime());
 		float deltaTime = currentFrame - lastFrame;
-		GameObject::updateGameObjects(deltaTime);
+		sp::GameObject::updateGameObjects(deltaTime);
 		lastFrame = currentFrame;
 
-		CameraInputHandler::processCameraInput(window, deltaTime);
+		sp::CameraInputHandler::processCameraInput(window, deltaTime);
 
 		glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
@@ -38,9 +38,9 @@ int main(int argc, char** argv) {
 		float oscilationFactor = (sin(currentFrame) / 2) + 0.5F;
 		float color[3] = { 1.0F - oscilationFactor, oscilationFactor, 0.5 };
 
-		std::vector<GameObject *> gameObjectCollection = GameObject::getGameObjectCollection();
+		std::vector<sp::GameObject *> gameObjectCollection = sp::GameObject::getGameObjectCollection();
 		for (auto const & gameObject : gameObjectCollection) {
-			auto rendererWeak = gameObject->getComponent<Renderer>();
+			auto rendererWeak = gameObject->getComponent<sp::Renderer>();
 			if (auto rendererShared = rendererWeak.lock()) {
 				rendererShared->renderObject();
 			}

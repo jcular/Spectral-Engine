@@ -1,11 +1,13 @@
 #include "FileReader.h"
 
-std::string const FileReader::ReadFromFile(std::string const path) throw (char *) {
-	std::ifstream inputFileStream(path);
+namespace sp {
+	std::string const FileReader::ReadFromFile(std::string const path) throw (char *) {
+		std::ifstream inputFileStream(path);
 
-	if (!inputFileStream) {
-		throw "File could not be open.";
+		if (!inputFileStream) {
+			throw "File could not be open.";
+		}
+
+		return std::string(std::istreambuf_iterator<char>(inputFileStream), std::istreambuf_iterator<char>());
 	}
-
-	return std::string(std::istreambuf_iterator<char>(inputFileStream), std::istreambuf_iterator<char>());
 }

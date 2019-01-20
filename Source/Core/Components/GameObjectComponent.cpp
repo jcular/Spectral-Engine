@@ -1,15 +1,17 @@
 #include "GameObjectComponent.h"
 
-GameObjectComponent::GameObjectComponent(GameObject * const gameObjectOwner) :
-	gameObjectOwner{ gameObjectOwner } {
-}
+namespace sp {
+	GameObjectComponent::GameObjectComponent(GameObject * const gameObjectOwner) :
+		gameObjectOwner{ gameObjectOwner } {
+	}
 
-void GameObjectComponent::update(float const deltaTime) {
-}
+	void GameObjectComponent::update(float const deltaTime) {
+	}
 
-GameObject const * const GameObjectComponent::getGameObject() {
-	return this->gameObjectOwner;
-}
+	GameObject const * const GameObjectComponent::getGameObject() {
+		return this->gameObjectOwner;
+	}
 
-GameObjectComponent::~GameObjectComponent() {
+	GameObjectComponent::~GameObjectComponent() {
+	}
 }
