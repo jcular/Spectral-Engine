@@ -4,6 +4,11 @@
 
 namespace sp {
 	inline const Matrix4x4 Translate(Matrix4x4 const & mat, Vector3 const & translation) {
-		return Matrix4x4{};
+		Matrix4x4 translationMat;
+		translationMat[0][3] = translation.x;
+		translationMat[1][3] = translation.y;
+		translationMat[2][3] = translation.z;
+
+		return translationMat * mat;
 	}
 }

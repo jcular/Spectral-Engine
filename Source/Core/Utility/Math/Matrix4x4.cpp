@@ -8,6 +8,10 @@ namespace sp {
 		values[3][3] = 1.0F;
 	}
 
+	float * Matrix4x4::operator[](int const ind) {
+		return values[ind];
+	}
+
 	float const * Matrix4x4::operator[](int const ind) const {
 		return values[ind];
 	}
@@ -31,5 +35,7 @@ namespace sp {
 		resultMatrix.values[3][1] = (values[3][0] * mat[0][1]) + (values[3][1] * mat[1][1]) + (values[3][2] * mat[2][1]) + (values[3][3] * mat[3][1]);
 		resultMatrix.values[3][2] = (values[3][0] * mat[0][2]) + (values[3][1] * mat[1][2]) + (values[3][2] * mat[2][2]) + (values[3][3] * mat[3][2]);
 		resultMatrix.values[3][3] = (values[3][0] * mat[0][3]) + (values[3][1] * mat[1][3]) + (values[3][2] * mat[2][3]) + (values[3][3] * mat[3][3]);
+
+		return resultMatrix;
 	}
 }
