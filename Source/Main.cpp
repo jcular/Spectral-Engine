@@ -8,6 +8,7 @@
 
 #include "Core/Utility/Vertices.h"
 #include "Core/Components/Renderer.h"
+#include "Utility/Math/Vector3.h"
 
 
 int main(int argc, char** argv) {
@@ -16,6 +17,8 @@ int main(int argc, char** argv) {
 	if (window == nullptr) {
 		return -1;
 	}
+
+	std::cout << sizeof(sp::Vector3) << std::endl;
 
 	glfwSetCursorPosCallback(window, sp::CameraInputHandler::mouse_callback);
 	sp::initScene(argv[0]);
