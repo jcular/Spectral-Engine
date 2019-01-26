@@ -35,8 +35,8 @@ namespace sp {
 
 	Vector3 const Transform::getDirection() const {
 		Vector3 const eulerAngles = getRotationEuler();
-		Degree const eulerX = eulerAngles.x;
-		Degree const eulerY = eulerAngles.y;
+		Degree const eulerX{ eulerAngles.x };
+		Degree const eulerY{ eulerAngles.y };
 		Vector3 const dir = Vector3{
 			cos(eulerX) * cos(eulerY),
 			sin(eulerX) * cos(eulerY),

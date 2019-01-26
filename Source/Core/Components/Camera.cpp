@@ -44,8 +44,8 @@ namespace sp {
 		auto transformWeak = this->gameObjectOwner->getComponent<Transform>();
 		if (auto transformShared = transformWeak.lock()) {
 			Vector3 rotation = transformShared->getRotationEuler();
-			Radian rotX{ rotation.x };
-			Radian rotY{ rotation.y };
+			Degree rotX{ rotation.x };
+			Degree rotY{ rotation.y };
 			x = static_cast<float>(cos(rotX) * cos(rotY));
 			y = static_cast<float>(sin(rotX));
 			z = static_cast<float>(cos(rotX) * sin(rotY));
