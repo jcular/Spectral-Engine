@@ -1,3 +1,5 @@
+#pragma once
+
 #include "SpMath.h"
 
 namespace sp {
@@ -9,6 +11,9 @@ namespace sp {
 		Degree(Degree const & degree) = default;
 		Degree(float value);
 		Degree(Radian radian);
+
+	public:
+		Degree operator/(float const value) const;
 
 	public:
 		constexpr float const getValueDegrees() const {

@@ -11,4 +11,8 @@ namespace sp {
 	Degree::Degree(Radian radian) {
 		this->value = radian.getValueRadians() * 180.0F / PI;
 	}
+	Degree Degree::operator/(float const value) const
+	{
+		return Degree{ this->getValueDegrees() / value };
+	}
 }

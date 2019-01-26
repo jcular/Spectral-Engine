@@ -15,6 +15,7 @@
 #include "Core/GameObject/GameObject.h"
 #include "Core/Utility/VertexData.h"
 #include "Core/Components/Rotator.h"
+#include "Utility/Math/Radian.h"
 
 namespace sp {
 	constexpr unsigned int SCR_WIDTH = 800;
@@ -26,13 +27,13 @@ namespace sp {
 
 	void setRandomColors(std::weak_ptr<Material> materialWeak) {
 		if (auto materialShared = materialWeak.lock()) {
-			glm::vec3 ambient{ 0.2F };
+			Vector3 ambient{ 0.2F };
 			materialShared->setAmbient(ambient);
 		
-			glm::vec3 diffuse{ distribution(generator) };
+			Vector3 diffuse{ distribution(generator) };
 			materialShared->setDiffuse(diffuse);
 
-			glm::vec3 specular{ distribution(generator) };
+			Vector3 specular{ distribution(generator) };
 			materialShared->setSpecular(specular);
 
 			float shininess{ 1.0F + 31 * distribution(generator) };
@@ -59,7 +60,7 @@ namespace sp {
 		std::weak_ptr<Transform> lightSourceTransformWeak = lightSourceGameObject->addComponent<Transform>();
 		if (auto transformShared = lightSourceTransformWeak.lock()) {
 			transformShared->setPosition(cubePositions[lightSourceIndex]);
-			transformShared->setScale(glm::vec3{ 0.2F });
+			transformShared->setScale(Vector3{ 0.2F });
 		}
 
 		return lightSourceGameObject;
@@ -121,7 +122,7 @@ namespace sp {
 		auto cameraWeak = cameraGameObject->addComponent<Camera>();
 
 		if (auto cameraShared = cameraWeak.lock()) {
-			cameraShared->initCamera(glm::radians(45.0F), SCR_WIDTH, SCR_HEIGHT);
+			cameraShared->initCamera(45.0F, SCR_WIDTH, SCR_HEIGHT);
 			Camera::setMainCamera(cameraShared);
 		}
 

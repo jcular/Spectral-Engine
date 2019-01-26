@@ -5,7 +5,6 @@ include(CopyShaderFiles.cmake)
 
 add_library(Core STATIC ${SpectralEngine_Core_SRC})
 
-target_include_directories(Core PUBLIC ${LIBRARIES_INCLUDE_DIR}/Glm)
 target_include_directories(Core PUBLIC ${LIBRARIES_INCLUDE_DIR}/Glad)
 target_include_directories(Core PUBLIC ${LIBRARIES_INCLUDE_DIR}/KHR)
 target_include_directories(Core PUBLIC ${LIBRARIES_INCLUDE_DIR}/GLFW)

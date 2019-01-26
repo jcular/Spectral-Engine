@@ -1,3 +1,5 @@
+#pragma once
+
 namespace sp {
 	class Matrix4x4 {
 	public:
@@ -8,6 +10,7 @@ namespace sp {
 		float * operator[](int const ind);
 		float const * Matrix4x4::operator[](int const ind) const;
 		Matrix4x4 operator*(Matrix4x4 const & mat) const;
+		float const * getValuePtr() const;
 
 	private:
 		float values[4][4];

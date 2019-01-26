@@ -1,3 +1,7 @@
+#pragma once
+
+#include "Utility/Math/SpMath.h"
+
 namespace sp {
 	class Degree;
 

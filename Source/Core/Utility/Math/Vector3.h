@@ -1,3 +1,5 @@
+#pragma once
+
 namespace sp {
 	class Vector3 {
 	public:
@@ -11,9 +13,18 @@ namespace sp {
 		Vector3(float const x, float const y, float const z);
 
 	public:
-		float const x, y, z;
+		float x, y, z;
 		Vector3 operator-() const;
 		Vector3 operator+(Vector3 const & vector);
 		Vector3 operator-(Vector3 const & vector);
+		Vector3 operator*(float const realNumber);
+		Vector3 operator+=(Vector3 const & vector);
+		Vector3 operator-=(Vector3 const & vector);
+
+	public:
+		Vector3 normalized() const;
+		float const length() const;
 	};
+
+	Vector3 operator*(float const realNumber, Vector3 const & vector);
 }

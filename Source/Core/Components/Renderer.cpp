@@ -1,16 +1,14 @@
 #include <glad/glad.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
 #include <memory>
 #include <string>
 
-#include "Renderer.h"
 #include "Components/Camera.h"
 #include "Components/Material.h"
-#include "Texture.h"
+#include "Components/Renderer.h"
 #include "Components/Transform.h"
-#include "Shader/ShaderProgram.h"
 #include "GameObject/GameObject.h"
+#include "Shader/ShaderProgram.h"
+#include "Texture.h"
 #include "Utility/VertexData.h"
 
 namespace sp {
@@ -24,10 +22,10 @@ namespace sp {
 	void Renderer::renderObject() {
 		auto material = this->gameObjectOwner->getComponent<Material>();
 
-		glm::mat4x4 mvpMatrix{ 1.0F };
-		glm::mat4x4 modelMatrix{ 1.0F };
-		glm::vec3 cameraPos{ 0.0F };
-		glm::vec3 cameraDir{ 0.0F };
+		Matrix4x4 mvpMatrix;
+		Matrix4x4 modelMatrix;
+		Vector3 cameraPos{ 0.0F };
+		Vector3 cameraDir{ 0.0F };
 		auto transformWeak = this->gameObjectOwner->getComponent<Transform>();
 		if (auto transformShared = transformWeak.lock()) {
 			modelMatrix = transformShared->getTransformMatrix();

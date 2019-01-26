@@ -20,4 +20,16 @@ namespace sp {
 	float const cos(Degree const degree) {
 		return std::cos(degree.getValueRadians());
 	}
+
+	float const tan(Degree const degree) {
+		return std::tan(degree.getValueRadians());
+	}
+
+	float const tan(Radian const radian) {
+		return std::tan(radian.getValueRadians());
+	}
+
+	float const sqrt(float const number) {
+		return std::sqrt(number);
+	}
 }

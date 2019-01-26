@@ -1,13 +1,14 @@
 #pragma once
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
 #include <memory>
 
-#include "GameObjectComponent.h"
+#include "Components/GameObjectComponent.h"
+#include "Utility/Math/Degree.h"
 
 namespace sp {
 	class GameObject;
+	class Matrix4x4;
+	class Vector3;
 
 	class Camera : public GameObjectComponent {
 	public:
@@ -19,13 +20,13 @@ namespace sp {
 
 	public:
 		Camera(GameObject * gameObjectOwner);
-		void initCamera(float fov, int screenWidth, int screenHeight);
-		glm::mat4x4 getViewMatrix();
-		glm::mat4x4 getProjectionMatrix();
-		glm::vec3 const getFront() const;
+		void initCamera(Degree fov, int screenWidth, int screenHeight);
+		Matrix4x4 getViewMatrix();
+		Matrix4x4 getProjectionMatrix();
+		Vector3 const getFront() const;
 
 	private:
-		float fov;
+		Degree fov;
 		int screenWidth;
 		int screenHeight;
 	};

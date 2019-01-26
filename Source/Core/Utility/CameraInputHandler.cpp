@@ -4,7 +4,7 @@
 #include "GameObject/GameObject.h"
 
 namespace sp {
-	glm::vec3 CameraInputHandler::worldUp = glm::vec3(0.0F, 1.0F, 0.0F);
+	Vector3 CameraInputHandler::worldUp{ 0.0F, 1.0F, 0.0F };
 	bool CameraInputHandler::firstMouse = true;
 	double CameraInputHandler::lastX;
 	double CameraInputHandler::lastY;
@@ -45,7 +45,7 @@ namespace sp {
 		auto transformWeak = cameraShared->getGameObject()->getComponent<Transform>();
 
 		if (auto transformShared = transformWeak.lock()) {
-			transformShared->setRotationEuler(glm::vec3{ pitch, yaw, 0.0F });
+			transformShared->setRotationEuler(Vector3{ static_cast<float>(pitch), static_cast<float>(yaw), 0.0F });
 			first = true;
 		}
 	}
@@ -61,7 +61,7 @@ namespace sp {
 		auto cameraFront = mainCameraShared->getFront();
 
 		if (auto transformShared = transformWeak.lock()) {
-			glm::vec3 position = transformShared->getPosition();
+			Vector3 position = transformShared->getPosition();
 
 			if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
 				position += cameraSpeed * cameraFront * deltaTime;
@@ -70,10 +70,10 @@ namespace sp {
 				position -= cameraSpeed * cameraFront * deltaTime;
 			}
 			if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-				position -= cameraSpeed * glm::normalize(glm::cross(cameraFront, worldUp)) * deltaTime;
+				position -= cameraSpeed * Vector3::cross(cameraFront, worldUp).normalized() * deltaTime;
 			}
 			if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-				position += cameraSpeed * glm::normalize(glm::cross(cameraFront, worldUp)) * deltaTime;
+				position += cameraSpeed * Vector3::cross(cameraFront, worldUp).normalized() * deltaTime;
 			}
 
 			transformShared->setPosition(position);

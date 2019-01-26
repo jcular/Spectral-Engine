@@ -1,55 +1,61 @@
 #include "Transform.h"
+#include "Utility/Math/Degree.h"
+#include "Utility/Math/LinearTransformations.h"
+#include "Utility/Math/Matrix4x4.h"
 
 namespace sp {
 	Transform::Transform(GameObject * const gameObjectOwner) :
 		GameObjectComponent(gameObjectOwner),
 		position{ 0.0F },
-		scale{ 1.0F } {
+		scaleVec{ 1.0F } {
 	}
 
-	glm::vec3 const Transform::getPosition() const {
+	Vector3 const Transform::getPosition() const {
 		return this->position;
 	}
 
-	void Transform::setPosition(glm::vec3 const & position) {
+	void Transform::setPosition(Vector3 const & position) {
 		this->position = position;
 	}
 
-	glm::mat4x4 const Transform::getTransformMatrix() const {
-		glm::mat4x4 transformMatrix{ 1.0F };
-		transformMatrix = glm::translate(transformMatrix, this->position);
-		transformMatrix = glm::rotate(transformMatrix, this->rotationEuler.x, glm::vec3{ 1.0F, 0.0F, 0.0F });
-		transformMatrix = glm::rotate(transformMatrix, this->rotationEuler.y, glm::vec3{ 0.0F, 1.0F, 0.0F });
-		transformMatrix = glm::rotate(transformMatrix, this->rotationEuler.z, glm::vec3{ 0.0F, 0.0F, 1.0F });
-		transformMatrix = glm::scale(transformMatrix, this->scale);
+	Matrix4x4 const Transform::getTransformMatrix() const {
+		Matrix4x4 transformMatrix;
+		transformMatrix = translate(transformMatrix, this->position);
+		transformMatrix = rotateX(transformMatrix, Degree{ this->rotationEuler.x });
+		transformMatrix = rotateY(transformMatrix, Degree{ this->rotationEuler.y });
+		transformMatrix = rotateZ(transformMatrix, Degree{ this->rotationEuler.z });
+		transformMatrix = scale(transformMatrix, this->scaleVec);
 
 		return transformMatrix;
 	}
 
-	glm::vec3 Transform::getRotationEuler() const {
+	Vector3 const Transform::getRotationEuler() const {
 		return this->rotationEuler;
 	}
 
-	glm::vec3 Transform::getDirection() const {
-		glm::vec3 dir;
-		glm::vec3 eulerAngles = getRotationEuler();
-		dir.x = glm::cos(glm::radians(eulerAngles.x)) * cos(glm::radians(eulerAngles.y));
-		dir.y = glm::sin(glm::radians(eulerAngles.x)) * cos(glm::radians(eulerAngles.y));
-		dir.z = glm::cos(glm::radians(eulerAngles.x)) * glm::sin(glm::radians(eulerAngles.y));
+	Vector3 const Transform::getDirection() const {
+		Vector3 const eulerAngles = getRotationEuler();
+		Degree const eulerX = eulerAngles.x;
+		Degree const eulerY = eulerAngles.y;
+		Vector3 const dir = Vector3{
+			cos(eulerX) * cos(eulerY),
+			sin(eulerX) * cos(eulerY),
+			cos(eulerX) * sin(eulerY)
+		};
 
 		return dir;
 	}
 
-	void Transform::setRotationEuler(glm::vec3 const & rotation) {
+	void Transform::setRotationEuler(Vector3 const & rotation) {
 		this->rotationEuler = rotation;
 	}
 
-	void Transform::setScale(glm::vec3 const & scale) {
-		this->scale = scale;
+	void Transform::setScale(Vector3 const & scale) {
+		this->scaleVec = scale;
 	}
 
-	glm::mat4x4 const Transform::getTranslationMatrix() const {
-		glm::mat4x4 mat{ 1.0F };
-		return glm::translate(mat, this->position);
+	Matrix4x4 const Transform::getTranslationMatrix() const {
+		Matrix4x4 mat;
+		return translate(mat, this->position);
 	}
 }

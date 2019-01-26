@@ -4,7 +4,6 @@ set(SpectralEngine_Core_Components_SRC
 	"Components/Material.cpp"
 	"Components/Renderer.cpp" 
 	"Components/Transform.cpp"
-	"Components/Light.cpp"
 	"Components/Rotator.cpp")
 
 set(SpectralEngine_Core_Components_HEADER
@@ -13,7 +12,6 @@ set(SpectralEngine_Core_Components_HEADER
 	"Components/Material.h"
 	"Components/Renderer.h"
 	"Components/Transform.h"
-	"Components/Light.h"
 	"Components/Rotator.h")
 
 set(SpectralEngine_Core_Shader_SRC

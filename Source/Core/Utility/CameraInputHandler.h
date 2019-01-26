@@ -1,6 +1,7 @@
 #pragma once
 #include <GLFW/glfw3.h>
-#include <glm/glm.hpp>
+
+#include "Utility/Math/Vector3.h"
 
 namespace sp {
 	class CameraInputHandler {
@@ -8,7 +9,7 @@ namespace sp {
 		static void processCameraInput(GLFWwindow *window, float deltaTime);
 		static void mouse_callback(GLFWwindow * window, double xpos, double ypos);
 
-		static glm::vec3 worldUp;
+		static Vector3 worldUp;
 		static bool firstMouse;
 		static double lastX;
 		static double lastY;

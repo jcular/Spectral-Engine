@@ -1,3 +1,5 @@
+#pragma once
+
 namespace sp {
 	class Radian;
 	class Degree;
@@ -8,4 +10,7 @@ namespace sp {
 	float const sin(Degree const degree);
 	float const cos(Radian const rad);
 	float const cos(Degree const degree);
+	float const tan(Radian const radian);
+	float const tan(Degree const degree);
+	float const sqrt(float const number);
 }

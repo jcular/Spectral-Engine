@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "Shader.h"
 #include "FileReader.h"
+#include "Shader/Shader.h"
 #include "Shader/ShaderCompilationException.h"
 
 namespace sp {

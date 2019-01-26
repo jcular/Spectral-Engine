@@ -1,12 +1,11 @@
-#include "Material.h"
-
 #include <string>
-#include <vector>
 
-#include "Texture.h"
+#include "Components/Material.h"
 #include "Shader/ShaderProgram.h"
+#include "Texture.h"
 
 #define MATERIAL_VARIABLE_NAME "material"
+
 namespace sp {
 	Material::Material(GameObject * gameObject) : GameObjectComponent(gameObject),
 		ambientColor{ 1.0F },
@@ -19,11 +18,11 @@ namespace sp {
 		this->shaderProgram = std::make_shared<ShaderProgram>(vertexShaderPath, fragmentShaderPath);
 	}
 
-	void Material::use(glm::mat4x4 const & mvpMatrix, glm::mat4x4 const & modelMatrix) const {
+	void Material::use(Matrix4x4 const & mvpMatrix, Matrix4x4 const & modelMatrix) const {
 		this->shaderProgram->use();
 
-		this->shaderProgram->setMatrix4fv("mvpMatrix", glm::value_ptr(mvpMatrix));
-		this->shaderProgram->setMatrix4fv("modelMatrix", glm::value_ptr(modelMatrix));
+		this->shaderProgram->setMatrix4fv("mvpMatrix", mvpMatrix.getValuePtr());
+		this->shaderProgram->setMatrix4fv("modelMatrix", modelMatrix.getValuePtr());
 		std::string const materialVariablePrefix{ MATERIAL_VARIABLE_NAME };
 		this->shaderProgram->setVec3(materialVariablePrefix + std::string{ ".ambient" },
 			this->ambientColor.x, this->ambientColor.y, this->ambientColor.z);
@@ -38,15 +37,15 @@ namespace sp {
 		return std::weak_ptr<ShaderProgram>(this->shaderProgram);
 	}
 
-	void Material::setAmbient(glm::vec3 const & ambientColor) {
+	void Material::setAmbient(Vector3 const & ambientColor) {
 		this->ambientColor = ambientColor;
 	}
 
-	void Material::setDiffuse(glm::vec3 const & diffuseColor) {
+	void Material::setDiffuse(Vector3 const & diffuseColor) {
 		this->diffuseColor = diffuseColor;
 	}
 
-	void Material::setSpecular(glm::vec3 const & specularColor) {
+	void Material::setSpecular(Vector3 const & specularColor) {
 		this->specularColor = specularColor;
 	}
 

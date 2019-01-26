@@ -1,6 +1,6 @@
 #include <sstream>
 
-#include "ShaderProgramLinkingException.h"
+#include "Shader/ShaderProgramLinkingException.h"
 
 namespace sp {
 	ShaderProgramLinkingException::ShaderProgramLinkingException(unsigned int const programId, char const infoLog[])
