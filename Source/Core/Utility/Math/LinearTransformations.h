@@ -28,10 +28,10 @@ namespace sp {
 	}
 
 	inline Matrix4x4 const rotateX(Matrix4x4 const & mat, Radian const angle) {
-		Matrix4x4 rotationMat{};
-		rotationMat[0][1] = cos(angle);
-		rotationMat[0][2] = sin(angle);
-		rotationMat[2][0] = -sin(angle);
+		Matrix4x4 rotationMat;
+		rotationMat[1][1] = cos(angle);
+		rotationMat[1][2] = -sin(angle);
+		rotationMat[2][1] = sin(angle);
 		rotationMat[2][2] = cos(angle);
 
 		return rotationMat * mat;
@@ -39,9 +39,9 @@ namespace sp {
 
 	inline Matrix4x4 const rotateY(Matrix4x4 const & mat, Radian const angle) {
 		Matrix4x4 rotationMat{};
-		rotationMat[1][1] = cos(angle);
-		rotationMat[1][2] = -sin(angle);
-		rotationMat[2][1] = sin(angle);
+		rotationMat[0][0] = cos(angle);
+		rotationMat[0][2] = sin(angle);
+		rotationMat[2][0] = -sin(angle);
 		rotationMat[2][2] = cos(angle);
 
 		return rotationMat * mat;
@@ -49,12 +49,12 @@ namespace sp {
 
 	inline Matrix4x4 const rotateZ(Matrix4x4 const & mat, Radian const angle) {
 		Matrix4x4 rotationMat{};
+		rotationMat[0][0] = cos(angle);
+		rotationMat[0][1] = -sin(angle);
+		rotationMat[1][0] = sin(angle);
 		rotationMat[1][1] = cos(angle);
-		rotationMat[1][2] = -sin(angle);
-		rotationMat[2][1] = sin(angle);
-		rotationMat[2][2] = cos(angle);
 
-		return rotationMat;
+		return rotationMat * mat;
 	}
 
 	inline Matrix4x4 const getCoordinateSystemMatrix(Vector3 const & forward, Vector3 const & up) {
