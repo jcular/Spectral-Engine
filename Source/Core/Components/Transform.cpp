@@ -39,7 +39,7 @@ namespace sp {
 		Degree const eulerY{ eulerAngles.y };
 		Vector3 const dir = Vector3{
 			cos(eulerX) * cos(eulerY),
-			sin(eulerX) * cos(eulerY),
+			sin(eulerX),
 			cos(eulerX) * sin(eulerY)
 		};
 
