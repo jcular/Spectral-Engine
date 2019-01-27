@@ -57,7 +57,7 @@ namespace sp {
 
 	void ShaderProgram::setMatrix4fv(std::string const & name, float const * const matrix) const {
 		int uniformLocation = glGetUniformLocation(this->getId(), name.c_str());
-		glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, matrix);
+		glUniformMatrix4fv(uniformLocation, 1, GL_TRUE, matrix);
 	}
 
 	void ShaderProgram::setVec3(std::string const & name, float x, float y, float z) const {

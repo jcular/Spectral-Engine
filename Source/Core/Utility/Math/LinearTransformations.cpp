@@ -13,6 +13,7 @@ namespace sp {
 		result[2][3] = -1.0F;
 		result[3][3] = 0;
 
+		result = result.transposed();
 		return result;
 	}
 }

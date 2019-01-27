@@ -27,7 +27,8 @@ namespace sp {
 			Vector3 right = Vector3::cross(front, worldUp);
 			Vector3 up = Vector3::cross(right, front);
 			Vector3 position = transformShared->getPosition();
-			return getLookAtMatrix(position + front, up, position);
+			auto lookAt = getLookAtMatrix(position + front, up, position);
+			return lookAt;
 		}
 
 		return Matrix4x4{};

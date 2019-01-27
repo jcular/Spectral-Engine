@@ -20,11 +20,11 @@ namespace sp {
 
 	Matrix4x4 const Transform::getTransformMatrix() const {
 		Matrix4x4 transformMatrix;
-		transformMatrix = translate(transformMatrix, this->position);
+		transformMatrix = scale(transformMatrix, this->scaleVec);
 		transformMatrix = rotateX(transformMatrix, Degree{ this->rotationEuler.x });
 		transformMatrix = rotateY(transformMatrix, Degree{ this->rotationEuler.y });
 		transformMatrix = rotateZ(transformMatrix, Degree{ this->rotationEuler.z });
-		transformMatrix = scale(transformMatrix, this->scaleVec);
+		transformMatrix = translate(transformMatrix, this->position);
 
 		return transformMatrix;
 	}
