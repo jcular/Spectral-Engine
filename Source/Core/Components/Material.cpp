@@ -21,8 +21,9 @@ namespace sp {
 	void Material::use(Matrix4x4 const & mvpMatrix, Matrix4x4 const & modelMatrix) const {
 		this->shaderProgram->use();
 
-		this->shaderProgram->setMatrix4fv("mvpMatrix", mvpMatrix.getValuePtr());
-		this->shaderProgram->setMatrix4fv("modelMatrix", modelMatrix.getValuePtr());
+		Matrix4x4 transposed = mvpMatrix.transposed();
+		this->shaderProgram->setMatrix4fv("mvpMatrix", transposed.getValuePtr());
+		this->shaderProgram->setMatrix4fv("modelMatrix", modelMatrix.transposed().getValuePtr());
 		std::string const materialVariablePrefix{ MATERIAL_VARIABLE_NAME };
 		this->shaderProgram->setVec3(materialVariablePrefix + std::string{ ".ambient" },
 			this->ambientColor.x, this->ambientColor.y, this->ambientColor.z);

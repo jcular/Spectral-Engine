@@ -10,7 +10,10 @@ namespace sp {
 		float * operator[](int const ind);
 		float const * Matrix4x4::operator[](int const ind) const;
 		Matrix4x4 operator*(Matrix4x4 const & mat) const;
+
+	public:
 		float const * getValuePtr() const;
+		Matrix4x4 const transposed() const;
 
 	private:
 		float values[4][4];

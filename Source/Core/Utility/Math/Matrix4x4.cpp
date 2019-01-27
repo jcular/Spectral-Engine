@@ -1,4 +1,6 @@
-#include "Matrix4x4.h"
+#include <algorithm>
+
+#include "Utility/Math/Matrix4x4.h"
 
 namespace sp {
 	Matrix4x4::Matrix4x4() : values{ 0.0F } {
@@ -41,5 +43,17 @@ namespace sp {
 	float const * Matrix4x4::getValuePtr() const
 	{
 		return reinterpret_cast<float const *>(values);
+	}
+
+	Matrix4x4 const Matrix4x4::transposed() const
+	{
+		Matrix4x4 result = (*this);
+		for (int i = 0; i < 3; ++i) {
+			for (int j = i + 1; j < 4; ++j) {
+				std::swap(result[i][j], result[j][i]);
+			}
+		}
+
+		return result;
 	}
 }
