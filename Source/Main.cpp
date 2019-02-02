@@ -33,6 +33,10 @@ int main(int argc, char** argv) {
 		sp::GameObject::updateGameObjects(deltaTime);
 		lastFrame = currentFrame;
 
+		if (glfwGetKey(window, GLFW_KEY_ESCAPE)) {
+			glfwSetWindowShouldClose(window, true);
+		}
+
 		sp::CameraInputHandler::processCameraInput(window, deltaTime);
 
 		glClearColor(0.3f, 0.3f, 0.3f, 1.0f);

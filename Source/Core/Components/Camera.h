@@ -23,7 +23,7 @@ namespace sp {
 		void initCamera(Degree fov, int screenWidth, int screenHeight);
 		Matrix4x4 getViewMatrix();
 		Matrix4x4 getProjectionMatrix();
-		Vector3 const getFront() const;
+		Vector3 const getForward() const;
 
 	private:
 		Degree fov;

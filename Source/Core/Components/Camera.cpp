@@ -23,11 +23,11 @@ namespace sp {
 
 		if (auto transformShared = transformWeak.lock()) {
 			Vector3 const worldUp{ 0.0F, 1.0F, 0.0f };
-			Vector3 front = this->getFront();
-			Vector3 right = Vector3::cross(front, worldUp);
-			Vector3 up = Vector3::cross(right, front);
+			Vector3 forward = this->getForward();
+			Vector3 right = Vector3::cross(forward, worldUp).normalized();
+			Vector3 up = Vector3::cross(right, forward).normalized();
 			Vector3 position = transformShared->getPosition();
-			auto lookAt = getLookAtMatrix(position + front, up, position);
+			auto lookAt = getLookAtMatrix(forward, up, position);
 			return lookAt;
 		}
 
@@ -39,7 +39,7 @@ namespace sp {
 		return sp::getPerspectiveMat(this->fov, aspect, 0.1F, 100.0F);
 	}
 
-	Vector3 const Camera::getFront() const {
+	Vector3 const Camera::getForward() const {
 		float x, y, z;
 
 		auto transformWeak = this->gameObjectOwner->getComponent<Transform>();

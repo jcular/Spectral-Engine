@@ -59,28 +59,26 @@ namespace sp {
 
 	inline Matrix4x4 const getCoordinateSystemMatrix(Vector3 const & forward, Vector3 const & up) {
 		Matrix4x4 result{};
-		Vector3 right = Vector3::cross(up, forward);
+		Vector3 const right = Vector3::cross(forward, up);
 
 		result[0][0] = right.x;
-		result[0][1] = up.x;
-		result[0][2] = forward.x;
-		result[1][0] = right.y;
+		result[0][1] = right.y;
+		result[0][2] = right.z;
+		result[1][0] = up.x;
 		result[1][1] = up.y;
-		result[1][2] = forward.y;
-		result[2][0] = right.z;
-		result[2][1] = up.z;
-		result[2][2] = forward.z;
+		result[1][2] = up.z;
+		result[2][0] = -forward.x;
+		result[2][1] = -forward.y;
+		result[2][2] = -forward.z;
 
 		return result;
 	}
 
 	inline Matrix4x4 const getLookAtMatrix(Vector3 const & forward, Vector3 const & up, Vector3 const & position) {
 		Matrix4x4 coordinateSystemMatrix = getCoordinateSystemMatrix(forward, up);
-		coordinateSystemMatrix[0][3] = -position.x;
-		coordinateSystemMatrix[1][3] = -position.y;
-		coordinateSystemMatrix[2][3] = -position.z;
+		Matrix4x4 translationMatrix = translate(Matrix4x4{}, -position);
 
-		return coordinateSystemMatrix;
+		return coordinateSystemMatrix * translationMatrix;
 	}
 
 	Matrix4x4 const getPerspectiveMat(Degree const fov, float const aspect, float const near, float const far);

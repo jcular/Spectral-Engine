@@ -51,14 +51,10 @@ namespace sp {
 	}
 
 	void CameraInputHandler::processCameraInput(GLFWwindow *window, float deltaTime) {
-		if (glfwGetKey(window, GLFW_KEY_ESCAPE)) {
-			glfwSetWindowShouldClose(window, true);
-		}
-
 		float cameraSpeed = 1.0F;
 		auto mainCameraShared = Camera::getMainCamera();
 		auto transformWeak = mainCameraShared->getGameObject()->getComponent<Transform>();
-		auto cameraFront = mainCameraShared->getFront();
+		auto cameraFront = mainCameraShared->getForward();
 
 		if (auto transformShared = transformWeak.lock()) {
 			Vector3 position = transformShared->getPosition();

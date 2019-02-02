@@ -11,7 +11,7 @@ namespace sp {
 		this->passedTime += deltaTime;
 		auto transformComponentWeak = gameObjectOwner->getComponent<Transform>();
 		if (auto transformComponentShared = transformComponentWeak.lock()) {
-			transformComponentShared->setRotationEuler(Vector3{ 0.0F, sin(this->passedTime * (0.003F)) * 360.0F, 0.0F });
+			transformComponentShared->setRotationEuler(Vector3{ 0.0F, sin(this->passedTime * (0.2F)) * 360.0F, 0.0F });
 		}
 	}
 }
