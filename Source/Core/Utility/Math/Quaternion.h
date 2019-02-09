@@ -13,7 +13,7 @@ namespace sp {
 		Quaternion(Vector3 const & vec3);
 
 	public:
-		Quaternion operator*(Quaternion const & quaternion);
+		Quaternion operator*(Quaternion const & quaternion) const;
 		Quaternion operator*(Vector3 const & vec3);
 
 	public:
