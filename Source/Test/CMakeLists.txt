@@ -15,5 +15,3 @@ set(GTEST_MAIN_LIBRARY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR}/GTest/lib/gtest_maind.l
 target_link_libraries(Test ${GTEST_LIBRARY_DEBUG} ${GTEST_MAIN_LIBRARY_DEBUG})
 
 target_link_libraries(Test Core)
-
-add_test(Test Test)
