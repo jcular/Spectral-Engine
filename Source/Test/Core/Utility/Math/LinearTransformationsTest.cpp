@@ -14,7 +14,6 @@ namespace sp {
 			Matrix4x4 const resultMatrix = translate(transformation, translation);
 
 			// assert
-			float const * values = resultMatrix.getValuePtr();
 			float const epsilon = 0.001;
 			for (int i = 0; i < 16; ++i) {
 				float expectedValue;
@@ -31,7 +30,39 @@ namespace sp {
 					expectedValue = transformation.getValuePtr()[i];
 				}
 
+				float const * values = resultMatrix.getValuePtr();
 				ASSERT_TRUE(abs(values[i] - expectedValue) < epsilon);
+			}
+		}
+
+		TEST(test_scale) {
+			// arrange
+			Matrix4x4 transformation{};
+
+			// act
+			Vector3 const scaleVector{ 2.5F, 1.0F, 18.231F };
+			Matrix4x4 const resultMatrix = scale(transformation, scaleVector);
+
+			// assert
+			float const epsilon = 0.001;
+			float const * startingValues = transformation.getValuePtr();
+			for (int i = 0; i < 16; ++i) {
+				float expectedValue;
+				if (i == 0) {
+					expectedValue = startingValues[i] * scaleVector.x;
+				}
+				else if (i == 5) {
+					expectedValue = startingValues[i] * scaleVector.y;
+				}
+				else if (i == 10) {
+					expectedValue = startingValues[i] * scaleVector.z;
+				}
+				else {
+					expectedValue = transformation.getValuePtr()[i];
+				}
+
+				float const * resultValues = resultMatrix.getValuePtr();
+				ASSERT_TRUE(abs(resultValues[i] - expectedValue) < epsilon);
 			}
 		}
 	}
