@@ -14,9 +14,9 @@ namespace sp {
 
 			// Assert
 			Quaternion const expectedResult{ 1.4F, 137.66F, 23.88F, -10.1F };
-			const float epsilon = 0.01F;
-			ASSERT_TRUE(abs(result.x - expectedResult.x) <= epsilon);
+			const float epsilon = 0.001F;
 			ASSERT_TRUE(abs(result.y - expectedResult.y) <= epsilon);
+			ASSERT_TRUE(abs(result.x - expectedResult.x) <= epsilon);
 			ASSERT_TRUE(abs(result.z - expectedResult.z) <= epsilon);
 			ASSERT_TRUE(abs(result.w - expectedResult.w) <= epsilon);
 		}
