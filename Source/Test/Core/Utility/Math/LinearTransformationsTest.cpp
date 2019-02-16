@@ -5,7 +5,7 @@
 
 namespace sp {
 	namespace test {
-		TEST(test_translate) {
+		TEST(LinearTransformations, translate) {
 			// arrange
 			Matrix4x4 transformation{};
 
@@ -14,28 +14,30 @@ namespace sp {
 			Matrix4x4 const resultMatrix = translate(transformation, translation);
 
 			// assert
-			float const epsilon = 0.001;
 			for (int i = 0; i < 16; ++i) {
 				float expectedValue;
-				if (i == 3) {
+				switch (i)
+				{
+				case 3:
 					expectedValue = translation.x;
-				}
-				else if (i == 7) {
+					break;
+				case 7:
 					expectedValue = translation.y;
-				}
-				else if (i == 11) {
+					break;
+				case 11:
 					expectedValue = translation.z;
-				}
-				else {
+					break;
+				default:
 					expectedValue = transformation.getValuePtr()[i];
+					break;
 				}
 
 				float const * values = resultMatrix.getValuePtr();
-				ASSERT_TRUE(abs(values[i] - expectedValue) < epsilon);
+				ASSERT_FLOAT_EQ(values[i], expectedValue);
 			}
 		}
 
-		TEST(test_scale) {
+		TEST(LinearTransformations, scale) {
 			// arrange
 			Matrix4x4 transformation{};
 
@@ -44,25 +46,28 @@ namespace sp {
 			Matrix4x4 const resultMatrix = scale(transformation, scaleVector);
 
 			// assert
-			float const epsilon = 0.001;
 			float const * startingValues = transformation.getValuePtr();
 			for (int i = 0; i < 16; ++i) {
 				float expectedValue;
-				if (i == 0) {
+
+				switch (i)
+				{
+				case 0:
 					expectedValue = startingValues[i] * scaleVector.x;
-				}
-				else if (i == 5) {
+					break;
+				case 5:
 					expectedValue = startingValues[i] * scaleVector.y;
-				}
-				else if (i == 10) {
+					break;
+				case 10:
 					expectedValue = startingValues[i] * scaleVector.z;
-				}
-				else {
+					break;
+				default:
 					expectedValue = transformation.getValuePtr()[i];
+					break;
 				}
 
 				float const * resultValues = resultMatrix.getValuePtr();
-				ASSERT_TRUE(abs(resultValues[i] - expectedValue) < epsilon);
+				ASSERT_FLOAT_EQ(resultValues[i], expectedValue);
 			}
 		}
 	}

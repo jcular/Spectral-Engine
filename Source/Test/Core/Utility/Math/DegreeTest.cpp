@@ -5,7 +5,7 @@
 namespace sp
 {
 	namespace test {
-		TEST(test_Degree_getValueDegree) {
+		TEST(Degree, getValueDegree) {
 			// Arrange
 			float const initialValueDegree{ 50.0F };
 			Degree const degree{ initialValueDegree };
@@ -17,7 +17,7 @@ namespace sp
 			ASSERT_EQ(initialValueDegree, resultValueDegree);
 		}
 
-		TEST(test_Degree_getValueRadian) {
+		TEST(Degree, getValueRadian) {
 			// Arrange
 			float const initialValueDegree{ 50.0F };
 			Degree const degree{ initialValueDegree };

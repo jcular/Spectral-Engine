@@ -4,7 +4,7 @@
 
 namespace sp {
 	namespace test {
-		TEST(test_Radian_getValueRadian) {
+		TEST(Radian, getValueRadian) {
 			// Arrange
 			float const initialValueRadian{ 2.12F };
 			Radian const radian{ initialValueRadian };
@@ -16,7 +16,7 @@ namespace sp {
 			ASSERT_EQ(initialValueRadian, resultValueRadians);
 		}
 
-		TEST(test_Radian_getValueDegree) {
+		TEST(Radian, getValueDegree) {
 			// Arrange
 			float const initialValueRadian{ 5.1F };
 			Radian const radian{ initialValueRadian };

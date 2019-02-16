@@ -5,7 +5,7 @@
 
 namespace sp {
 	namespace test {
-		TEST(test_Quaternion_multiplicationWithQuat) {
+		TEST(Quaternion, multiplicationWithQuat) {
 			// Arrange
 			Quaternion const quat{ 0.3F, 11.2F, 2.3F, 0.1F };
 
@@ -14,15 +14,14 @@ namespace sp {
 
 			// Assert
 			Quaternion const expectedResult{ 1.4F, 137.66F, 23.88F, -10.1F };
-			const float epsilon = 0.001F;
-			ASSERT_TRUE(abs(result.y - expectedResult.y) <= epsilon);
-			ASSERT_TRUE(abs(result.x - expectedResult.x) <= epsilon);
-			ASSERT_TRUE(abs(result.z - expectedResult.z) <= epsilon);
-			ASSERT_TRUE(abs(result.w - expectedResult.w) <= epsilon);
+			ASSERT_FLOAT_EQ(result.x, expectedResult.x);
+			ASSERT_FLOAT_EQ(result.y, expectedResult.y);
+			ASSERT_FLOAT_EQ(result.z, expectedResult.z);
+			ASSERT_FLOAT_EQ(result.w, expectedResult.w);
 		}
 
 
-		TEST(test_Quaternion_multiplicationWithVec3) {
+		TEST(Quaternion, multiplicationWithVec3) {
 			// Arrange
 			Quaternion const quat{ 0.3F, 11.2F, 2.3F, 0.1F };
 
@@ -31,11 +30,10 @@ namespace sp {
 
 			// Assert
 			Quaternion const expectedResult{ 11.18F, 0.66F, -4.06F, -14.08F };
-			const float epsilon = 0.01F;
-			ASSERT_TRUE(abs(result.x - expectedResult.x) <= epsilon);
-			ASSERT_TRUE(abs(result.y - expectedResult.y) <= epsilon);
-			ASSERT_TRUE(abs(result.z - expectedResult.z) <= epsilon);
-			ASSERT_TRUE(abs(result.w - expectedResult.w) <= epsilon);
+			ASSERT_FLOAT_EQ(result.x, expectedResult.x);
+			ASSERT_FLOAT_EQ(result.y, expectedResult.y);
+			ASSERT_FLOAT_EQ(result.z, expectedResult.z);
+			ASSERT_FLOAT_EQ(result.w, expectedResult.w);
 		}
 	}
 }
