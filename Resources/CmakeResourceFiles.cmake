@@ -11,6 +11,9 @@ set(SpectralEngine_ResourceFiles_Shaders
 	"Shaders/vertex_shader.txt"
 	"vertex_lighting_shader.txt")
 
+set(SpectralEngine_ResourceFiles_Fonts
+	"Fonts/JingJing.ttf")
+
 set(SpectralEngine_ResourceFiles
 	${SpectralEngine_ResourceFiles_Art}
 	${SpectralEngine_ResourceFiles_Shader})
