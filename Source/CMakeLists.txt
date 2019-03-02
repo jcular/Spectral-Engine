@@ -16,6 +16,7 @@ add_subdirectory(Test)
 target_link_libraries(SpectralEngine Core)
 target_link_libraries(SpectralEngine ${CMAKE_CURRENT_SOURCE_DIR}/Libraries/lib/glfw3.lib)
 
+
 set(EXECUTABLE_OUTPUT_PATH "../bin/executable")
 set(LIBRARY_OUTPUT_PATH "../bin/lib")
 # TODO: Add tests and install targets if needed.
