@@ -5,7 +5,8 @@ set(SpectralEngine_Test_Core_Utility_Math_Source
     "Core/Utility/Math/QuaternionTest.cpp"
     "Core/Utility/Math/RadianTest.cpp"
     "Core/Utility/Math/DegreeTest.cpp"
-    "Core/Utility/Math/Vector3Test.cpp")
+    "Core/Utility/Math/Vector3Test.cpp"
+    "Core/Utility/Math/Vector2Test.cpp")
 
 set(SpectralEngine_Test_Files
     "CMakeSources.cmake")

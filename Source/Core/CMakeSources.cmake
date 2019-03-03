@@ -50,6 +50,7 @@ set(SpectralEngine_Core_Math_SRC
 	"Utility/Math/Radian.cpp"
 	"Utility/Math/Degree.cpp"
 	"Utility/Math/Vector3.cpp"
+	"Utility/Math/Vector2.cpp"
 	"Utility/Math/Quaternion.cpp"
 	"Utility/Math/Matrix4x4.cpp")
 
@@ -59,6 +60,7 @@ set(SpectralEngine_Core_Math_HEADER
 	"Utility/Math/Radian.h"
 	"Utility/Math/Degree.h"
 	"Utility/Math/Vector3.h"
+	"Utility/Math/Vector2.h"
 	"Utility/Math/Quaternion.h"
 	"Utility/Math/Matrix4x4.h")
 
