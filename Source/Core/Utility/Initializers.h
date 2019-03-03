@@ -15,6 +15,7 @@
 #include "Core/GameObject/GameObject.h"
 #include "Core/Utility/VertexData.h"
 #include "Core/Components/Rotator.h"
+#include "UI/Font/Font.h"
 #include "Utility/Math/Radian.h"
 
 namespace sp {
@@ -137,6 +138,9 @@ namespace sp {
 			resourcesFolderPath + std::string{ "/Art/wall.png" },
 			resourcesFolderPath + std::string{ "/Art/awesomeface.png" }
 		};
+
+		std::shared_ptr<Font const> fontShared = Font::getFont(resourcesFolderPath + std::string{ "/Fonts/JingJing.ttf" });
+
 
 		constexpr int numberOfObjects = (sizeof(cubePositions) / sizeof(cubePositions[0]));
 		GameObject * lightSourceGameObject = createLight(shadersFolderPath, texturePathArray, numberOfObjects - 1);

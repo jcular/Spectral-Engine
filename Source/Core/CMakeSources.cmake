@@ -26,6 +26,14 @@ set(SpectralEngine_Core_Shader_HEADER
 	"Shader/Shader.h"
 	"Shader/ShaderProgram.h")
 
+set(SpectralEngine_Core_Font_SRC
+	"UI/Font/Character.cpp"
+	"UI/Font/Font.cpp")
+
+set(SpectralEngine_Core_Font_HEADER
+	"UI/Font/Character.h"
+	"UI/Font/Font.h")
+
 set(SpectralEngine_Core_NoFilter_SRC
 	"Texture.cpp"
 	"FileReader.cpp")
@@ -42,7 +50,8 @@ set(SpectralEngine_Core_GameObject_HEADER
 
 set(SpectralEngine_Core_Utility_SRC
 	"Utility/CameraInputHandler.cpp"
-	"Utility/VertexData.cpp")
+	"Utility/VertexData.cpp"
+	"Utility/FreeTypeHelper.cpp")
 
 set(SpectralEngine_Core_Math_SRC
 	"Utility/Math/SpMath.cpp"
@@ -68,7 +77,8 @@ set(SpectralEngine_Core_Utility_HEADER
 	"Utility/Initializers.h"
 	"Utility/Vertices.h"
 	"Utility/CameraInputHandler.h"
-	"Utility/VertexData.h")
+	"Utility/VertexData.h"
+	"Utility/FreeTypeHelper.h")
 
 set (SpectralEngine_Vertex_Shaders_SRC
 	"ShaderFiles/vertex_shader.glsl"
@@ -90,6 +100,8 @@ source_group("Source Files\\Components" FILES ${SpectralEngine_Core_Components_S
 source_group("Header Files\\Components" FILES ${SpectralEngine_Core_Components_HEADER})
 source_group("Source Files\\Shader" FILES ${SpectralEngine_Core_Shader_SRC})
 source_group("Header Files\\Shader" FILES ${SpectralEngine_Core_Shader_HEADER})
+source_group("Source Files\\UI\\Font" FILES ${SpectralEngine_Core_Font_SRC})
+source_group("Header Files\\UI\\Font" FILES ${SpectralEngine_Core_Font_HEADER})
 source_group("Header Files\\GameObject" FILES ${SpectralEngine_Core_GameObject_HEADER})
 source_group("Source Files\\GameObject" FILES ${SpectralEngine_Core_GameObject_SRC})
 source_group("Source Files\\Utility" FILES ${SpectralEngine_Core_Utility_SRC})
@@ -105,6 +117,8 @@ set(SpectralEngine_Core_SRC
 	${SpectralEngine_Core_Components_HEADER}
 	${SpectralEngine_Core_Shader_SRC}
 	${SpectralEngine_Core_Shader_HEADER}
+	${SpectralEngine_Core_Font_SRC}
+	${SpectralEngine_Core_Font_HEADER}
 	${SpectralEngine_Core_NoFilter_SRC}
 	${SpectralEngine_Core_NoFilter_HEADER}
 	${SpectralEngine_Core_GameObject_HEADER}
