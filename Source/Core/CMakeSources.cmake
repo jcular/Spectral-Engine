@@ -82,12 +82,14 @@ set(SpectralEngine_Core_Utility_HEADER
 
 set (SpectralEngine_Vertex_Shaders_SRC
 	"ShaderFiles/vertex_shader.glsl"
-	"ShaderFiles/vertex_lighting_shader.glsl")
+	"ShaderFiles/vertex_lighting_shader.glsl"
+	"ShaderFiles/vertex_text_shader.glsl")
 
 set (SpectralEngine_Fragment_Shaders_SRC
 	"ShaderFiles/fragment_shader.glsl"
 	"ShaderFiles/fragment_lighting_shader.glsl"
-	"ShaderFiles/fragment_lamp_shader.glsl")
+	"ShaderFiles/fragment_lamp_shader.glsl"
+	"ShaderFiles/fragment_text_shader.glsl")
 	
 set(SpectralEngine_Glad_SRC
 	"Glad/glad.c")
