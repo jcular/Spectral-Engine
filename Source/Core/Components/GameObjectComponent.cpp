@@ -8,7 +8,7 @@ namespace sp {
 	void GameObjectComponent::update(float const deltaTime) {
 	}
 
-	GameObject const * const GameObjectComponent::getGameObject() {
+	GameObject const * const GameObjectComponent::getGameObject() const {
 		return this->gameObjectOwner;
 	}
 

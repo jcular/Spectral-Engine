@@ -11,6 +11,7 @@ namespace sp {
 	public:
 		static std::shared_ptr<Font const> const getFont(std::string const & path);
 		void insertCharacter(unsigned char key, Character const & character);
+		Character const getCharacter(unsigned char const c) const;
 
 	private:
 		Font() = default;
