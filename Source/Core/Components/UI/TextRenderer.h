@@ -16,6 +16,11 @@ namespace sp {
 		void setText(std::string const & text);
 
 	private:
+		void generateVertexData();
+
+	private:
+		unsigned int VAO;
+		unsigned int VBO;
 		std::string text;
 		ShaderProgram shaderProgram;
 		Font font;

@@ -13,12 +13,12 @@ namespace sp {
 			unsigned int const bitmapTop,
 			unsigned int const advance);
 
-	private:
-		unsigned int textureId;
-		unsigned int width;
-		unsigned int height;
-		unsigned int bitmapLeft;
-		unsigned int bitmapTop;
-		unsigned int advance;
+	public:
+		unsigned int const textureId;
+		unsigned int const width;
+		unsigned int const height;
+		unsigned int const bitmapLeft;
+		unsigned int const bitmapTop;
+		unsigned int const advance;
 	};
 }
