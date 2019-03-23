@@ -15,9 +15,9 @@ namespace sp {
 	public:
 		float x, y, z;
 		Vector3 operator-() const;
-		Vector3 operator+(Vector3 const & vector);
-		Vector3 operator-(Vector3 const & vector);
-		Vector3 operator*(float const realNumber);
+		Vector3 operator+(Vector3 const & vector) const;
+		Vector3 operator-(Vector3 const & vector) const;
+		Vector3 operator*(float const realNumber) const;
 		Vector3 operator+=(Vector3 const & vector);
 		Vector3 operator-=(Vector3 const & vector);
 
