@@ -62,7 +62,7 @@ namespace sp {
 
 	void ShaderProgram::setVec3(std::string const & name, float x, float y, float z) const {
 		int uniformLocation = glGetUniformLocation(this->getId(), name.c_str());
-		float value[3] = { x, y, z };
+		float value[3] { x, y, z };
 		glUniform3fv(uniformLocation, 1, value);
 	}
 }

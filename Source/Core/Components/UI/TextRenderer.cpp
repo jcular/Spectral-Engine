@@ -19,13 +19,40 @@ void sp::TextRenderer::render() const {
 	auto mainCamera = Camera::getMainCamera();
 	auto projectionMatrix = mainCamera->getProjectionMatrix();
 
+	this->shaderProgram.use();
+	this->shaderProgram.setMatrix4fv("projectionMatrix", projectionMatrix.getValuePtr());
+	this->shaderProgram.setVec3("TextColor", 0.9F, 0.65F, 0.13F);
+
+	glActiveTexture(GL_TEXTURE0);
 	glBindVertexArray(this->VAO);
 	Vector2 const position = this->getPosition();
 
 	std::string::const_iterator characterIterator;
+	float characterOffsetX = 0.0F;
 
 	for (characterIterator = this->text.begin(); characterIterator != text.end(); ++characterIterator) {
 		Character const character = this->font.getCharacter(*characterIterator);
+		Vector2 const currentCharPos = position + Vector2{ characterOffsetX, 0.0F };
+		Vector2 const characterBearing{ (float)character.bitmapLeft, (float)character.bitmapTop };
+		Vector2 const textureOrigin = currentCharPos + characterBearing;
+
+		float const characterVertices[6][4] {
+			{ textureOrigin.x, textureOrigin.y, 0.0F, 1.0F },
+			{ textureOrigin.x + character.width, textureOrigin.y, 1.0F, 1.0F },
+			{ textureOrigin.x, textureOrigin.y - character.height, 0.0F, 0.0F },
+			{ textureOrigin.x, textureOrigin.y - character.height, 0.0F, 0.0F },
+			{ textureOrigin.x + character.width, textureOrigin.y - character.height, 1.0F, 0.0F },
+			{ textureOrigin.x + character.width, textureOrigin.y, 1.0F, 1.0F }
+		};
+
+		glBindTexture(GL_TEXTURE_2D, character.textureId);
+		glBindBuffer(GL_ARRAY_BUFFER, this->VBO);
+		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(characterVertices), characterVertices);
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+		glDrawArrays(GL_TRIANGLES, 0, 6);
+
+		characterOffsetX += character.advance;
 	}
 }
 
