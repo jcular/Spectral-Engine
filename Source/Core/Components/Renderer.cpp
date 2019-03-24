@@ -19,7 +19,7 @@ namespace sp {
 		this->initializeVertexData(vertexData);
 	}
 
-	void Renderer::renderObject() {
+	void Renderer::render() const {
 		auto material = this->gameObjectOwner->getComponent<Material>();
 
 		Matrix4x4 mvpMatrix;

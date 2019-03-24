@@ -3,6 +3,7 @@
 
 #include "Core/Utility/Initializers.h"
 #include "Core/Utility/ResourcesPathProvider.h"
+#include "Core/Components/Interface/IRenderer.h"
 #include "Core/Components/Material.h"
 #include "Core/Components/Renderer.h"
 #include "Core/Utility/CameraInputHandler.h"
@@ -52,9 +53,9 @@ int main(int argc, char** argv) {
 
 		std::vector<sp::GameObject *> gameObjectCollection = sp::GameObject::getGameObjectCollection();
 		for (auto const & gameObject : gameObjectCollection) {
-			auto rendererWeak = gameObject->getComponent<sp::Renderer>();
+			auto rendererWeak = gameObject->getComponent<sp::IRenderer>();
 			if (auto rendererShared = rendererWeak.lock()) {
-				rendererShared->renderObject();
+				rendererShared->render();
 			}
 		}
 

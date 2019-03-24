@@ -4,12 +4,13 @@
 #include <string>
 
 #include "Components/GameObjectComponent.h"
+#include "Components/Interface/IRenderer.h"
 #include "Shader/ShaderProgram.h"
 #include "UI/Font/Font.h"
 #include "Utility/Math/Vector2.h"
 
 namespace sp {
-	class TextRenderer : public GameObjectComponent {
+	class TextRenderer : public GameObjectComponent, public IRenderer {
 	public:
 		TextRenderer(GameObject * const gameObject);
 

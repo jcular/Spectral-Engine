@@ -1,16 +1,17 @@
 #pragma once
 
 #include "Components/GameObjectComponent.h"
+#include "Components/Interface/IRenderer.h"
 
 namespace sp {
 	class GameObject;
 	class VertexData;
 
-	class Renderer : public GameObjectComponent {
+	class Renderer : public GameObjectComponent, IRenderer {
 	public:
 		Renderer(GameObject * const gameObjectOwner);
 		void initRenderer(VertexData const & vertexData);
-		void renderObject();
+		void render() const;
 
 	private:
 		void initializeVertexData(VertexData const & vertexData);

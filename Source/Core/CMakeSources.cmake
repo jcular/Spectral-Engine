@@ -14,6 +14,9 @@ set(SpectralEngine_Core_Components_HEADER
 	"Components/Transform.h"
 	"Components/Rotator.h")
 
+set(SpectralEngine_Core_Components_Interface_HEADER
+	"Components/Interface/IRenderer.h")
+
 set(SpectralEngine_Core_Components_UI_SRC
 	"Components/UI/TextRenderer.cpp")
 
@@ -108,6 +111,7 @@ set(SpectralEngine_Core_Files
 
 source_group("Source Files\\Components" FILES ${SpectralEngine_Core_Components_SRC})
 source_group("Header Files\\Components" FILES ${SpectralEngine_Core_Components_HEADER})
+source_group("Header Files\\Components\\Interface" FILES ${SpectralEngine_Core_Components_Interface_HEADER})
 source_group("Source Files\\Components\\UI" FILES ${SpectralEngine_Core_Components_UI_SRC})
 source_group("Header Files\\Components\\UI" FILES ${SpectralEngine_Core_Components_UI_HEADER})
 source_group("Source Files\\Shader" FILES ${SpectralEngine_Core_Shader_SRC})
@@ -127,6 +131,7 @@ source_group("Glad" FILES ${SpectralEngine_Glad_SRC})
 set(SpectralEngine_Core_SRC
 	${SpectralEngine_Core_Components_SRC}
 	${SpectralEngine_Core_Components_HEADER}
+	${SpectralEngine_Core_Components_Interface_HEADER}
 	${SpectralEngine_Core_Components_UI_SRC}
 	${SpectralEngine_Core_Components_UI_HEADER}
 	${SpectralEngine_Core_Shader_SRC}
