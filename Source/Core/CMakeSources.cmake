@@ -57,7 +57,8 @@ set(SpectralEngine_Core_GameObject_HEADER
 set(SpectralEngine_Core_Utility_SRC
 	"Utility/CameraInputHandler.cpp"
 	"Utility/VertexData.cpp"
-	"Utility/FreeTypeHelper.cpp")
+	"Utility/FreeTypeHelper.cpp"
+	"Utility/ResourcesPathProvider.cpp")
 
 set(SpectralEngine_Core_Math_SRC
 	"Utility/Math/SpMath.cpp"
@@ -84,7 +85,8 @@ set(SpectralEngine_Core_Utility_HEADER
 	"Utility/Vertices.h"
 	"Utility/CameraInputHandler.h"
 	"Utility/VertexData.h"
-	"Utility/FreeTypeHelper.h")
+	"Utility/FreeTypeHelper.h"
+	"Utility/ResourcesPathProvider.h")
 
 set (SpectralEngine_Vertex_Shaders_SRC
 	"ShaderFiles/vertex_shader.glsl"

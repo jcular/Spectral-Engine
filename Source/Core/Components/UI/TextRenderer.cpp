@@ -8,10 +8,14 @@
 #include "GameObject/GameObject.h"
 #include "UI/Font/Character.h"
 #include "Utility/Math/Matrix4x4.h"
+#include "Utility/ResourcesPathProvider.h"
 
 
-sp::TextRenderer::TextRenderer(GameObject * const gameObject, Font const & font) : GameObjectComponent(gameObject),
-	shaderProgram{ "vertex_text_shader.glsl", "fragment_text_shader.glsl" }, text{ "" }, font{ font } {
+sp::TextRenderer::TextRenderer(GameObject * const gameObject) : GameObjectComponent(gameObject),
+shaderProgram{ 
+	ResourcesPathProvider::getShaderFilesDirectoryPath() + std::string{ "/vertex_text_shader.glsl" },
+	ResourcesPathProvider::getShaderFilesDirectoryPath() + std::string{ "/fragment_text_shader.glsl" } },
+	text{ "" } {
 	this->generateVertexData();
 }
 
@@ -31,7 +35,7 @@ void sp::TextRenderer::render() const {
 	float characterOffsetX = 0.0F;
 
 	for (characterIterator = this->text.begin(); characterIterator != text.end(); ++characterIterator) {
-		Character const character = this->font.getCharacter(*characterIterator);
+		Character const character = this->font->getCharacter(*characterIterator);
 		Vector2 const currentCharPos = position + Vector2{ characterOffsetX, 0.0F };
 		Vector2 const characterBearing{ (float)character.bitmapLeft, (float)character.bitmapTop };
 		Vector2 const textureOrigin = currentCharPos + characterBearing;
@@ -54,6 +58,10 @@ void sp::TextRenderer::render() const {
 
 		characterOffsetX += character.advance;
 	}
+}
+
+void sp::TextRenderer::setFont(std::string const & fontPath) {
+	this->font = Font::getFont(fontPath);
 }
 
 void sp::TextRenderer::setText(std::string const & text) {

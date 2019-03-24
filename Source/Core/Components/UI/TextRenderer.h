@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <string>
 
 #include "Components/GameObjectComponent.h"
@@ -10,10 +11,11 @@
 namespace sp {
 	class TextRenderer : public GameObjectComponent {
 	public:
-		TextRenderer(GameObject * const gameObject, Font const & font);
+		TextRenderer(GameObject * const gameObject);
 
 	public:
 		void render() const;
+		void setFont(std::string const & fontPath);
 		void setText(std::string const & text);
 
 	private:
@@ -25,6 +27,6 @@ namespace sp {
 		unsigned int VBO;
 		std::string text;
 		ShaderProgram shaderProgram;
-		Font font;
+		std::shared_ptr<Font const> font;
 	};
 }

@@ -12,6 +12,7 @@
 #include "Core/Components/Transform.h"
 #include "Core/Components/Renderer.h"
 #include "Core/Components/Camera.h"
+#include "Core/Components/UI/TextRenderer.h"
 #include "Core/GameObject/GameObject.h"
 #include "Core/Utility/VertexData.h"
 #include "Core/Components/Rotator.h"
@@ -25,6 +26,17 @@ namespace sp {
 	std::uniform_real_distribution<float> distribution{ 0.0F, 1.0F };
 
 	GLFWwindow * initGLFWwindow();
+
+	void createText(std::string const & text, std::string const & fontPath) {
+		GameObject * textGameObject = new GameObject;
+		textGameObject->addComponent<Transform>();
+		std::weak_ptr<TextRenderer> const textRendererWeak = textGameObject->addComponent<TextRenderer>();
+		
+		if (std::shared_ptr<TextRenderer> const textRendererShared = textRendererWeak.lock()) {
+			textRendererShared->setText(text);
+			textRendererShared->setFont(fontPath);
+		}
+	}
 
 	void setRandomColors(std::weak_ptr<Material> materialWeak) {
 		if (auto materialShared = materialWeak.lock()) {
@@ -139,7 +151,8 @@ namespace sp {
 			resourcesFolderPath + std::string{ "/Art/awesomeface.png" }
 		};
 
-		std::shared_ptr<Font const> fontShared = Font::getFont(resourcesFolderPath + std::string{ "/Fonts/JingJing.ttf" });
+		std::string const fontPath = resourcesFolderPath + std::string{ "/Fonts/JingJing.ttf" };
+		createText("Hello", fontPath);
 
 
 		constexpr int numberOfObjects = (sizeof(cubePositions) / sizeof(cubePositions[0]));

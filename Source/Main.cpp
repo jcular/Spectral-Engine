@@ -2,6 +2,7 @@
 #include <memory>
 
 #include "Core/Utility/Initializers.h"
+#include "Core/Utility/ResourcesPathProvider.h"
 #include "Core/Components/Material.h"
 #include "Core/Components/Renderer.h"
 #include "Core/Utility/CameraInputHandler.h"
@@ -21,6 +22,10 @@ int main(int argc, char** argv) {
 	std::cout << sizeof(sp::Vector3) << std::endl;
 
 	glfwSetCursorPosCallback(window, sp::CameraInputHandler::mouse_callback);
+
+	std::string const executablePath{ argv[0] };
+	std::string const rootPath{ executablePath.substr(0, executablePath.find_last_of("\\")) };
+	sp::ResourcesPathProvider::initializePaths(rootPath);
 	sp::initScene(argv[0]);
 
 	glEnable(GL_DEPTH_TEST);
