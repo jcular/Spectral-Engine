@@ -152,7 +152,7 @@ namespace sp {
 		};
 
 		std::string const fontPath = resourcesFolderPath + std::string{ "/Fonts/JingJing.ttf" };
-		createText("Hello", fontPath);
+		//createText("Hello", fontPath);
 
 
 		constexpr int numberOfObjects = (sizeof(cubePositions) / sizeof(cubePositions[0]));

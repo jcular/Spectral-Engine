@@ -7,7 +7,7 @@ namespace sp {
 	class GameObject;
 	class VertexData;
 
-	class Renderer : public GameObjectComponent, IRenderer {
+	class Renderer : public GameObjectComponent, public IRenderer {
 	public:
 		Renderer(GameObject * const gameObjectOwner);
 		void initRenderer(VertexData const & vertexData);
