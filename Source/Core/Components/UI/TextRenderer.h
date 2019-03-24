@@ -15,7 +15,7 @@ namespace sp {
 		TextRenderer(GameObject * const gameObject);
 
 	public:
-		void render() const;
+		void render() const override;
 		void setFont(std::string const & fontPath);
 		void setText(std::string const & text);
 

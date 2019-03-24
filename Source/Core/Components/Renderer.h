@@ -11,7 +11,7 @@ namespace sp {
 	public:
 		Renderer(GameObject * const gameObjectOwner);
 		void initRenderer(VertexData const & vertexData);
-		void render() const;
+		void render() const override;
 
 	private:
 		void initializeVertexData(VertexData const & vertexData);
