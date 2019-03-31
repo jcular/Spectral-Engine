@@ -64,7 +64,7 @@ namespace sp {
 	void Material::setSpecularMap(std::string const & texturePath) {
 		this->shaderProgram->use();
 		glActiveTexture(GL_TEXTURE1);
-		this->diffuseMapTexture = std::make_unique<Texture>(texturePath, true, GL_RGBA);
+		this->specularMapTexture = std::make_unique<Texture>(texturePath, true, GL_RGBA);
 		std::string const materialVariablePrefix{ MATERIAL_VARIABLE_NAME };
 		this->shaderProgram->setInt(materialVariablePrefix + std::string{ ".specularMapTex" }, 1);
 	}

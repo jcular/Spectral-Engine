@@ -8,7 +8,6 @@
 #include "Components/Transform.h"
 #include "GameObject/GameObject.h"
 #include "Shader/ShaderProgram.h"
-#include "Texture.h"
 #include "Utility/VertexData.h"
 
 namespace sp {

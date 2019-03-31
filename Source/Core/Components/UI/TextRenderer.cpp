@@ -12,9 +12,9 @@
 
 
 sp::TextRenderer::TextRenderer(GameObject * const gameObject) : GameObjectComponent(gameObject),
-shaderProgram{ 
-	ResourcesPathProvider::getShaderFilesDirectoryPath() + std::string{ "/vertex_text_shader.glsl" },
-	ResourcesPathProvider::getShaderFilesDirectoryPath() + std::string{ "/fragment_text_shader.glsl" } },
+	shaderProgram{ 
+		ResourcesPathProvider::getShaderFilesDirectoryPath() + std::string{ "/vertex_text_shader.glsl" },
+		ResourcesPathProvider::getShaderFilesDirectoryPath() + std::string{ "/fragment_text_shader.glsl" } },
 	text{ "" } {
 	this->generateVertexData();
 }
@@ -26,8 +26,8 @@ void sp::TextRenderer::render() const {
 	this->shaderProgram.use();
 	this->shaderProgram.setMatrix4fv("projectionMatrix", projectionMatrix.getValuePtr());
 	this->shaderProgram.setVec3("TextColor", 0.9F, 0.65F, 0.13F);
-
 	glActiveTexture(GL_TEXTURE0);
+
 	glBindVertexArray(this->VAO);
 	Vector2 const position = this->getPosition();
 
@@ -52,14 +52,14 @@ void sp::TextRenderer::render() const {
 		glBindTexture(GL_TEXTURE_2D, character.textureId);
 		glBindBuffer(GL_ARRAY_BUFFER, this->VBO);
 		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(characterVertices), characterVertices);
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-		//glDrawArrays(GL_TRIANGLES, 0, 6);
+		glDrawArrays(GL_TRIANGLES, 0, 6);
 
 		characterOffsetX += character.advance;
 	}
 
-	glBindVertexArray(0);
 	glBindTexture(GL_TEXTURE_2D, 0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
 }
 
 void sp::TextRenderer::setFont(std::string const & fontPath) {
@@ -78,14 +78,14 @@ void sp::TextRenderer::generateVertexData() {
 	glBindBuffer(GL_ARRAY_BUFFER, this->VBO);
 
 	unsigned int const stride = (4 * sizeof(float));
-	glVertexAttribIPointer(0, 4, GL_FLOAT, stride, 0);
+	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, stride, 0);
 	glEnableVertexAttribArray(0);
 
 	unsigned int const quadSize = sizeof(float) * 4 * 6;
 	glBufferData(GL_ARRAY_BUFFER, quadSize, NULL, GL_DYNAMIC_DRAW);
 
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 sp::Vector2 const sp::TextRenderer::getPosition() const {

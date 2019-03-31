@@ -5,6 +5,7 @@
 namespace sp {
 	class ShaderProgram {
 	public:
+		ShaderProgram() = delete;
 		ShaderProgram(std::string vertexShaderPath, std::string fragmentShaderPath);
 		~ShaderProgram();
 		void use() const;
