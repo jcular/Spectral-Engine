@@ -2,13 +2,13 @@
 #include <memory>
 #include <string>
 
-#include "Components/Camera.h"
 #include "Components/Transform.h"
 #include "Components/UI/TextRenderer.h"
 #include "GameObject/GameObject.h"
 #include "UI/Font/Character.h"
 #include "Utility/Math/Matrix4x4.h"
 #include "Utility/ResourcesPathProvider.h"
+#include "Utility/Math/LinearTransformations.h"
 
 
 sp::TextRenderer::TextRenderer(GameObject * const gameObject) : GameObjectComponent(gameObject),
@@ -20,12 +20,12 @@ sp::TextRenderer::TextRenderer(GameObject * const gameObject) : GameObjectCompon
 }
 
 void sp::TextRenderer::render() const {
-	auto mainCamera = Camera::getMainCamera();
-	auto projectionMatrix = mainCamera->getProjectionMatrix();
+	Matrix4x4 const projectionMatrix = getOrthographicMat(0.0F, 800.0F, 0.0F, 600.0F);
 
 	this->shaderProgram.use();
 	this->shaderProgram.setMatrix4fv("projectionMatrix", projectionMatrix.getValuePtr());
 	this->shaderProgram.setVec3("TextColor", 0.9F, 0.65F, 0.13F);
+	this->shaderProgram.setInt("textu", 0);
 	glActiveTexture(GL_TEXTURE0);
 
 	glBindVertexArray(this->VAO);
