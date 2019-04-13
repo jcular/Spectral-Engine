@@ -31,6 +31,18 @@ namespace sp {
 		this->shaderProgram->setVec3(materialVariablePrefix + std::string{ ".specular" },
 			this->specularColor.x, this->specularColor.y, this->specularColor.z);
 		this->shaderProgram->setFloat(materialVariablePrefix + std::string{ ".shininess" }, this->shininess);
+
+		if (this->diffuseMapTexture != nullptr) {
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, this->diffuseMapTexture->getId());
+		}
+
+		if (this->specularMapTexture != nullptr) {
+			glActiveTexture(GL_TEXTURE1);
+			glBindTexture(GL_TEXTURE_2D, this->diffuseMapTexture->getId());
+		}
+
+		glActiveTexture(0);
 	}
 
 	std::weak_ptr<ShaderProgram> Material::getShaderProgram() const {
@@ -59,6 +71,7 @@ namespace sp {
 		this->diffuseMapTexture = std::make_unique<Texture>(texturePath, true,  GL_RGBA);
 		std::string const materialVariablePrefix{ MATERIAL_VARIABLE_NAME };
 		this->shaderProgram->setInt(materialVariablePrefix + std::string{ ".diffuseMapTex" }, 0);
+		glActiveTexture(0);
 	}
 
 	void Material::setSpecularMap(std::string const & texturePath) {
@@ -67,5 +80,6 @@ namespace sp {
 		this->specularMapTexture = std::make_unique<Texture>(texturePath, true, GL_RGBA);
 		std::string const materialVariablePrefix{ MATERIAL_VARIABLE_NAME };
 		this->shaderProgram->setInt(materialVariablePrefix + std::string{ ".specularMapTex" }, 1);
+		glActiveTexture(0);
 	}
 }
