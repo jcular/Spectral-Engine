@@ -53,7 +53,13 @@ int main(int argc, char** argv) {
 
 		std::vector<sp::GameObject *> gameObjectCollection = sp::GameObject::getGameObjectCollection();
 		for (auto const & gameObject : gameObjectCollection) {
-			auto rendererWeak = gameObject->getComponent<sp::IRenderer>();
+			auto rendererWeak = gameObject->getComponent<sp::Renderer>();
+			if (auto rendererShared = rendererWeak.lock()) {
+				rendererShared->render();
+			}
+		}
+		for (auto const & gameObject : gameObjectCollection) {
+			auto rendererWeak = gameObject->getComponent<sp::TextRenderer>();
 			if (auto rendererShared = rendererWeak.lock()) {
 				rendererShared->render();
 			}

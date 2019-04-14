@@ -54,9 +54,11 @@ void sp::TextRenderer::render() const {
 		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(characterVertices), characterVertices);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glEnable(GL_BLEND);
+		glDisable(GL_DEPTH_TEST);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glDrawArrays(GL_TRIANGLES, 0, 6);
 		glDisable(GL_BLEND);
+		glEnable(GL_DEPTH_TEST);
 
 		characterOffsetX += (character.advance >> 6);
 	}
