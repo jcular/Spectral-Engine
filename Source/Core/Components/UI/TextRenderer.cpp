@@ -23,7 +23,7 @@ void sp::TextRenderer::render() const {
 	Matrix4x4 const projectionMatrix = getOrthographicMat(0.0F, 800.0F, 0.0F, 600.0F);
 
 	this->shaderProgram.use();
-	this->shaderProgram.setMatrix4fv("projectionMatrix", projectionMatrix.getValuePtr());
+	this->shaderProgram.setMatrix4fv("projection", projectionMatrix.getValuePtr());
 	this->shaderProgram.setVec3("TextColor", 0.9F, 0.65F, 0.13F);
 	this->shaderProgram.setInt("textu", 0);
 	glActiveTexture(GL_TEXTURE0);
@@ -41,24 +41,27 @@ void sp::TextRenderer::render() const {
 		Vector2 const textureOrigin = currentCharPos + characterBearing;
 
 		float const characterVertices[6][4] {
-			{ textureOrigin.x, textureOrigin.y, 0.0F, 1.0F },
-			{ textureOrigin.x + character.width, textureOrigin.y, 1.0F, 1.0F },
-			{ textureOrigin.x, textureOrigin.y - character.height, 0.0F, 0.0F },
-			{ textureOrigin.x, textureOrigin.y - character.height, 0.0F, 0.0F },
-			{ textureOrigin.x + character.width, textureOrigin.y - character.height, 1.0F, 0.0F },
-			{ textureOrigin.x + character.width, textureOrigin.y, 1.0F, 1.0F }
+			{ textureOrigin.x, textureOrigin.y, 0.0F, 0.0F },
+			{ textureOrigin.x + character.width, textureOrigin.y, 1.0F, 0.0F },
+			{ textureOrigin.x, textureOrigin.y - character.height, 0.0F, 1.0F },
+			{ textureOrigin.x, textureOrigin.y - character.height, 0.0F, 1.0F },
+			{ textureOrigin.x + character.width, textureOrigin.y - character.height, 1.0F, 1.0F },
+			{ textureOrigin.x + character.width, textureOrigin.y, 1.0F, 0.0F }
 		};
 
 		glBindTexture(GL_TEXTURE_2D, character.textureId);
 		glBindBuffer(GL_ARRAY_BUFFER, this->VBO);
 		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(characterVertices), characterVertices);
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glDrawArrays(GL_TRIANGLES, 0, 6);
+		glDisable(GL_BLEND);
 
-		characterOffsetX += character.advance;
+		characterOffsetX += (character.advance >> 6);
 	}
 
 	glBindTexture(GL_TEXTURE_2D, 0);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 }
 
@@ -91,9 +94,9 @@ void sp::TextRenderer::generateVertexData() {
 sp::Vector2 const sp::TextRenderer::getPosition() const {
 	std::weak_ptr<Transform> transformWeak = this->getGameObject()->getComponent<Transform>();
 	
-	if (auto transformShared = transformWeak.lock()) {
+	/*if (auto transformShared = transformWeak.lock()) {
 		return transformShared->getPosition();
-	}
+	}*/
 
-	return Vector2{ 0.0F, 0.0F };
+	return Vector2{ 20.0F, 20.0F };
 }

@@ -15,14 +15,15 @@ namespace sp {
 
 		return result;
 	}
+
 	Matrix4x4 const getOrthographicMat(float const left, float const right, float const bottom, float const top, float const zNear, float const zFar) {
 		Matrix4x4 result;
 		result[0][0] = 2.0F / (right - left);
 		result[1][1] = 2.0F / (top - bottom);
 		result[2][2] = -2 / (zFar - zNear);
-		result[3][0] = -(right + left) / (right - left);
-		result[3][1] = -(top + bottom) / (top - bottom);
-		result[3][2] = -(zFar + zNear) / (zFar - zNear);
+		result[0][3] = -(right + left) / (right - left);
+		result[1][3] = -(top + bottom) / (top - bottom);
+		result[2][3] = -(zFar + zNear) / (zFar - zNear);
 		result[3][3] = 1;
 
 		return result;

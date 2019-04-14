@@ -83,5 +83,5 @@ namespace sp {
 
 	Matrix4x4 const getPerspectiveMat(Degree const fov, float const aspect, float const near, float const far);
 
-	Matrix4x4 const getOrthographicMat(float const left, float const right, float const bottom, float const top, float const zNear = 0.01F, float const zFar = 100.0F);
+	Matrix4x4 const getOrthographicMat(float const left, float const right, float const bottom, float const top, float const zNear = -1.0F, float const zFar = 1.0F);
 }
