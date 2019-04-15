@@ -29,7 +29,12 @@ namespace sp {
 
 	void createText(std::string const & text, std::string const & fontPath) {
 		GameObject * textGameObject = new GameObject;
-		textGameObject->addComponent<Transform>();
+		std::weak_ptr<Transform> transformWeak = textGameObject->addComponent<Transform>();
+
+		if (auto transformShared = transformWeak.lock()) {
+			transformShared->setScale(sp::Vector2::getVectorOne() * 0.6F);
+		}
+
 		std::weak_ptr<TextRenderer> const textRendererWeak = textGameObject->addComponent<TextRenderer>();
 		
 		if (std::shared_ptr<TextRenderer> const textRendererShared = textRendererWeak.lock()) {

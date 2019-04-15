@@ -22,6 +22,7 @@ namespace sp {
 	private:
 		void generateVertexData();
 		Vector2 const getPosition() const;
+		Vector2 const getScale() const;
 
 	private:
 		unsigned int VAO;

@@ -16,6 +16,7 @@ namespace sp {
 		Vector3 const getDirection() const;
 		void setRotationEuler(Vector3 const & rotation);
 		void setScale(Vector3 const & scale);
+		Vector3 const getScale() const;
 
 	private:
 		Matrix4x4 const getTranslationMatrix() const;

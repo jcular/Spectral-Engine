@@ -1,4 +1,5 @@
 #include "Utility/Math/Vector3.h"
+#include "Utility/Math/Vector2.h"
 #include "Utility/Math/SpMath.h"
 
 namespace sp {
@@ -16,6 +17,9 @@ namespace sp {
 
 	Vector3::Vector3() : x{ 0.0F }, y{ 0.0F }, z{ 0.0F } {
 
+	}
+
+	Vector3::Vector3(Vector2 const & vector) : x{ vector.x }, y{ vector.y }, z{ 0.0F } {
 	}
 
 	Vector3::Vector3(float val) : x{ val }, y{ val }, z{ val } {

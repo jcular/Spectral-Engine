@@ -39,14 +39,17 @@ void sp::TextRenderer::render() const {
 		Vector2 const currentCharPos = position + Vector2{ characterOffsetX, 0.0F };
 		Vector2 const characterBearing{ (float)character.bitmapLeft, (float)character.bitmapTop };
 		Vector2 const textureOrigin = currentCharPos + characterBearing;
+		Vector2 const scale = this->getScale();
+		float const scaleX = scale.x;
+		float const scaleY = scale.y;
 
 		float const characterVertices[6][4] {
-			{ textureOrigin.x, textureOrigin.y, 0.0F, 0.0F },
-			{ textureOrigin.x + character.width, textureOrigin.y, 1.0F, 0.0F },
-			{ textureOrigin.x, textureOrigin.y - character.height, 0.0F, 1.0F },
-			{ textureOrigin.x, textureOrigin.y - character.height, 0.0F, 1.0F },
-			{ textureOrigin.x + character.width, textureOrigin.y - character.height, 1.0F, 1.0F },
-			{ textureOrigin.x + character.width, textureOrigin.y, 1.0F, 0.0F }
+			{ textureOrigin.x * scaleX, textureOrigin.y * scaleY, 0.0F, 0.0F },
+			{ (textureOrigin.x + character.width) * scaleX, textureOrigin.y * scaleY, 1.0F, 0.0F },
+			{ textureOrigin.x * scaleX, (textureOrigin.y - character.height) * scaleY, 0.0F, 1.0F },
+			{ textureOrigin.x * scaleX, (textureOrigin.y - character.height) * scaleY, 0.0F, 1.0F },
+			{ (textureOrigin.x + character.width) * scaleX, (textureOrigin.y - character.height) * scaleY, 1.0F, 1.0F },
+			{ (textureOrigin.x + character.width) * scaleX, textureOrigin.y * scaleY, 1.0F, 0.0F }
 		};
 
 		glBindTexture(GL_TEXTURE_2D, character.textureId);
@@ -96,9 +99,19 @@ void sp::TextRenderer::generateVertexData() {
 sp::Vector2 const sp::TextRenderer::getPosition() const {
 	std::weak_ptr<Transform> transformWeak = this->getGameObject()->getComponent<Transform>();
 	
-	/*if (auto transformShared = transformWeak.lock()) {
+	if (auto transformShared = transformWeak.lock()) {
 		return transformShared->getPosition();
-	}*/
+	}
 
-	return Vector2{ 20.0F, 20.0F };
+	return Vector2::getVectorZero();
+}
+
+sp::Vector2 const sp::TextRenderer::getScale() const {
+	std::weak_ptr<Transform> transformWeak = this->getGameObject()->getComponent<Transform>();
+
+	if (auto transformShared = transformWeak.lock()) {
+		return transformShared->getScale();
+	}
+
+	return Vector2::getVectorOne();
 }

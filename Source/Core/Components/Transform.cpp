@@ -54,6 +54,10 @@ namespace sp {
 		this->scaleVec = scale;
 	}
 
+	Vector3 const Transform::getScale() const {
+		return this->scaleVec;
+	}
+
 	Matrix4x4 const Transform::getTranslationMatrix() const {
 		Matrix4x4 mat;
 		return translate(mat, this->position);

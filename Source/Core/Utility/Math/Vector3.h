@@ -1,6 +1,8 @@
 #pragma once
 
 namespace sp {
+	class Vector2;
+
 	class Vector3 {
 	public:
 		static float const dot(Vector3 const & vec1, Vector3 const & vec2);
@@ -9,6 +11,7 @@ namespace sp {
 	public:
 		Vector3();
 		Vector3(Vector3 const & vector) = default;
+		Vector3(Vector2 const & vector);
 		Vector3(float val);
 		Vector3(float const x, float const y, float const z);
 
