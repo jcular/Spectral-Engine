@@ -39,7 +39,7 @@ namespace sp {
 
 		if (this->specularMapTexture != nullptr) {
 			glActiveTexture(GL_TEXTURE1);
-			glBindTexture(GL_TEXTURE_2D, this->diffuseMapTexture->getId());
+			glBindTexture(GL_TEXTURE_2D, this->specularMapTexture->getId());
 		}
 
 		glActiveTexture(0);
