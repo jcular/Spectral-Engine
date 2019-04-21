@@ -1,17 +1,17 @@
 #pragma once
 
-#include <string>
+#include <Utility/SpString.h>
 
 namespace sp {
 	class ResourcesPathProvider {
 	public:
-		static std::string const & getResourcesDirectoryPath();
-		static std::string const & getShaderFilesDirectoryPath();
-		static void initializePaths(std::string const & rootPath);
+		static SpString const & getResourcesDirectoryPath();
+		static SpString const & getShaderFilesDirectoryPath();
+		static void initializePaths(SpString const & rootPath);
 
 	private:
-		static std::string resourcesDirectoryPath;
-		static std::string shaderFilesDirectoryPath;
+		static SpString resourcesDirectoryPath;
+		static SpString shaderFilesDirectoryPath;
 
 	private:
 		ResourcesPathProvider() = delete;

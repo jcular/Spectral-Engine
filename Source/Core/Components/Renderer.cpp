@@ -1,6 +1,6 @@
 #include <glad/glad.h>
 #include <memory>
-#include <string>
+#include <Utility/SpString.h>
 
 #include "Components/Camera.h"
 #include "Components/Material.h"

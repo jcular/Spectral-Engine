@@ -2,12 +2,12 @@
 
 #include <glad/glad.h>
 #include <iostream>
-#include <string>
+#include <Utility/SpString.h>
 
 namespace sp {
 	class Shader {
 	public:
-		Shader(std::string const & filePath, GLenum const);
+		Shader(SpString const & filePath, GLenum const);
 		~Shader();
 	
 	public:

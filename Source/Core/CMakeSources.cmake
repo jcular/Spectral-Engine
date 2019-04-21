@@ -89,7 +89,8 @@ set(SpectralEngine_Core_Utility_HEADER
 	"Utility/CameraInputHandler.h"
 	"Utility/VertexData.h"
 	"Utility/FreeTypeHelper.h"
-	"Utility/ResourcesPathProvider.h")
+	"Utility/ResourcesPathProvider.h"
+	"Utility/SpString.h")
 
 set (SpectralEngine_Vertex_Shaders_SRC
 	"ShaderFiles/vertex_shader.glsl"

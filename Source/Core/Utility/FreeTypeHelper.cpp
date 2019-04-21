@@ -5,7 +5,7 @@
 #include "UI/Font/Font.h"
 #include "Utility/FreeTypeHelper.h"
 
-int sp::createFace(std::string const & path, FT_Face & face) {
+int sp::createFace(SpString const & path, FT_Face & face) {
 	FT_Library freeType;
 	if (FT_Init_FreeType(&freeType)) {
 		std::cout << "Error: Could not init FreeType library" << std::endl;

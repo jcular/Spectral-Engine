@@ -24,8 +24,8 @@ int main(int argc, char** argv) {
 
 	glfwSetCursorPosCallback(window, sp::CameraInputHandler::mouse_callback);
 
-	std::string const executablePath{ argv[0] };
-	std::string const rootPath{ executablePath.substr(0, executablePath.find_last_of("\\")) };
+	SpString const executablePath{ argv[0] };
+	SpString const rootPath{ executablePath.substr(0, executablePath.find_last_of("\\")) };
 	sp::ResourcesPathProvider::initializePaths(rootPath);
 	sp::initScene(argv[0]);
 

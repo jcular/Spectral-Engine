@@ -2,12 +2,12 @@
 
 #include <glad/glad.h>
 #include <iostream>
-#include <string>
+#include <Utility/SpString.h>
 
 namespace sp {
 	class Texture {
 	public:
-		Texture(std::string const & path, bool const genMipmap, GLenum format);
+		Texture(SpString const & path, bool const genMipmap, GLenum format);
 		~Texture();
 		unsigned int const getId() const;
 

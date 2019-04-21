@@ -27,7 +27,7 @@ namespace sp {
 
 	GLFWwindow * initGLFWwindow();
 
-	void createText(std::string const & text, std::string const & fontPath) {
+	void createText(SpString const & text, SpString const & fontPath) {
 		GameObject * textGameObject = new GameObject;
 		std::weak_ptr<Transform> transformWeak = textGameObject->addComponent<Transform>();
 
@@ -59,10 +59,10 @@ namespace sp {
 		}
 	}
 
-	GameObject * createLight(std::string const & shadersFolderPath, std::string const texturePathArray[], int const lightSourceIndex) {
+	GameObject * createLight(SpString const & shadersFolderPath, SpString const texturePathArray[], int const lightSourceIndex) {
 		GameObject * lightSourceGameObject = new GameObject;
-		std::string const vertexLightingShaderPath{ shadersFolderPath + std::string{ "/vertex_shader.glsl" } };
-		std::string const fragmentLightingShaderPath{ shadersFolderPath + std::string{ "/fragment_lamp_shader.glsl" } };
+		SpString const vertexLightingShaderPath{ shadersFolderPath + SpString{ "/vertex_shader.glsl" } };
+		SpString const fragmentLightingShaderPath{ shadersFolderPath + SpString{ "/fragment_lamp_shader.glsl" } };
 		std::weak_ptr<Material> material = lightSourceGameObject->addComponent<Material>();
 		if (auto materialShared = material.lock()) {
 			const int numberOfTextures = 2;
@@ -85,7 +85,7 @@ namespace sp {
 	}
 
 	void createBoxObjects(
-		std::string const & specularMapTexturePath, std::string const & diffuseMapTexturePath, std::string const & vertexShaderPath, std::string const & fragmentShaderPath,
+		SpString const & specularMapTexturePath, SpString const & diffuseMapTexturePath, SpString const & vertexShaderPath, SpString const & fragmentShaderPath,
 		int numberOfBoxes, std::weak_ptr<Transform> cameraTransformWeak, std::weak_ptr<Transform> lightSourceTrnasformWeak) {
 
 		GameObject * boxObjects = new GameObject[numberOfBoxes];
@@ -134,7 +134,7 @@ namespace sp {
 		}
 	}
 
-	void initScene(std::string const & executablePath) {
+	void initScene(SpString const & executablePath) {
 		GameObject * const cameraGameObject = new GameObject();
 		auto cameraTransformWeak = cameraGameObject->addComponent<Transform>();
 		auto cameraWeak = cameraGameObject->addComponent<Camera>();
@@ -144,19 +144,19 @@ namespace sp {
 			Camera::setMainCamera(cameraShared);
 		}
 
-		std::string const rootPath{ executablePath.substr(0, executablePath.find_last_of("\\")) };
-		std::string const shadersFolderPath{ rootPath + std::string{"/../../../Source/Core/ShaderFiles"} };
-		std::string const vertexShaderPath{ shadersFolderPath + std::string{ "/vertex_lighting_shader.glsl" } };
-		std::string const fragmentShaderPath{ shadersFolderPath + std::string{ "/fragment_lighting_shader.glsl" } };
-		std::string const resourcesFolderPath{ rootPath + std::string{ "/../../../Resources/Resources" } };
-		std::string const diffuseMapPath = resourcesFolderPath + std::string{ "/Art/container.png" };
-		std::string const specularMapPath = resourcesFolderPath + std::string{ "/Art/specular_map_container.png" };
-		std::string const texturePathArray[2]{
-			resourcesFolderPath + std::string{ "/Art/wall.png" },
-			resourcesFolderPath + std::string{ "/Art/awesomeface.png" }
+		SpString const rootPath{ executablePath.substr(0, executablePath.find_last_of("\\")) };
+		SpString const shadersFolderPath{ rootPath + SpString{"/../../../Source/Core/ShaderFiles"} };
+		SpString const vertexShaderPath{ shadersFolderPath + SpString{ "/vertex_lighting_shader.glsl" } };
+		SpString const fragmentShaderPath{ shadersFolderPath + SpString{ "/fragment_lighting_shader.glsl" } };
+		SpString const resourcesFolderPath{ rootPath + SpString{ "/../../../Resources/Resources" } };
+		SpString const diffuseMapPath = resourcesFolderPath + SpString{ "/Art/container.png" };
+		SpString const specularMapPath = resourcesFolderPath + SpString{ "/Art/specular_map_container.png" };
+		SpString const texturePathArray[2]{
+			resourcesFolderPath + SpString{ "/Art/wall.png" },
+			resourcesFolderPath + SpString{ "/Art/awesomeface.png" }
 		};
 
-		std::string const fontPath = resourcesFolderPath + std::string{ "/Fonts/JingJing.ttf" };
+		SpString const fontPath = resourcesFolderPath + SpString{ "/Fonts/JingJing.ttf" };
 		createText("This is sample text", fontPath);
 
 

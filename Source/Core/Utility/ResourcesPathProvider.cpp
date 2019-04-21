@@ -1,18 +1,18 @@
 #include "ResourcesPathProvider.h"
 
 
-std::string sp::ResourcesPathProvider::resourcesDirectoryPath;
-std::string sp::ResourcesPathProvider::shaderFilesDirectoryPath;
+SpString sp::ResourcesPathProvider::resourcesDirectoryPath;
+SpString sp::ResourcesPathProvider::shaderFilesDirectoryPath;
 
-std::string const & sp::ResourcesPathProvider::getResourcesDirectoryPath() {
+SpString const & sp::ResourcesPathProvider::getResourcesDirectoryPath() {
 	return resourcesDirectoryPath;
 }
 
-std::string const & sp::ResourcesPathProvider::getShaderFilesDirectoryPath() {
+SpString const & sp::ResourcesPathProvider::getShaderFilesDirectoryPath() {
 	return shaderFilesDirectoryPath;
 }
 
-void sp::ResourcesPathProvider::initializePaths(std::string const & rootPath) {
-	resourcesDirectoryPath = rootPath + std::string{ "/../../../Resources/Resources" };
-	shaderFilesDirectoryPath = rootPath + std::string{ "/../../../Source/Core/ShaderFiles" };
+void sp::ResourcesPathProvider::initializePaths(SpString const & rootPath) {
+	resourcesDirectoryPath = rootPath + SpString{ "/../../../Resources/Resources" };
+	shaderFilesDirectoryPath = rootPath + SpString{ "/../../../Source/Core/ShaderFiles" };
 }

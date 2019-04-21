@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <Utility/SpString.h>
 #include <fstream>
 #include <streambuf>
 #include <sstream>
@@ -8,6 +8,6 @@
 namespace sp {
 	class FileReader {
 	public:
-		static std::string const ReadFromFile(std::string const path);
+		static SpString const ReadFromFile(SpString const path);
 	};
 }

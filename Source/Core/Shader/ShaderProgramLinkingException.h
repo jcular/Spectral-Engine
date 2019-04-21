@@ -1,15 +1,15 @@
 #pragma once
 
-#include <string>
+#include <Utility/SpString.h>
 
 namespace sp {
 	class ShaderProgramLinkingException {
 	public:
 		ShaderProgramLinkingException(unsigned int const programId, char const infoLog[]);
-		std::string what();
+		SpString what();
 
 	private:
 		unsigned int const programId;
-		std::string const infoLog;
+		SpString const infoLog;
 	};
 }

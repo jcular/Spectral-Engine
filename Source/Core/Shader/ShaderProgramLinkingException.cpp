@@ -4,10 +4,10 @@
 
 namespace sp {
 	ShaderProgramLinkingException::ShaderProgramLinkingException(unsigned int const programId, char const infoLog[])
-		: programId{ programId }, infoLog{ std::string{infoLog} } {
+		: programId{ programId }, infoLog{ SpString{infoLog} } {
 	}
 
-	std::string ShaderProgramLinkingException::what() {
+	SpString ShaderProgramLinkingException::what() {
 		std::stringstream ss;
 		ss << "Error linking program with id: " << this->programId << std::endl << this->infoLog;
 		return ss.str();

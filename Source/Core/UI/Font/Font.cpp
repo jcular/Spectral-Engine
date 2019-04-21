@@ -7,7 +7,7 @@
 #include "UI/Font/Character.h"
 #include "Utility/FreeTypeHelper.h"
 
-std::shared_ptr<sp::Font const> const sp::Font::getFont(std::string const & path) {
+std::shared_ptr<sp::Font const> const sp::Font::getFont(SpString const & path) {
 	FT_Face face;
 	if (createFace(path, face)) {
 		return nullptr;

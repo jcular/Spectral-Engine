@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include <string>
+#include <Utility/SpString.h>
 
 #include "Components/GameObjectComponent.h"
 #include "Components/Interface/IRenderer.h"
@@ -16,8 +16,8 @@ namespace sp {
 
 	public:
 		void render() const override;
-		void setFont(std::string const & fontPath);
-		void setText(std::string const & text);
+		void setFont(SpString const & fontPath);
+		void setText(SpString const & text);
 
 	private:
 		void generateVertexData();
@@ -27,7 +27,7 @@ namespace sp {
 	private:
 		unsigned int VAO;
 		unsigned int VBO;
-		std::string text;
+		SpString text;
 		ShaderProgram shaderProgram;
 		std::shared_ptr<Font const> font;
 	};

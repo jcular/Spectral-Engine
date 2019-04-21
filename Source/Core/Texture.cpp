@@ -5,7 +5,7 @@
 
 
 namespace sp {
-	Texture::Texture(std::string const & path, bool const genMipmap, GLenum format) {
+	Texture::Texture(SpString const & path, bool const genMipmap, GLenum format) {
 		glGenTextures(1, &this->id);
 		glBindTexture(GL_TEXTURE_2D, this->id);
 	

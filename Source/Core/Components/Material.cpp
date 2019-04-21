@@ -1,4 +1,4 @@
-#include <string>
+#include <Utility/SpString.h>
 
 #include "Components/Material.h"
 #include "Shader/ShaderProgram.h"
@@ -14,7 +14,7 @@ namespace sp {
 		shininess{ 1.0F } {
 	}
 
-	void Material::initMaterial(std::string const & vertexShaderPath, std::string const & fragmentShaderPath) {
+	void Material::initMaterial(SpString const & vertexShaderPath, SpString const & fragmentShaderPath) {
 		this->shaderProgram = std::make_shared<ShaderProgram>(vertexShaderPath, fragmentShaderPath);
 	}
 
@@ -23,14 +23,14 @@ namespace sp {
 
 		this->shaderProgram->setMatrix4fv("mvpMatrix", mvpMatrix.getValuePtr());
 		this->shaderProgram->setMatrix4fv("modelMatrix", modelMatrix.getValuePtr());
-		std::string const materialVariablePrefix{ MATERIAL_VARIABLE_NAME };
-		this->shaderProgram->setVec3(materialVariablePrefix + std::string{ ".ambient" },
+		SpString const materialVariablePrefix{ MATERIAL_VARIABLE_NAME };
+		this->shaderProgram->setVec3(materialVariablePrefix + SpString{ ".ambient" },
 			this->ambientColor.x, this->ambientColor.y, this->ambientColor.z);
-		this->shaderProgram->setVec3(materialVariablePrefix + std::string{ ".diffuse" },
+		this->shaderProgram->setVec3(materialVariablePrefix + SpString{ ".diffuse" },
 			this->diffuseColor.x, this->diffuseColor.y, this->diffuseColor.z);
-		this->shaderProgram->setVec3(materialVariablePrefix + std::string{ ".specular" },
+		this->shaderProgram->setVec3(materialVariablePrefix + SpString{ ".specular" },
 			this->specularColor.x, this->specularColor.y, this->specularColor.z);
-		this->shaderProgram->setFloat(materialVariablePrefix + std::string{ ".shininess" }, this->shininess);
+		this->shaderProgram->setFloat(materialVariablePrefix + SpString{ ".shininess" }, this->shininess);
 
 		if (this->diffuseMapTexture != nullptr) {
 			glActiveTexture(GL_TEXTURE0);
@@ -65,21 +65,21 @@ namespace sp {
 		this->shininess = shininess;
 	}
 
-	void Material::setDiffuseMap(std::string const & texturePath) {
+	void Material::setDiffuseMap(SpString const & texturePath) {
 		this->shaderProgram->use();
 		glActiveTexture(GL_TEXTURE0);
 		this->diffuseMapTexture = std::make_unique<Texture>(texturePath, true,  GL_RGBA);
-		std::string const materialVariablePrefix{ MATERIAL_VARIABLE_NAME };
-		this->shaderProgram->setInt(materialVariablePrefix + std::string{ ".diffuseMapTex" }, 0);
+		SpString const materialVariablePrefix{ MATERIAL_VARIABLE_NAME };
+		this->shaderProgram->setInt(materialVariablePrefix + SpString{ ".diffuseMapTex" }, 0);
 		glActiveTexture(0);
 	}
 
-	void Material::setSpecularMap(std::string const & texturePath) {
+	void Material::setSpecularMap(SpString const & texturePath) {
 		this->shaderProgram->use();
 		glActiveTexture(GL_TEXTURE1);
 		this->specularMapTexture = std::make_unique<Texture>(texturePath, true, GL_RGBA);
-		std::string const materialVariablePrefix{ MATERIAL_VARIABLE_NAME };
-		this->shaderProgram->setInt(materialVariablePrefix + std::string{ ".specularMapTex" }, 1);
+		SpString const materialVariablePrefix{ MATERIAL_VARIABLE_NAME };
+		this->shaderProgram->setInt(materialVariablePrefix + SpString{ ".specularMapTex" }, 1);
 		glActiveTexture(0);
 	}
 }

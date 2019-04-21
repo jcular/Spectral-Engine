@@ -1,6 +1,6 @@
 #include <glad/glad.h>
 #include <memory>
-#include <string>
+#include <Utility/SpString.h>
 
 #include "Components/Transform.h"
 #include "Components/UI/TextRenderer.h"
@@ -13,8 +13,8 @@
 
 sp::TextRenderer::TextRenderer(GameObject * const gameObject) : GameObjectComponent(gameObject),
 	shaderProgram{ 
-		ResourcesPathProvider::getShaderFilesDirectoryPath() + std::string{ "/vertex_text_shader.glsl" },
-		ResourcesPathProvider::getShaderFilesDirectoryPath() + std::string{ "/fragment_text_shader.glsl" } },
+		ResourcesPathProvider::getShaderFilesDirectoryPath() + SpString{ "/vertex_text_shader.glsl" },
+		ResourcesPathProvider::getShaderFilesDirectoryPath() + SpString{ "/fragment_text_shader.glsl" } },
 	text{ "" } {
 	this->generateVertexData();
 }
@@ -31,7 +31,7 @@ void sp::TextRenderer::render() const {
 	glBindVertexArray(this->VAO);
 	Vector2 const position = this->getPosition();
 
-	std::string::const_iterator characterIterator;
+	SpString::const_iterator characterIterator;
 	float characterOffsetX = 0.0F;
 
 	for (characterIterator = this->text.begin(); characterIterator != text.end(); ++characterIterator) {
@@ -70,11 +70,11 @@ void sp::TextRenderer::render() const {
 	glBindVertexArray(0);
 }
 
-void sp::TextRenderer::setFont(std::string const & fontPath) {
+void sp::TextRenderer::setFont(SpString const & fontPath) {
 	this->font = Font::getFont(fontPath);
 }
 
-void sp::TextRenderer::setText(std::string const & text) {
+void sp::TextRenderer::setText(SpString const & text) {
 	this->text = text;
 }
 

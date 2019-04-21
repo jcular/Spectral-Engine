@@ -1,20 +1,20 @@
 #pragma once
 
-#include <string>
+#include <Utility/SpString.h>
 
 namespace sp {
 	class ShaderProgram {
 	public:
 		ShaderProgram() = delete;
-		ShaderProgram(std::string vertexShaderPath, std::string fragmentShaderPath);
+		ShaderProgram(SpString vertexShaderPath, SpString fragmentShaderPath);
 		~ShaderProgram();
 		void use() const;
 		unsigned int const getId() const;
-		void setBool(std::string const & name, bool value) const;
-		void setInt(std::string const & name, int value) const;
-		void setFloat(std::string const & name, float value) const;
-		void setMatrix4fv(std::string const & name, float const * const matrix) const;
-		void setVec3(std::string const & name, float x, float y, float z) const;
+		void setBool(SpString const & name, bool value) const;
+		void setInt(SpString const & name, int value) const;
+		void setFloat(SpString const & name, float value) const;
+		void setMatrix4fv(SpString const & name, float const * const matrix) const;
+		void setVec3(SpString const & name, float x, float y, float z) const;
 
 	private:
 		unsigned int id;

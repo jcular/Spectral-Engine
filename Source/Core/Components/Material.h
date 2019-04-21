@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include <string>
+#include <Utility/SpString.h>
 #include <vector>
 
 #include "Components/GameObjectComponent.h"
@@ -16,15 +16,15 @@ namespace sp {
 		Material(GameObject * gameObject);
 
 	public:
-		void initMaterial(std::string const & vertexShaderPath, std::string const & fragmentShaderPath);
+		void initMaterial(SpString const & vertexShaderPath, SpString const & fragmentShaderPath);
 		void use(Matrix4x4 const & mvpMatrix, Matrix4x4 const & modelMatrix) const;
 		std::weak_ptr<ShaderProgram> getShaderProgram() const;
 		void setAmbient(Vector3 const & ambientColor);
 		void setDiffuse(Vector3 const & diffuseColor);
 		void setSpecular(Vector3 const & specularColor);
 		void setShinines(float const shininess);
-		void setDiffuseMap(std::string const & texturePath);
-		void setSpecularMap(std::string const & texturePath);
+		void setDiffuseMap(SpString const & texturePath);
+		void setSpecularMap(SpString const & texturePath);
 
 	private:
 		Vector3 ambientColor;
