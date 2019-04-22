@@ -45,11 +45,13 @@ set(SpectralEngine_Core_Font_HEADER
 
 set(SpectralEngine_Core_NoFilter_SRC
 	"Texture.cpp"
-	"FileReader.cpp")
+	"FileReader.cpp"
+	"SpWindow.cpp")
 
 set(SpectralEngine_Core_NoFilter_HEADER
 	"Texture.h"
-	"FileReader.h")
+	"FileReader.h"
+	"SpWindow.h")
 
 set(SpectralEngine_Core_GameObject_SRC
 	"GameObject/GameObject.cpp")

@@ -7,6 +7,7 @@
 #include "Core/Components/Material.h"
 #include "Core/Components/Renderer.h"
 #include "Core/Utility/CameraInputHandler.h"
+#include "Core/SpWindow.h"
 
 #include "Core/Utility/Vertices.h"
 #include "Core/Components/Renderer.h"
@@ -14,15 +15,14 @@
 
 
 int main(int argc, char** argv) {
-	auto window = sp::setupWindow();
+	auto window = sp::SpWindow(800, 600);
 
-	if (window == nullptr) {
+	if (window.initializedSuccessfuly() == false) {
 		return -1;
 	}
 
 	std::cout << sizeof(sp::Vector3) << std::endl;
 
-	glfwSetCursorPosCallback(window, sp::CameraInputHandler::mouse_callback);
 
 	SpString const executablePath{ argv[0] };
 	SpString const rootPath{ executablePath.substr(0, executablePath.find_last_of("\\")) };
@@ -33,16 +33,13 @@ int main(int argc, char** argv) {
 
 	float lastFrame = static_cast<float>(glfwGetTime());
 
-	while (!glfwWindowShouldClose(window)) {
+	while (!window.shouldClose()) {
 		float currentFrame = static_cast<float>(glfwGetTime());
 		float deltaTime = currentFrame - lastFrame;
 		sp::GameObject::updateGameObjects(deltaTime);
 		lastFrame = currentFrame;
 
-		if (glfwGetKey(window, GLFW_KEY_ESCAPE)) {
-			glfwSetWindowShouldClose(window, true);
-		}
-
+		window.update();
 		sp::CameraInputHandler::processCameraInput(window, deltaTime);
 
 		glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
