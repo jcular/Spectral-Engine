@@ -1,3 +1,4 @@
+#include "SpWindow.h"
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
@@ -5,6 +6,21 @@
 
 #include "SpWindow.h"
 #include "Utility/CameraInputHandler.h"
+
+
+sp::SpWindow const * sp::SpWindow::windowInstance = nullptr;
+
+void sp::SpWindow::init(int const width, int const height) {
+	SpWindow::windowInstance = new SpWindow(width, height);
+}
+
+sp::SpWindow const * const sp::SpWindow::getInstance() {
+	if (SpWindow::windowInstance == nullptr) {
+		std::cerr << "Error: Trying to get unallocated window instance.";
+	}
+
+	return SpWindow::windowInstance;
+}
 
 sp::SpWindow::SpWindow(int const width, int const height) : width{ width }, height{ height }, initialized{ false } {
 	glfwInit();

@@ -15,9 +15,10 @@
 
 
 int main(int argc, char** argv) {
-	auto window = sp::SpWindow(800, 600);
+	sp::SpWindow::init(800, 600);
+	sp::SpWindow const * const window = sp::SpWindow::getInstance();
 
-	if (window.initializedSuccessfuly() == false) {
+	if (window->initializedSuccessfuly() == false) {
 		return -1;
 	}
 
@@ -33,14 +34,14 @@ int main(int argc, char** argv) {
 
 	float lastFrame = static_cast<float>(glfwGetTime());
 
-	while (!window.shouldClose()) {
+	while (!window->shouldClose()) {
 		float currentFrame = static_cast<float>(glfwGetTime());
 		float deltaTime = currentFrame - lastFrame;
 		sp::GameObject::updateGameObjects(deltaTime);
 		lastFrame = currentFrame;
 
-		window.update();
-		sp::CameraInputHandler::processCameraInput(window, deltaTime);
+		window->update();
+		// sp::CameraInputHandler::processCameraInput(window, deltaTime);
 
 		glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
@@ -62,7 +63,7 @@ int main(int argc, char** argv) {
 			}
 		}
 
-		glfwSwapBuffers(window);
+		//glfwSwapBuffers(window);
 		glfwPollEvents();
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
