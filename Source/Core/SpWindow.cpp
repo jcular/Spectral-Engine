@@ -1,20 +1,18 @@
 #include "SpWindow.h"
-#define GLFW_INCLUDE_NONE
-#include <GLFW/glfw3.h>
 #include <glad/glad.h>
+#include <GLFW/glfw3.h>
 #include <iostream>
 
 #include "SpWindow.h"
-#include "Utility/CameraInputHandler.h"
 
 
-sp::SpWindow const * sp::SpWindow::windowInstance = nullptr;
+sp::SpWindow * sp::SpWindow::windowInstance = nullptr;
 
 void sp::SpWindow::init(int const width, int const height) {
 	SpWindow::windowInstance = new SpWindow(width, height);
 }
 
-sp::SpWindow const * const sp::SpWindow::getInstance() {
+sp::SpWindow * const sp::SpWindow::getInstance() {
 	if (SpWindow::windowInstance == nullptr) {
 		std::cerr << "Error: Trying to get unallocated window instance.";
 	}
@@ -30,7 +28,7 @@ sp::SpWindow::SpWindow(int const width, int const height) : width{ width }, heig
 
 	this->concreteWindow = glfwCreateWindow(width, height, "Spectral Engine", NULL, NULL);
 
-	if (this->concreteWindow == NULL) {
+	if (this->concreteWindow == nullptr) {
 		std::cout << "Failed to create GLFW window." << std::endl;
 		glfwTerminate();
 		return;
@@ -51,7 +49,6 @@ sp::SpWindow::SpWindow(int const width, int const height) : width{ width }, heig
 	});
 
 	glfwSetInputMode(this->concreteWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-	glfwSetCursorPosCallback(this->concreteWindow, sp::CameraInputHandler::mouse_callback);
 
 	this->initialized = true;
 }
@@ -68,4 +65,8 @@ bool const sp::SpWindow::initializedSuccessfuly() const {
 
 bool const sp::SpWindow::shouldClose() const {
 	return glfwWindowShouldClose(this->concreteWindow);
+}
+
+void sp::SpWindow::registerMousePositionCallback(void(*callback)(GLFWwindow * window, double xpos, double ypos)) {
+	glfwSetCursorPosCallback(this->concreteWindow, callback);
 }

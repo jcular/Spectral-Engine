@@ -4,7 +4,7 @@
 #include "GameObject/GameObject.h"
 
 namespace sp {
-	Vector3 CameraInputHandler::worldUp{ 0.0F, 1.0F, 0.0F };
+	/*Vector3 CameraInputHandler::worldUp{ 0.0F, 1.0F, 0.0F };
 	bool CameraInputHandler::firstMouse = true;
 	double CameraInputHandler::lastX;
 	double CameraInputHandler::lastY;
@@ -74,5 +74,5 @@ namespace sp {
 
 			transformShared->setPosition(position);
 		}
-	}
+	}*/
 }

@@ -4,7 +4,7 @@
 #include "Utility/Math/Vector3.h"
 
 namespace sp {
-	class CameraInputHandler {
+	/*class CameraInputHandler {
 	public:
 		static void processCameraInput(GLFWwindow *window, float deltaTime);
 		static void mouse_callback(GLFWwindow * window, double xpos, double ypos);
@@ -16,5 +16,5 @@ namespace sp {
 		static double yaw;
 		static double pitch;
 		static bool first;
-	};
+	};*/
 }

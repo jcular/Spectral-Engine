@@ -6,10 +6,10 @@ namespace sp {
 	class SpWindow {
 	public:
 		static void init(int const width, int const height);
-		static SpWindow const * const getInstance();
+		static SpWindow * const getInstance();
 		
 	private:
-		static SpWindow const * windowInstance;
+		static SpWindow * windowInstance;
 
 	private:
 		SpWindow(int const width, int const height);
@@ -19,6 +19,7 @@ namespace sp {
 		void update() const;
 		bool const initializedSuccessfuly() const;
 		bool const shouldClose() const;
+		void registerMousePositionCallback(void(*callback)(GLFWwindow * window, double xpos, double ypos));
 
 	private:
 		int width;
