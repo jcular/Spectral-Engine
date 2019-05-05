@@ -6,7 +6,7 @@ namespace sp {
 	class MouseInputManager {
 		friend class Input;
 
-	private:
+	public:
 		MouseInputManager() = default;
 
 	public:
