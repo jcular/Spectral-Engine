@@ -1,6 +1,7 @@
 #include "SpWindow.h"
-#include <glad/glad.h>
+#define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
+#include <glad/glad.h>
 #include <iostream>
 
 #include "SpWindow.h"
@@ -67,6 +68,6 @@ bool const sp::SpWindow::shouldClose() const {
 	return glfwWindowShouldClose(this->concreteWindow);
 }
 
-void sp::SpWindow::registerMousePositionCallback(void(*callback)(GLFWwindow * window, double xpos, double ypos)) {
-	glfwSetCursorPosCallback(this->concreteWindow, callback);
+GLFWwindow * const sp::SpWindow::getConcreteWindow() const {
+	return this->concreteWindow;
 }

@@ -7,6 +7,7 @@
 #include "Core/Components/Material.h"
 #include "Core/Components/Renderer.h"
 #include "Core/SpWindow.h"
+#include "Utility/Input/Input.h"
 
 #include "Core/Utility/Vertices.h"
 #include "Core/Components/Renderer.h"
@@ -16,13 +17,13 @@
 int main(int argc, char** argv) {
 	sp::SpWindow::init(800, 600);
 	sp::SpWindow const * const window = sp::SpWindow::getInstance();
+	sp::Input::init();
 
 	if (window->initializedSuccessfuly() == false) {
 		return -1;
 	}
 
 	std::cout << sizeof(sp::Vector3) << std::endl;
-
 
 	SpString const executablePath{ argv[0] };
 	SpString const rootPath{ executablePath.substr(0, executablePath.find_last_of("\\")) };
@@ -62,7 +63,7 @@ int main(int argc, char** argv) {
 			}
 		}
 
-		//glfwSwapBuffers(window);
+		glfwSwapBuffers(window->getConcreteWindow());
 		glfwPollEvents();
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}

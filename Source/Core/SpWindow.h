@@ -1,6 +1,6 @@
 #pragma once
 
-class GLFWwindow;
+struct GLFWwindow;
 
 namespace sp {
 	class SpWindow {
@@ -19,7 +19,7 @@ namespace sp {
 		void update() const;
 		bool const initializedSuccessfuly() const;
 		bool const shouldClose() const;
-		void registerMousePositionCallback(void(*callback)(GLFWwindow * window, double xpos, double ypos));
+		GLFWwindow * const getConcreteWindow() const;
 
 	private:
 		int width;

@@ -7,6 +7,7 @@
 
 namespace sp {
 	class MouseInputManager;
+	class KeyInputManager;
 
 	class Input {
 	private:
@@ -19,5 +20,6 @@ namespace sp {
 
 	private:
 		static std::unique_ptr<MouseInputManager> mouseInputManagerUnique;
+		static std::unique_ptr<KeyInputManager> keyInputManagerUnique;
 	};
 }
