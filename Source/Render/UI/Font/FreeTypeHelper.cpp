@@ -1,9 +1,10 @@
+#include "Render/UI/Font/FreeTypeHelper.h"
+
 #include <iostream>
 
 #include "glad/glad.h"
 #include "Render/UI/Font/Character.h"
 #include "Render/UI/Font/Font.h"
-#include "Render/UI/Font/FreeTypeHelper.h"
 
 int sp::createFace(SpString const & path, FT_Face & face) {
 	FT_Library freeType;

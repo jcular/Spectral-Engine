@@ -1,6 +1,7 @@
 #include "PlatformIndependence/Input/Input.h"
 
 #include <memory>
+#define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
 #include "PlatformIndependence/SpWindow.h"

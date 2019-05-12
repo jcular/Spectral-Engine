@@ -1,4 +1,4 @@
-#include <PlatformIndependence/SpString.h>
+#include "PlatformIndependence/SpString.h"
 
 #include "Game/Components/Material.h"
 #include "Render/Shader/ShaderProgram.h"

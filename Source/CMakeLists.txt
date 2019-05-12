@@ -18,7 +18,9 @@ add_subdirectory(PlatformIndependence)
 add_subdirectory(Test)
 
 target_link_libraries(SpectralEngine Core)
-target_link_libraries(SpectralEngine ${CMAKE_CURRENT_SOURCE_DIR}/Libraries/lib/glfw3.lib)
+target_link_libraries(SpectralEngine Game)
+target_link_libraries(SpectralEngine ThirdParty)
+target_link_libraries(SpectralEngine PlatformIndependence)
 
 target_include_directories(Game PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(Core PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

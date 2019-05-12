@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include <PlatformIndependence/SpString.h>
+#include "PlatformIndependence/SpString.h"
 
 #include "Game/Components/GameObjectComponent.h"
 #include "Game/Components/Interface/IRenderer.h"

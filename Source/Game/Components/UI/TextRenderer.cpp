@@ -1,6 +1,6 @@
 #include <ThirdParty/Glad/include/glad/glad.h>
 #include <memory>
-#include <PlatformIndependence/SpString.h>
+#include "PlatformIndependence/SpString.h"
 
 #include "Game/Components/Transform.h"
 #include "Game/Components/UI/TextRenderer.h"

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <ThirdParty/Glad/include/glad/glad.h>
-#include <PlatformIndependence/SpString.h>
+#include "PlatformIndependence/SpString.h"
 
 namespace sp {
 	class ShaderCompilationException {

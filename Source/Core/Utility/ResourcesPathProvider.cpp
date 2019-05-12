@@ -14,5 +14,5 @@ SpString const & sp::ResourcesPathProvider::getShaderFilesDirectoryPath() {
 
 void sp::ResourcesPathProvider::initializePaths(SpString const & rootPath) {
 	resourcesDirectoryPath = rootPath + SpString{ "/../../../Resources/Resources" };
-	shaderFilesDirectoryPath = rootPath + SpString{ "/../../../Source/Core/ShaderFiles" };
+	shaderFilesDirectoryPath = rootPath + SpString{ "/../../../Source/Render/ShaderFiles" };
 }

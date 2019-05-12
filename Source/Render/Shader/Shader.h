@@ -2,7 +2,7 @@
 
 #include <glad/glad.h>
 #include <iostream>
-#include <PlatformIndependence/SpString.h>
+#include "PlatformIndependence/SpString.h"
 
 namespace sp {
 	class Shader {

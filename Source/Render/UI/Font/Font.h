@@ -2,8 +2,8 @@
 
 #include <map>
 #include <memory>
-#include <PlatformIndependence/SpString.h>
 
+#include "PlatformIndependence/SpString.h"
 #include "Render/UI/Font/Character.h"
 
 namespace sp {

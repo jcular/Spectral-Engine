@@ -1,4 +1,4 @@
-#include "FileReader.h"
+#include "Core/FileReader.h"
 
 namespace sp {
 	SpString const FileReader::ReadFromFile(SpString const path) throw (char *) {

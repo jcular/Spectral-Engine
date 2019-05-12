@@ -2,10 +2,11 @@
 
 #include "Game/Components/GameObjectComponent.h"
 #include "Game/Components/Interface/IRenderer.h"
+#include "Render/VertexData.h"
+
 
 namespace sp {
 	class GameObject;
-	class VertexData;
 
 	class Renderer : public GameObjectComponent, public IRenderer {
 	public:

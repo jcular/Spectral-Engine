@@ -3,11 +3,10 @@
 #include <memory>
 #include <random>
 #define GLFW_INCLUDE_NONE
-#include <GLFW/glfw3>
+#include <GLFW/glfw3.h>
 #include <time.h>
 
 #include "Render/Shader/Shader.h"
-#include "Core/Utility/Vertices.h"
 #include "Game/Components/Material.h"
 #include "Game/Components/Transform.h"
 #include "Game/Components/Renderer.h"
@@ -15,6 +14,7 @@
 #include "Game/Components/CameraInputHandler.h"
 #include "Game/Components/UI/TextRenderer.h"
 #include "Game/GameObject/GameObject.h"
+#include "Game/Vertices.h"
 #include "Render/VertexData.h"
 #include "Game/Components/Rotator.h"
 #include "Render/UI/Font/Font.h"
@@ -145,7 +145,7 @@ namespace sp {
 		}
 
 		SpString const rootPath{ executablePath.substr(0, executablePath.find_last_of("\\")) };
-		SpString const shadersFolderPath{ rootPath + SpString{"/../../../Source/Core/ShaderFiles"} };
+		SpString const shadersFolderPath{ rootPath + SpString{"/../../../Source/Render/ShaderFiles"} };
 		SpString const vertexShaderPath{ shadersFolderPath + SpString{ "/vertex_lighting_shader.glsl" } };
 		SpString const fragmentShaderPath{ shadersFolderPath + SpString{ "/fragment_lighting_shader.glsl" } };
 		SpString const resourcesFolderPath{ rootPath + SpString{ "/../../../Resources/Resources" } };

@@ -1,16 +1,18 @@
 #include <iostream>
 #include <memory>
 
-#include "Core/Utility/Initializers.h"
+#include <glad/glad.h>
+#include "GLFW/glfw3.h"
+
 #include "Core/Utility/ResourcesPathProvider.h"
 #include "Game/Components/Interface/IRenderer.h"
 #include "Game/Components/Material.h"
 #include "Game/Components/Renderer.h"
+#include "Game/Initializers.h"
+#include "Game/Vertices.h"
 #include "PlatformIndependence/Input/Input.h"
 #include "PlatformIndependence/SpWindow.h"
 
-#include "Core/Utility/Vertices.h"
-#include "Game/Components/Renderer.h"
 #include "Core/Math/Vector3.h"
 
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#include <PlatformIndependence/SpString.h>
-#include <ft2build.h>
+#include "PlatformIndependence/SpString.h"
+#include "ft2build.h"
 #include FT_FREETYPE_H
 
 #define DEFAULT_FONT_SIZE 48

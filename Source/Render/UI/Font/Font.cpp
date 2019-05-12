@@ -1,9 +1,11 @@
+#include "Render/UI/Font/Font.h"
+
 #include <ft2build.h>
 #include FT_FREETYPE_H
 #include <iostream>
 
+#define GLFW_INCLUDE_NONE
 #include "GLFW/glfw3.h"
-#include "Render/UI/Font/Font.h"
 #include "Render/UI/Font/Character.h"
 #include "Render/UI/Font/FreeTypeHelper.h"
 
