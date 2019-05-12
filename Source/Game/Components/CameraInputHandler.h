@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/Components/GameObjectComponent.h"
+#include "Game/Components/GameObjectComponent.h"
 #include "Core/Math/Vector3.h"
 
 namespace sp {

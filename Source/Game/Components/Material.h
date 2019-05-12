@@ -3,7 +3,7 @@
 #include <memory>
 #include <vector>
 
-#include "Core/Components/GameObjectComponent.h"
+#include "Game/Components/GameObjectComponent.h"
 #include "Core/Math/Matrix4x4.h"
 #include "Core/Math/Vector3.h"
 #include "PlatformIndependence/SpString.h"

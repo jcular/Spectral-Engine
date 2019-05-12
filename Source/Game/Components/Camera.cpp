@@ -1,10 +1,10 @@
-#include "Core/Components/Camera.h"
-#include "Core/Components/GameObjectComponent.h"
-#include "Core/Components/Transform.h"
-#include "Core/GameObject/GameObject.h"
 #include "Core/Math/LinearTransformations.h"
 #include "Core/Math/Matrix4x4.h"
 #include "Core/Math/Vector3.h"
+#include "Game/Components/Camera.h"
+#include "Game/GameObject/GameObject.h"
+#include "Game/Components/GameObjectComponent.h"
+#include "Game/Components/Transform.h"
 
 namespace sp {
 	std::shared_ptr<Camera> Camera::mainCamera;

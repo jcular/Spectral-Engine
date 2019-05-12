@@ -2,7 +2,7 @@
 
 #include <memory>
 
-#include "Core/Components/GameObjectComponent.h"
+#include "Game/Components/GameObjectComponent.h"
 #include "Core/Math/Degree.h"
 
 namespace sp {

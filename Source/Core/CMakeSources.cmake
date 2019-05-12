@@ -1,30 +1,3 @@
-set(SpectralEngine_Core_Components_SRC
-	"Components/Camera.cpp"
-	"Components/GameObjectComponent.cpp"
-	"Components/Material.cpp"
-	"Components/Renderer.cpp" 
-	"Components/Transform.cpp"
-	"Components/Rotator.cpp"
-	"Components/CameraInputHandler.cpp")
-
-set(SpectralEngine_Core_Components_HEADER
-	"Components/Camera.h"
-	"Components/GameObjectComponent.h"
-	"Components/Material.h"
-	"Components/Renderer.h"
-	"Components/Transform.h"
-	"Components/Rotator.h"
-	"Components/CameraInputHandler.h")
-
-set(SpectralEngine_Core_Components_UI_SRC
-"Components/UI/TextRenderer.cpp")
-
-set(SpectralEngine_Core_Components_UI_HEADER
-"Components/UI/TextRenderer.h")
-
-set(SpectralEngine_Core_Components_Interface_HEADER
-	"Components/Interface/IRenderer.h")
-
 set(SpectralEngine_Core_NoFilter_SRC
 	"Texture.cpp"
 	"FileReader.cpp")
@@ -32,12 +5,6 @@ set(SpectralEngine_Core_NoFilter_SRC
 set(SpectralEngine_Core_NoFilter_HEADER
 	"Texture.h"
 	"FileReader.h")
-
-set(SpectralEngine_Core_GameObject_SRC
-	"GameObject/GameObject.cpp")
-
-set(SpectralEngine_Core_GameObject_HEADER
-	"GameObject/GameObject.h")
 
 set(SpectralEngine_Core_Utility_SRC
 	"Utility/ResourcesPathProvider.cpp")
@@ -63,20 +30,11 @@ set(SpectralEngine_Core_Math_HEADER
 	"Math/Matrix4x4.h")
 
 set(SpectralEngine_Core_Utility_HEADER
-	"Utility/Initializers.h"
-	"Utility/Vertices.h"
 	"Utility/ResourcesPathProvider.h")
 	
 set(SpectralEngine_Core_Files
 	"CMakeSources.cmake")
 
-source_group("Source Files\\Components" FILES ${SpectralEngine_Core_Components_SRC})
-source_group("Header Files\\Components" FILES ${SpectralEngine_Core_Components_HEADER})
-source_group("Header Files\\Components\\Interface" FILES ${SpectralEngine_Core_Components_Interface_HEADER})
-source_group("Source Files\\Components\\UI" FILES ${SpectralEngine_Core_Components_UI_SRC})
-source_group("Header Files\\Components\\UI" FILES ${SpectralEngine_Core_Components_UI_HEADER})
-source_group("Header Files\\GameObject" FILES ${SpectralEngine_Core_GameObject_HEADER})
-source_group("Source Files\\GameObject" FILES ${SpectralEngine_Core_GameObject_SRC})
 source_group("Source Files\\Utility" FILES ${SpectralEngine_Core_Utility_SRC})
 source_group("Header Files\\Utility" FILES ${SpectralEngine_Core_Utility_HEADER})
 source_group("Source Files\\Utility\\Math" FILES ${SpectralEngine_Core_Math_SRC})
@@ -92,8 +50,6 @@ set(SpectralEngine_Core_SRC
 	${SpectralEngine_Core_Components_UI_HEADER}
 	${SpectralEngine_Core_NoFilter_SRC}
 	${SpectralEngine_Core_NoFilter_HEADER}
-	${SpectralEngine_Core_GameObject_HEADER}
-	${SpectralEngine_Core_GameObject_SRC}
 	${SpectralEngine_Core_Utility_SRC}
 	${SpectralEngine_Core_Utility_HEADER}
 	${SpectralEngine_Core_Math_SRC}

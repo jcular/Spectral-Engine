@@ -3,14 +3,14 @@
 
 #include "Core/Utility/Initializers.h"
 #include "Core/Utility/ResourcesPathProvider.h"
-#include "Core/Components/Interface/IRenderer.h"
-#include "Core/Components/Material.h"
-#include "Core/Components/Renderer.h"
+#include "Game/Components/Interface/IRenderer.h"
+#include "Game/Components/Material.h"
+#include "Game/Components/Renderer.h"
 #include "PlatformIndependence/Input/Input.h"
 #include "PlatformIndependence/SpWindow.h"
 
 #include "Core/Utility/Vertices.h"
-#include "Core/Components/Renderer.h"
+#include "Game/Components/Renderer.h"
 #include "Core/Math/Vector3.h"
 
 

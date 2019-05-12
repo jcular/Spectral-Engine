@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Core/Components/GameObjectComponent.h"
-#include "Core/Components/Interface/IRenderer.h"
+#include "Game/Components/GameObjectComponent.h"
+#include "Game/Components/Interface/IRenderer.h"
 
 namespace sp {
 	class GameObject;

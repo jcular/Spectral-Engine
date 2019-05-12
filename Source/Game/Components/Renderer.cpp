@@ -1,12 +1,12 @@
 #include <glad/glad.h>
 #include <memory>
-#include <PlatformIndependence/SpString.h>
 
-#include "Core/Components/Camera.h"
-#include "Core/GameObject/GameObject.h"
-#include "Core/Components/Material.h"
-#include "Core/Components/Renderer.h"
-#include "Core/Components/Transform.h"
+#include "Game/Components/Camera.h"
+#include "Game/GameObject/GameObject.h"
+#include "Game/Components/Material.h"
+#include "Game/Components/Renderer.h"
+#include "Game/Components/Transform.h"
+#include "PlatformIndependence/SpString.h"
 #include "Render/Shader/ShaderProgram.h"
 #include "Render/VertexData.h"
 

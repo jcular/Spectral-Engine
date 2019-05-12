@@ -1,6 +1,6 @@
 #include <PlatformIndependence/SpString.h>
 
-#include "Core/Components/Material.h"
+#include "Game/Components/Material.h"
 #include "Render/Shader/ShaderProgram.h"
 #include "Core/Texture.h"
 

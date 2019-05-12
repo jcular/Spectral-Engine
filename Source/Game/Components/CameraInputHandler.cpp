@@ -1,7 +1,7 @@
 #include "CameraInputHandler.h"
-#include "Core/Components/Camera.h"
-#include "Core/Components/Transform.h"
-#include "Core/GameObject/GameObject.h"
+#include "Game/Components/Camera.h"
+#include "Game/Components/Transform.h"
+#include "Game/GameObject/GameObject.h"
 #include "PlatformIndependence/Input/Input.h"
 #include "Core/Math/Vector2.h"
 

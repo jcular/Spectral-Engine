@@ -3,8 +3,8 @@
 #include <memory>
 #include <PlatformIndependence/SpString.h>
 
-#include "Core/Components/GameObjectComponent.h"
-#include "Core/Components/Interface/IRenderer.h"
+#include "Game/Components/GameObjectComponent.h"
+#include "Game/Components/Interface/IRenderer.h"
 #include "Render/Shader/ShaderProgram.h"
 #include "Render/UI/Font/Font.h"
 #include "Core/Math/Vector2.h"

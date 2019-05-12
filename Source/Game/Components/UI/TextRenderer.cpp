@@ -2,9 +2,9 @@
 #include <memory>
 #include <PlatformIndependence/SpString.h>
 
-#include "Core/Components/Transform.h"
-#include "Core/Components/UI/TextRenderer.h"
-#include "Core/GameObject/GameObject.h"
+#include "Game/Components/Transform.h"
+#include "Game/Components/UI/TextRenderer.h"
+#include "Game/GameObject/GameObject.h"
 #include "Render/UI/Font/Character.h"
 #include "Core/Math/Matrix4x4.h"
 #include "Core/Utility/ResourcesPathProvider.h"

@@ -1,4 +1,4 @@
-#include "Core/Components/GameObjectComponent.h"
+#include "Game/Components/GameObjectComponent.h"
 
 namespace sp {
 	class Rotator : public GameObjectComponent {

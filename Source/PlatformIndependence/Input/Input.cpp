@@ -1,10 +1,11 @@
+#include "PlatformIndependence/Input/Input.h"
+
 #include <memory>
 #include <GLFW/glfw3.h>
 
-#include "Input.h"
-#include "SpWindow.h"
-#include "MouseInputManager.h"
-#include "KeyInputManager.h"
+#include "PlatformIndependence/SpWindow.h"
+#include "PlatformIndependence/Input/MouseInputManager.h"
+#include "PlatformIndependence/Input/KeyInputManager.h"
 
 std::unique_ptr<sp::MouseInputManager> sp::Input::mouseInputManagerUnique;
 std::unique_ptr<sp::KeyInputManager> sp::Input::keyInputManagerUnique;

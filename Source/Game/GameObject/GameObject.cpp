@@ -1,5 +1,5 @@
-#include "Core/Components/GameObjectComponent.h"
-#include "Core/GameObject/GameObject.h"
+#include "Game/Components/GameObjectComponent.h"
+#include "Game/GameObject/GameObject.h"
 
 namespace sp {
 	GameObject::GameObject() {
