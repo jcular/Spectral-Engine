@@ -10,12 +10,14 @@ namespace sp {
 		MouseInputManager() = default;
 
 	public:
+		void update();
 		void updateMousePos(float const xPosition, float const yPosition);
 
 	private:
-		float xPosition;
-		float yPosition;
-		float xDelta;
-		float yDelta;
+		float xPosition = 0.0F;
+		float yPosition = 0.0F;
+		float xDelta = 0.0F;
+		float yDelta = 0.0F;
+		bool updated = false;
 	};
 }

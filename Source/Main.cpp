@@ -6,6 +6,7 @@
 #include "Core/Components/Interface/IRenderer.h"
 #include "Core/Components/Material.h"
 #include "Core/Components/Renderer.h"
+#include "Utility/Input/Input.h"
 #include "Core/SpWindow.h"
 #include "Utility/Input/Input.h"
 
@@ -41,7 +42,7 @@ int main(int argc, char** argv) {
 		lastFrame = currentFrame;
 
 		window->update();
-		// sp::CameraInputHandler::processCameraInput(window, deltaTime);
+		sp::Input::update();
 
 		glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);

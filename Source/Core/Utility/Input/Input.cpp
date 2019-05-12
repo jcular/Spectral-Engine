@@ -28,3 +28,8 @@ bool const sp::Input::keyDown(KeyCode keyCode) {
 sp::Vector2 const sp::Input::mouseAxis() {
 	return Vector2{ Input::mouseInputManagerUnique->xDelta, Input::mouseInputManagerUnique->yDelta };
 }
+
+void sp::Input::update() {
+	Input::keyInputManagerUnique->update();
+	Input::mouseInputManagerUnique->update();
+}

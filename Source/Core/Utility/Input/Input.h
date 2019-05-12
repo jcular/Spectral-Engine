@@ -17,6 +17,7 @@ namespace sp {
 		static void init();
 		static bool const keyDown(KeyCode keyCode);
 		static Vector2 const mouseAxis();
+		static void update();
 
 	private:
 		static std::unique_ptr<MouseInputManager> mouseInputManagerUnique;

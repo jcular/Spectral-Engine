@@ -4,7 +4,8 @@ set(SpectralEngine_Core_Components_SRC
 	"Components/Material.cpp"
 	"Components/Renderer.cpp" 
 	"Components/Transform.cpp"
-	"Components/Rotator.cpp")
+	"Components/Rotator.cpp"
+	"Components/CameraInputHandler.cpp")
 
 set(SpectralEngine_Core_Components_HEADER
 	"Components/Camera.h"
@@ -12,7 +13,8 @@ set(SpectralEngine_Core_Components_HEADER
 	"Components/Material.h"
 	"Components/Renderer.h"
 	"Components/Transform.h"
-	"Components/Rotator.h")
+	"Components/Rotator.h"
+	"Components/CameraInputHandler.h")
 
 set(SpectralEngine_Core_Components_Interface_HEADER
 	"Components/Interface/IRenderer.h")
@@ -60,7 +62,6 @@ set(SpectralEngine_Core_GameObject_HEADER
 	"GameObject/GameObject.h")
 
 set(SpectralEngine_Core_Utility_SRC
-	"Utility/CameraInputHandler.cpp"
 	"Utility/VertexData.cpp"
 	"Utility/FreeTypeHelper.cpp"
 	"Utility/ResourcesPathProvider.cpp")
@@ -99,7 +100,6 @@ set(SpectralEngine_Core_Input_HEADER
 set(SpectralEngine_Core_Utility_HEADER
 	"Utility/Initializers.h"
 	"Utility/Vertices.h"
-	"Utility/CameraInputHandler.h"
 	"Utility/VertexData.h"
 	"Utility/FreeTypeHelper.h"
 	"Utility/ResourcesPathProvider.h"

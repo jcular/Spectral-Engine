@@ -12,6 +12,7 @@
 #include "Core/Components/Transform.h"
 #include "Core/Components/Renderer.h"
 #include "Core/Components/Camera.h"
+#include "Core/Components/CameraInputHandler.h"
 #include "Core/Components/UI/TextRenderer.h"
 #include "Core/GameObject/GameObject.h"
 #include "Core/Utility/VertexData.h"
@@ -136,6 +137,7 @@ namespace sp {
 		GameObject * const cameraGameObject = new GameObject();
 		auto cameraTransformWeak = cameraGameObject->addComponent<Transform>();
 		auto cameraWeak = cameraGameObject->addComponent<Camera>();
+		cameraGameObject->addComponent<CameraInputHandler>();
 
 		if (auto cameraShared = cameraWeak.lock()) {
 			cameraShared->initCamera(45.0F, SCR_WIDTH, SCR_HEIGHT);
