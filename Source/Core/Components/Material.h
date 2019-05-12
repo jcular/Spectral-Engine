@@ -4,11 +4,11 @@
 #include <Utility/SpString.h>
 #include <vector>
 
-#include "Components/GameObjectComponent.h"
+#include "Core/Components/GameObjectComponent.h"
 #include "Texture.h"
 #include "Shader/ShaderProgram.h"
-#include "Utility/Math/Matrix4x4.h"
-#include "Utility/Math/Vector3.h"
+#include "Core/Math/Matrix4x4.h"
+#include "Core/Math/Vector3.h"
 
 namespace sp {
 	class Material : public GameObjectComponent {

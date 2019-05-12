@@ -1,9 +1,9 @@
 #include "CameraInputHandler.h"
-#include "Components/Camera.h"
-#include "Components/Transform.h"
-#include "GameObject/GameObject.h"
-#include "Utility/Input/Input.h"
-#include "Utility/Math/Vector2.h"
+#include "Core/Components/Camera.h"
+#include "Core/Components/Transform.h"
+#include "Core/GameObject/GameObject.h"
+#include "PlatformIndependence/Input/Input.h"
+#include "Core/Math/Vector2.h"
 
 namespace sp {
 	CameraInputHandler::CameraInputHandler(GameObject * gameObject) : GameObjectComponent{ gameObject } {

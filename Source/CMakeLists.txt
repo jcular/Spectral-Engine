@@ -18,6 +18,11 @@ add_subdirectory(Test)
 target_link_libraries(SpectralEngine Core)
 target_link_libraries(SpectralEngine ${CMAKE_CURRENT_SOURCE_DIR}/Libraries/lib/glfw3.lib)
 
+target_include_directories(Core PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(Render PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(PlatformIndependence PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(Test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+
 
 set(EXECUTABLE_OUTPUT_PATH "../bin/executable")
 set(LIBRARY_OUTPUT_PATH "../bin/lib")

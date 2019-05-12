@@ -18,7 +18,7 @@
 #include "Core/Utility/VertexData.h"
 #include "Core/Components/Rotator.h"
 #include "UI/Font/Font.h"
-#include "Utility/Math/Radian.h"
+#include "Core/Math/Radian.h"
 
 namespace sp {
 	constexpr unsigned int SCR_WIDTH = 800;

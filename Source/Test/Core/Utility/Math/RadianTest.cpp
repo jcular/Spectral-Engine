@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
-#include "Utility/Math/Radian.h"
-#include "Utility/Math/SpMath.h"
+#include "Core/Math/Radian.h"
+#include "Core/Math/SpMath.h"
 
 namespace sp {
 	namespace test {

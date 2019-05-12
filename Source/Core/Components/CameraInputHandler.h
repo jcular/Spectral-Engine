@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Components/GameObjectComponent.h"
-#include "Utility/Math/Vector3.h"
+#include "Core/Components/GameObjectComponent.h"
+#include "Core/Math/Vector3.h"
 
 namespace sp {
 	 class CameraInputHandler : public GameObjectComponent {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Utility/Math/Vector3.h"
+#include "Core/Math/Vector3.h"
 
 namespace sp {
 	class Vector2 {

@@ -1,7 +1,7 @@
 #include <GameObject/GameObject.h>
 
 #include "Rotator.h"
-#include "Components/Transform.h"
+#include "Core/Components/Transform.h"
 
 namespace sp {
 	Rotator::Rotator(GameObject * const gameObjectOwner) : GameObjectComponent{ gameObjectOwner } {

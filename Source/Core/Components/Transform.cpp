@@ -1,7 +1,7 @@
 #include "Transform.h"
-#include "Utility/Math/Degree.h"
-#include "Utility/Math/LinearTransformations.h"
-#include "Utility/Math/Matrix4x4.h"
+#include "Core/Math/Degree.h"
+#include "Core/Math/LinearTransformations.h"
+#include "Core/Math/Matrix4x4.h"
 
 namespace sp {
 	Transform::Transform(GameObject * const gameObjectOwner) :

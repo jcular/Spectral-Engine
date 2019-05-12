@@ -2,8 +2,8 @@
 
 #include<memory>
 
-#include "Utility/Input/KeyCode.h"
-#include "Utility/Math/Vector2.h"
+#include "PlatformIndependence/Input/KeyCode.h"
+#include "Core/Math/Vector2.h"
 
 namespace sp {
 	class MouseInputManager;

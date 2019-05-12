@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "Utility/Math/Vector3.h"
+#include "Core/Math/Vector3.h"
 
 namespace sp {
 	namespace test {

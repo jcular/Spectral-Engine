@@ -2,8 +2,8 @@
 
 #include <memory>
 
-#include "Components/GameObjectComponent.h"
-#include "Utility/Math/Degree.h"
+#include "Core/Components/GameObjectComponent.h"
+#include "Core/Math/Degree.h"
 
 namespace sp {
 	class GameObject;

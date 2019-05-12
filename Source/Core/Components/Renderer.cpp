@@ -2,11 +2,11 @@
 #include <memory>
 #include <Utility/SpString.h>
 
-#include "Components/Camera.h"
-#include "Components/Material.h"
-#include "Components/Renderer.h"
-#include "Components/Transform.h"
-#include "GameObject/GameObject.h"
+#include "Core/Components/Camera.h"
+#include "Core/Components/Material.h"
+#include "Core/Components/Renderer.h"
+#include "Core/Components/Transform.h"
+#include "Core/GameObject/GameObject.h"
 #include "Shader/ShaderProgram.h"
 #include "Utility/VertexData.h"
 

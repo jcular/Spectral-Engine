@@ -1,7 +1,7 @@
 #pragma once
 
 #include "GameObjectComponent.h"
-#include "Utility/Math/Vector3.h"
+#include "Core/Math/Vector3.h"
 
 namespace sp {
 	class Matrix4x4;

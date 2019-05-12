@@ -1,6 +1,6 @@
 #include <Utility/SpString.h>
 
-#include "Components/Material.h"
+#include "Core/Components/Material.h"
 #include "Shader/ShaderProgram.h"
 #include "Texture.h"
 

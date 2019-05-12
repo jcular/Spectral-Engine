@@ -2,13 +2,13 @@
 #include <memory>
 #include <Utility/SpString.h>
 
-#include "Components/Transform.h"
-#include "Components/UI/TextRenderer.h"
-#include "GameObject/GameObject.h"
+#include "Core/Components/Transform.h"
+#include "Core/Components/UI/TextRenderer.h"
+#include "Core/GameObject/GameObject.h"
 #include "UI/Font/Character.h"
-#include "Utility/Math/Matrix4x4.h"
+#include "Core/Math/Matrix4x4.h"
 #include "Utility/ResourcesPathProvider.h"
-#include "Utility/Math/LinearTransformations.h"
+#include "Core/Math/LinearTransformations.h"
 
 
 sp::TextRenderer::TextRenderer(GameObject * const gameObject) : GameObjectComponent(gameObject),

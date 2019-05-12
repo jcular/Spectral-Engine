@@ -6,13 +6,13 @@
 #include "Core/Components/Interface/IRenderer.h"
 #include "Core/Components/Material.h"
 #include "Core/Components/Renderer.h"
-#include "Utility/Input/Input.h"
+#include "PlatformIndependence/Input/Input.h"
 #include "Core/SpWindow.h"
-#include "Utility/Input/Input.h"
+#include "PlatformIndependence/Input/Input.h"
 
 #include "Core/Utility/Vertices.h"
 #include "Core/Components/Renderer.h"
-#include "Utility/Math/Vector3.h"
+#include "Core/Math/Vector3.h"
 
 
 int main(int argc, char** argv) {
