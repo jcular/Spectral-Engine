@@ -33,6 +33,8 @@ set(SpectralEngine_Core_Utility_HEADER
 set(SpectralEngine_Core_Files
 	"CMakeSources.cmake")
 
+source_group("Source Files" ${SpectralEngine_Core_NoFilter_SRC})
+source_group("Header Files" ${SpectralEngine_Core_NoFilter_HEADER})
 source_group("Source Files\\Utility" FILES ${SpectralEngine_Core_Utility_SRC})
 source_group("Header Files\\Utility" FILES ${SpectralEngine_Core_Utility_HEADER})
 source_group("Source Files\\Utility\\Math" FILES ${SpectralEngine_Core_Math_SRC})
