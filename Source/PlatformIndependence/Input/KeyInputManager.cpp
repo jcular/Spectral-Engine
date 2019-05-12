@@ -1,4 +1,4 @@
-#include "KeyInputManager.h"
+#include "PlatformIndependence/Input/KeyInputManager.h"
 
 sp::KeyInputManager::KeyInputManager(GLFWwindow * const window) : window{ window } {
 }

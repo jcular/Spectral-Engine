@@ -3,7 +3,7 @@
 #include <map>
 #include <GLFW/glfw3.h>
 
-#include "Utility./Input/KeyCode.h"
+#include "PlatformIndependence/Input/KeyCode.h"
 
 namespace sp {
 	class KeyInputManager {
