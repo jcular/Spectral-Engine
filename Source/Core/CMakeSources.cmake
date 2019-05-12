@@ -65,15 +65,10 @@ set(SpectralEngine_Core_Math_HEADER
 set(SpectralEngine_Core_Utility_HEADER
 	"Utility/Initializers.h"
 	"Utility/Vertices.h"
-	"Utility/ResourcesPathProvider.h"
-	"Utility/SpString.h")
-	
-set(SpectralEngine_Glad_SRC
-	"Glad/glad.c")
+	"Utility/ResourcesPathProvider.h")
 	
 set(SpectralEngine_Core_Files
-	"CMakeSources.cmake"
-	"CopyShaderFiles.cmake")
+	"CMakeSources.cmake")
 
 source_group("Source Files\\Components" FILES ${SpectralEngine_Core_Components_SRC})
 source_group("Header Files\\Components" FILES ${SpectralEngine_Core_Components_HEADER})
@@ -88,7 +83,6 @@ source_group("Source Files\\Utility\\Math" FILES ${SpectralEngine_Core_Math_SRC}
 source_group("Header Files\\Utility\\Math" FILES ${SpectralEngine_Core_Math_HEADER})
 source_group("Source Files\\Utility\\Input" FILES ${SpectralEngine_Core_Input_SRC})
 source_group("Header Files\\Utility\\Input" FILES ${SpectralEngine_Core_Input_HEADER})
-source_group("Glad" FILES ${SpectralEngine_Glad_SRC})
 
 set(SpectralEngine_Core_SRC
 	${SpectralEngine_Core_Components_SRC}
