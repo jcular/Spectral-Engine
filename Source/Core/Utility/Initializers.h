@@ -12,6 +12,7 @@
 #include "Core/Components/Transform.h"
 #include "Core/Components/Renderer.h"
 #include "Core/Components/Camera.h"
+#include "Core/Components/CameraInputHandler.h"
 #include "Core/Components/UI/TextRenderer.h"
 #include "Core/GameObject/GameObject.h"
 #include "Core/Utility/VertexData.h"
@@ -24,8 +25,6 @@ namespace sp {
 	constexpr unsigned int SCR_HEIGHT = 600;
 	std::default_random_engine generator{ (unsigned int)time(0) };
 	std::uniform_real_distribution<float> distribution{ 0.0F, 1.0F };
-
-	GLFWwindow * initGLFWwindow();
 
 	void createText(SpString const & text, SpString const & fontPath) {
 		GameObject * textGameObject = new GameObject;
@@ -138,6 +137,7 @@ namespace sp {
 		GameObject * const cameraGameObject = new GameObject();
 		auto cameraTransformWeak = cameraGameObject->addComponent<Transform>();
 		auto cameraWeak = cameraGameObject->addComponent<Camera>();
+		cameraGameObject->addComponent<CameraInputHandler>();
 
 		if (auto cameraShared = cameraWeak.lock()) {
 			cameraShared->initCamera(45.0F, SCR_WIDTH, SCR_HEIGHT);
@@ -166,44 +166,5 @@ namespace sp {
 		int const numberOfBoxes = numberOfObjects - 1;
 		std::weak_ptr<Transform> lightSourceTransformWeak = lightSourceGameObject->getComponent<Transform>();
 		createBoxObjects(specularMapPath, diffuseMapPath, vertexShaderPath, fragmentShaderPath, numberOfBoxes, cameraTransformWeak, lightSourceTransformWeak);
-	}
-
-	GLFWwindow * setupWindow() {
-		auto window = initGLFWwindow();
-
-		if (window == NULL) {
-			std::cout << "Failed to create GLFW window." << std::endl;
-			glfwTerminate();
-			return nullptr;
-		}
-
-		glfwMakeContextCurrent(window);
-
-		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-			std::cout << "Failed to initialize GLAD." << std::endl;
-			return nullptr;
-		}
-
-		glViewport(0, 0, 800, 600);
-
-		glfwSetFramebufferSizeCallback(window,
-			[](GLFWwindow * window, int width, int height) {
-			glViewport(0, 0, width, height);
-		});
-
-		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-
-		return window;
-	}
-
-	GLFWwindow * initGLFWwindow() {
-		glfwInit();
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-		GLFWwindow * window = glfwCreateWindow(800, 600, "Spectral Engine", NULL, NULL);
-
-		return window;
 	}
 }

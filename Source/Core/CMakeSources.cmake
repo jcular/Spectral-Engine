@@ -4,7 +4,8 @@ set(SpectralEngine_Core_Components_SRC
 	"Components/Material.cpp"
 	"Components/Renderer.cpp" 
 	"Components/Transform.cpp"
-	"Components/Rotator.cpp")
+	"Components/Rotator.cpp"
+	"Components/CameraInputHandler.cpp")
 
 set(SpectralEngine_Core_Components_HEADER
 	"Components/Camera.h"
@@ -12,7 +13,8 @@ set(SpectralEngine_Core_Components_HEADER
 	"Components/Material.h"
 	"Components/Renderer.h"
 	"Components/Transform.h"
-	"Components/Rotator.h")
+	"Components/Rotator.h"
+	"Components/CameraInputHandler.h")
 
 set(SpectralEngine_Core_Components_Interface_HEADER
 	"Components/Interface/IRenderer.h")
@@ -45,11 +47,13 @@ set(SpectralEngine_Core_Font_HEADER
 
 set(SpectralEngine_Core_NoFilter_SRC
 	"Texture.cpp"
-	"FileReader.cpp")
+	"FileReader.cpp"
+	"SpWindow.cpp")
 
 set(SpectralEngine_Core_NoFilter_HEADER
 	"Texture.h"
-	"FileReader.h")
+	"FileReader.h"
+	"SpWindow.h")
 
 set(SpectralEngine_Core_GameObject_SRC
 	"GameObject/GameObject.cpp")
@@ -58,7 +62,6 @@ set(SpectralEngine_Core_GameObject_HEADER
 	"GameObject/GameObject.h")
 
 set(SpectralEngine_Core_Utility_SRC
-	"Utility/CameraInputHandler.cpp"
 	"Utility/VertexData.cpp"
 	"Utility/FreeTypeHelper.cpp"
 	"Utility/ResourcesPathProvider.cpp")
@@ -83,10 +86,20 @@ set(SpectralEngine_Core_Math_HEADER
 	"Utility/Math/Quaternion.h"
 	"Utility/Math/Matrix4x4.h")
 
+set(SpectralEngine_Core_Input_SRC
+	"Utility/Input/Input.cpp"
+	"Utility/Input/KeyInputManager.cpp"
+	"Utility/Input/MouseInputManager.cpp")
+
+set(SpectralEngine_Core_Input_HEADER
+	"Utility/Input/Input.h"
+	"Utility/Input/KeyInputManager.h"
+	"Utility/Input/MouseInputManager.h"
+	"Utility/Input/KeyCode.h")
+
 set(SpectralEngine_Core_Utility_HEADER
 	"Utility/Initializers.h"
 	"Utility/Vertices.h"
-	"Utility/CameraInputHandler.h"
 	"Utility/VertexData.h"
 	"Utility/FreeTypeHelper.h"
 	"Utility/ResourcesPathProvider.h"
@@ -125,6 +138,8 @@ source_group("Source Files\\Utility" FILES ${SpectralEngine_Core_Utility_SRC})
 source_group("Header Files\\Utility" FILES ${SpectralEngine_Core_Utility_HEADER})
 source_group("Source Files\\Utility\\Math" FILES ${SpectralEngine_Core_Math_SRC})
 source_group("Header Files\\Utility\\Math" FILES ${SpectralEngine_Core_Math_HEADER})
+source_group("Source Files\\Utility\\Input" FILES ${SpectralEngine_Core_Input_SRC})
+source_group("Header Files\\Utility\\Input" FILES ${SpectralEngine_Core_Input_HEADER})
 source_group("Shader Files\\Vertex" FILES ${SpectralEngine_Vertex_Shaders_SRC})
 source_group("Shader Files\\Fragment" FILES ${SpectralEngine_Fragment_Shaders_SRC})
 source_group("Glad" FILES ${SpectralEngine_Glad_SRC})
@@ -147,6 +162,8 @@ set(SpectralEngine_Core_SRC
 	${SpectralEngine_Core_Utility_HEADER}
 	${SpectralEngine_Core_Math_SRC}
 	${SpectralEngine_Core_Math_HEADER}
+	${SpectralEngine_Core_Input_SRC}
+	${SpectralEngine_Core_Input_HEADER}
 	${SpectralEngine_Vertex_Shaders_SRC}
 	${SpectralEngine_Fragment_Shaders_SRC}
 	${SpectralEngine_Glad_SRC}

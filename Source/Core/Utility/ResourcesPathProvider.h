@@ -15,6 +15,5 @@ namespace sp {
 
 	private:
 		ResourcesPathProvider() = delete;
-
 	};
 }
