@@ -31,8 +31,7 @@ set(SpectralEngine_Core_NoFilter_SRC
 
 set(SpectralEngine_Core_NoFilter_HEADER
 	"Texture.h"
-	"FileReader.h"
-	"SpWindow.h")
+	"FileReader.h")
 
 set(SpectralEngine_Core_GameObject_SRC
 	"GameObject/GameObject.cpp")
@@ -41,8 +40,6 @@ set(SpectralEngine_Core_GameObject_HEADER
 	"GameObject/GameObject.h")
 
 set(SpectralEngine_Core_Utility_SRC
-	"Utility/VertexData.cpp"
-	"Utility/FreeTypeHelper.cpp"
 	"Utility/ResourcesPathProvider.cpp")
 
 set(SpectralEngine_Core_Math_SRC
@@ -68,8 +65,6 @@ set(SpectralEngine_Core_Math_HEADER
 set(SpectralEngine_Core_Utility_HEADER
 	"Utility/Initializers.h"
 	"Utility/Vertices.h"
-	"Utility/VertexData.h"
-	"Utility/FreeTypeHelper.h"
 	"Utility/ResourcesPathProvider.h"
 	"Utility/SpString.h")
 	

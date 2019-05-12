@@ -1,3 +1,9 @@
+set(SpectralEngine_Render_NoFilter_SRC
+    "VertexData.cpp")
+    
+set(SpectralEngine_Render_NoFilter_HEADER
+    "VertexData.h")
+
 set(SpectralEngine_Render_Shader_SRC
     "Shader/ShaderCompilationException.cpp"
     "Shader/ShaderProgramLinkingException.cpp"
@@ -12,11 +18,13 @@ set(SpectralEngine_Render_Shader_HEADER
 
 set(SpectralEngine_Render_Font_SRC
     "UI/Font/Character.cpp"
-    "UI/Font/Font.cpp")
+    "UI/Font/Font.cpp"
+	"UI/Font/FreeTypeHelper.cpp")
 
 set(SpectralEngine_Render_Font_HEADER
     "UI/Font/Character.h"
-    "UI/Font/Font.h")
+    "UI/Font/Font.h"
+	"UI/Font/FreeTypeHelper.h")
 
 set(SpectralEngine_Vertex_Shaders_SRC
     "ShaderFiles/vertex_shader.glsl"

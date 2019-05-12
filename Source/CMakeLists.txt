@@ -11,6 +11,8 @@ include(CmakeSources.cmake)
 set(LIBRARIES_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Libraries/Header)
 
 add_subdirectory(Core)
+add_subdirectory(Render)
+add_subdirectory(PlatformIndependence)
 add_subdirectory(Test)
 
 target_link_libraries(SpectralEngine Core)
