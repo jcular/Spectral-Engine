@@ -1,6 +1,6 @@
 #include <sstream>
 
-#include "Shader/ShaderCompilationException.h"
+#include "Render/Shader/ShaderCompilationException.h"
 
 namespace sp {
 	ShaderCompilationException::ShaderCompilationException(unsigned int const shaderId, GLenum shaderType, char infoLog[512])

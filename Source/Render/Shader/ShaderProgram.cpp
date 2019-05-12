@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "Shader/Shader.h"
-#include "Shader/ShaderProgram.h"
-#include "Shader/ShaderProgramLinkingException.h"
+#include "Render/Shader/Shader.h"
+#include "Render/Shader/ShaderProgram.h"
+#include "Render/Shader/ShaderProgramLinkingException.h"
 
 namespace sp {
 	ShaderProgram::ShaderProgram(SpString vertexShaderPath, SpString fragmentShaderPath) {

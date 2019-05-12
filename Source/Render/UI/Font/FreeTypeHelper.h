@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Utility/SpString.h>
+#include <PlatformIndependence/SpString.h>
 #include <ft2build.h>
 #include FT_FREETYPE_H
 

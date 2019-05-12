@@ -7,8 +7,7 @@
 #include "Core/Components/Material.h"
 #include "Core/Components/Renderer.h"
 #include "PlatformIndependence/Input/Input.h"
-#include "Core/SpWindow.h"
-#include "PlatformIndependence/Input/Input.h"
+#include "PlatformIndependence/SpWindow.h"
 
 #include "Core/Utility/Vertices.h"
 #include "Core/Components/Renderer.h"

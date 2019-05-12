@@ -3,8 +3,8 @@
 #include <iostream>
 
 #include "GLFW/glfw3.h"
-#include "UI/Font/Font.h"
-#include "UI/Font/Character.h"
+#include "Render/UI/Font/Font.h"
+#include "Render/UI/Font/Character.h"
 #include "Utility/FreeTypeHelper.h"
 
 std::shared_ptr<sp::Font const> const sp::Font::getFont(SpString const & path) {

@@ -2,9 +2,9 @@
 
 #include <map>
 #include <memory>
-#include <Utility/SpString.h>
+#include <PlatformIndependence/SpString.h>
 
-#include "UI/Font/Character.h"
+#include "Render/UI/Font/Character.h"
 
 namespace sp {
 	class Font {

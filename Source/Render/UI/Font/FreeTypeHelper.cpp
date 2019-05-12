@@ -1,8 +1,8 @@
 #include <iostream>
 
 #include "glad/glad.h"
-#include "UI/Font/Character.h"
-#include "UI/Font/Font.h"
+#include "Render/UI/Font/Character.h"
+#include "Render/UI/Font/Font.h"
 #include "Render/UI/Font/FreeTypeHelper.h"
 
 int sp::createFace(SpString const & path, FT_Face & face) {

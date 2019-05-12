@@ -1,13 +1,13 @@
 #include <glad/glad.h>
 #include <memory>
-#include <Utility/SpString.h>
+#include <PlatformIndependence/SpString.h>
 
 #include "Core/Components/Camera.h"
 #include "Core/Components/Material.h"
 #include "Core/Components/Renderer.h"
 #include "Core/Components/Transform.h"
 #include "Core/GameObject/GameObject.h"
-#include "Shader/ShaderProgram.h"
+#include "Render/Shader/ShaderProgram.h"
 #include "Utility/VertexData.h"
 
 namespace sp {

@@ -3,10 +3,10 @@
 #include <memory>
 #include <random>
 #define GLFW_INCLUDE_NONE
-#include <GLFW/glfw3.h>
+#include <GLFW/glfw3>
 #include <time.h>
 
-#include "Core/Shader/Shader.h"
+#include "Render/Shader/Shader.h"
 #include "Core/Utility/Vertices.h"
 #include "Core/Components/Material.h"
 #include "Core/Components/Transform.h"
@@ -15,9 +15,9 @@
 #include "Core/Components/CameraInputHandler.h"
 #include "Core/Components/UI/TextRenderer.h"
 #include "Core/GameObject/GameObject.h"
-#include "Core/Utility/VertexData.h"
+#include "Render/VertexData.h"
 #include "Core/Components/Rotator.h"
-#include "UI/Font/Font.h"
+#include "Render/UI/Font/Font.h"
 #include "Core/Math/Radian.h"
 
 namespace sp {

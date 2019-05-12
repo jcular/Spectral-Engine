@@ -1,12 +1,12 @@
 #pragma once
 
 #include <memory>
-#include <Utility/SpString.h>
+#include <PlatformIndependence/SpString.h>
 #include <vector>
 
 #include "Core/Components/GameObjectComponent.h"
-#include "Texture.h"
-#include "Shader/ShaderProgram.h"
+#include "Render/VertexData.h"
+#include "Render/Shader/ShaderProgram.h"
 #include "Core/Math/Matrix4x4.h"
 #include "Core/Math/Vector3.h"
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Utility/SpString.h>
+#include <PlatformIndependence/SpString.h>
 
 namespace sp {
 	class ShaderProgramLinkingException {

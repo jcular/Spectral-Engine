@@ -1,8 +1,8 @@
-#include <Utility/SpString.h>
+#include <PlatformIndependence/SpString.h>
 
 #include "Core/Components/Material.h"
-#include "Shader/ShaderProgram.h"
-#include "Texture.h"
+#include "Render/Shader/ShaderProgram.h"
+#include "Core/Texture.h"
 
 #define MATERIAL_VARIABLE_NAME "material"
 

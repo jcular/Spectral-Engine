@@ -1,13 +1,13 @@
-#include <glad/glad.h>
+#include <ThirdParty/Glad/include/glad/glad.h>
 #include <memory>
-#include <Utility/SpString.h>
+#include <PlatformIndependence/SpString.h>
 
 #include "Core/Components/Transform.h"
 #include "Core/Components/UI/TextRenderer.h"
 #include "Core/GameObject/GameObject.h"
-#include "UI/Font/Character.h"
+#include "Render/UI/Font/Character.h"
 #include "Core/Math/Matrix4x4.h"
-#include "Utility/ResourcesPathProvider.h"
+#include "Core/Utility/ResourcesPathProvider.h"
 #include "Core/Math/LinearTransformations.h"
 
 
