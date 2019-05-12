@@ -8,6 +8,7 @@
 namespace sp {
 	CameraInputHandler::CameraInputHandler(GameObject * gameObject) : GameObjectComponent{ gameObject } {
 	}
+
 	void CameraInputHandler::update(float deltaTime) {
 		 this->processMouseInput();
 		 this->processKeyInput(deltaTime);
@@ -15,9 +16,8 @@ namespace sp {
 
 	 void CameraInputHandler::processMouseInput() {
 
-		 double sensitivity = 0.05F;
-
-		 Vector2 mouseOffset = Input::mouseAxis() * sensitivity;
+		 double const sensitivity = 0.05;
+		 Vector2 const mouseOffset = Input::mouseAxis() * sensitivity;
 
 		 yaw -= mouseOffset.x;
 		 pitch += mouseOffset.y;
@@ -29,17 +29,17 @@ namespace sp {
 			 pitch = -89.0F;
 		 }
 
-		 auto cameraShared = Camera::getMainCamera();
-		 auto transformWeak = cameraShared->getGameObject()->getComponent<Transform>();
+		 auto const cameraShared = Camera::getMainCamera();
+		 auto const transformWeak = cameraShared->getGameObject()->getComponent<Transform>();
 
-		 if (auto transformShared = transformWeak.lock()) {
+		 if (auto const transformShared = transformWeak.lock()) {
 			 transformShared->setRotationEuler(Vector3{ static_cast<float>(pitch), static_cast<float>(yaw), 0.0F });
 		 }
 	 }
 
 	 void CameraInputHandler::processKeyInput(float deltaTime) {
-	 	float cameraSpeed = 1.0F;
-	 	auto transformWeak = this->getGameObject()->getComponent<Transform>();
+	 	float const cameraSpeed = 1.0F;
+	 	auto const transformWeak = this->getGameObject()->getComponent<Transform>();
 		std::weak_ptr<Camera> cameraWeak = this->getGameObject()->getComponent<Camera>();
 
 		Vector3 cameraFront;
