@@ -2,7 +2,7 @@
 
 #include "Game/Components/Material.h"
 #include "Render/Shader/ShaderProgram.h"
-#include "Core/Texture.h"
+#include "Render/Texture.h"
 
 #define MATERIAL_VARIABLE_NAME "material"
 

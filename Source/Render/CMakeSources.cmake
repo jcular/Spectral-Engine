@@ -1,8 +1,10 @@
 set(SpectralEngine_Render_NoFilter_SRC
-    "VertexData.cpp")
+    "VertexData.cpp"
+	"Texture.cpp")
     
 set(SpectralEngine_Render_NoFilter_HEADER
-    "VertexData.h")
+    "VertexData.h"
+	"Texture.h")
 
 set(SpectralEngine_Render_Shader_SRC
     "Shader/ShaderCompilationException.cpp"

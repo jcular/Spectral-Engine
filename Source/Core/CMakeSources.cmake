@@ -1,9 +1,7 @@
 set(SpectralEngine_Core_NoFilter_SRC
-	"Texture.cpp"
 	"FileReader.cpp")
 
 set(SpectralEngine_Core_NoFilter_HEADER
-	"Texture.h"
 	"FileReader.h")
 
 set(SpectralEngine_Core_Utility_SRC
