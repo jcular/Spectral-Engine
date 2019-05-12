@@ -1,6 +1,6 @@
 #pragma once
 
-#include <glad/glad.h>
+#include <ThirdParty/Glad/include/glad/glad.h>
 #include <iostream>
 #include <PlatformIndependence/SpString.h>
 

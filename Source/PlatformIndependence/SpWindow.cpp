@@ -1,7 +1,7 @@
 #include "SpWindow.h"
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
-#include <glad/glad.h>
+#include <ThirdParty/Glad/include/glad/glad.h>
 #include <iostream>
 
 #include "SpWindow.h"

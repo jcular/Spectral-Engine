@@ -5,7 +5,7 @@
 #include "GLFW/glfw3.h"
 #include "Render/UI/Font/Font.h"
 #include "Render/UI/Font/Character.h"
-#include "Utility/FreeTypeHelper.h"
+#include "Render/UI/Font/FreeTypeHelper.h"
 
 std::shared_ptr<sp::Font const> const sp::Font::getFont(SpString const & path) {
 	FT_Face face;

@@ -1,6 +1,6 @@
-#include <GameObject/GameObject.h>
+#include "Core/Components/Rotator.h"
 
-#include "Rotator.h"
+#include "Core/GameObject/GameObject.h"
 #include "Core/Components/Transform.h"
 
 namespace sp {

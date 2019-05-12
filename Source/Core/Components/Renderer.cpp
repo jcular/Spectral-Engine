@@ -3,12 +3,12 @@
 #include <PlatformIndependence/SpString.h>
 
 #include "Core/Components/Camera.h"
+#include "Core/GameObject/GameObject.h"
 #include "Core/Components/Material.h"
 #include "Core/Components/Renderer.h"
 #include "Core/Components/Transform.h"
-#include "Core/GameObject/GameObject.h"
 #include "Render/Shader/ShaderProgram.h"
-#include "Utility/VertexData.h"
+#include "Render/VertexData.h"
 
 namespace sp {
 	Renderer::Renderer(GameObject * const gameObjectOwner) : GameObjectComponent(gameObjectOwner) {

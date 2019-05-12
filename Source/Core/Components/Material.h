@@ -1,16 +1,18 @@
 #pragma once
 
 #include <memory>
-#include <PlatformIndependence/SpString.h>
 #include <vector>
 
 #include "Core/Components/GameObjectComponent.h"
-#include "Render/VertexData.h"
-#include "Render/Shader/ShaderProgram.h"
 #include "Core/Math/Matrix4x4.h"
 #include "Core/Math/Vector3.h"
+#include "PlatformIndependence/SpString.h"
+#include "Render/Shader/ShaderProgram.h"
+#include "Render/VertexData.h"
 
 namespace sp {
+	class Texture;
+
 	class Material : public GameObjectComponent {
 	public:
 		Material(GameObject * gameObject);
