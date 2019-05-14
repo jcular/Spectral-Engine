@@ -13,3 +13,5 @@ CTestTestfile.cmake
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+Source/ThirdParty/GLFW/*
