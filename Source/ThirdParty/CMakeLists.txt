@@ -20,9 +20,6 @@ ExternalProject_Add(glfw_external
     CMAKE_ARGS     -DCMAKE_INSTALL_PREFIX=${GLFW_INSTALL_DIR}
 )
 
-add_library(glfw STATIC IMPORTED)
-set_target_properties(glfw PROPERTIES IMPORTED_LOCATION ${GLFW_INSTALL_DIR}/lib/glfw3.lib)
-
-target_link_libraries(ThirdParty glfw)
+target_link_libraries(ThirdParty ${GLFW_INSTALL_DIR}/lib/glfw3.lib)
 
 target_include_directories(ThirdParty PUBLIC ${ThirdParty_Include_Dirs})
