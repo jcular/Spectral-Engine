@@ -35,7 +35,7 @@ set(SpectralEngine_Game_GameObject_SRC
 set(SpectralEngine_Game_GameObject_HEADER
     "GameObject/GameObject.h")
 
-source_group("Header Files", ${SpectralEngine_Game_NoFilter_HEADER})
+source_group("Header Files" FILES ${SpectralEngine_Game_NoFilter_HEADER})
 source_group("Source Files\\Components" FILES ${SpectralEngine_Game_Components_SRC})
 source_group("Header Files\\Components" FILES ${SpectralEngine_Game_Components_HEADER})
 source_group("Header Files\\Components\\Interface" FILES ${SpectralEngine_Game_Components_Interface_HEADER})
