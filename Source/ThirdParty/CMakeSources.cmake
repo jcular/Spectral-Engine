@@ -14,6 +14,6 @@ set(ThirdParty_SRC
 set(ThirdParty_Include_Dirs
     "GLFW/include"
     "Glad/include"
-    "FreeType/include"
+    "FreeType/include/freetype2"
     "KHR"
     "STB_Image/include")
