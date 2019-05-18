@@ -1,11 +1,11 @@
-#include "gtest/gtest.h"
+#include "catch2/catch.hpp"
 #include "Core/Math/LinearTransformations.h"
 #include "Core/Math/Matrix4x4.h"
 #include "Core/Math/Vector3.h"
 
 namespace sp {
 	namespace test {
-		TEST(LinearTransformations, translate) {
+		TEST_CASE("LinearTransformations/translate") {
 			// arrange
 			Matrix4x4 transformation{};
 
@@ -33,11 +33,11 @@ namespace sp {
 				}
 
 				float const * values = resultMatrix.getValuePtr();
-				ASSERT_FLOAT_EQ(values[i], expectedValue);
+				REQUIRE(values[i] == Approx(expectedValue));
 			}
 		}
 
-		TEST(LinearTransformations, scale) {
+		TEST_CASE("LinearTransformations/scale") {
 			// arrange
 			Matrix4x4 transformation{};
 
@@ -67,7 +67,7 @@ namespace sp {
 				}
 
 				float const * resultValues = resultMatrix.getValuePtr();
-				ASSERT_FLOAT_EQ(resultValues[i], expectedValue);
+				REQUIRE(resultValues[i] == Approx(expectedValue));
 			}
 		}
 	}

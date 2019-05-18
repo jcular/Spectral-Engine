@@ -1,9 +1,9 @@
-#include "gtest/gtest.h"
+#include "catch2/catch.hpp"
 #include "Core/Math/Vector3.h"
 
 namespace sp {
 	namespace test {
-		TEST(Vector3, additionWithVector3) {
+		TEST_CASE("Vector3/additionWithVector3") {
 			// arrange
 			float const firstX = 0.7F;
 			float const secondX = 12.23F;
@@ -18,12 +18,12 @@ namespace sp {
 			Vector3 const result = firstVector + secondVector;
 
 			// assert
-			ASSERT_FLOAT_EQ(result.x, firstX + secondX);
-			ASSERT_FLOAT_EQ(result.y, firstY + secondY);
-			ASSERT_FLOAT_EQ(result.z, firstZ + secondZ);
+			REQUIRE(result.x == Approx(firstX + secondX));
+			REQUIRE(result.y == Approx(firstY + secondY));
+			REQUIRE(result.z == Approx(firstZ + secondZ));
 		}
 
-		TEST(Vector3, subtractionWithVector3) {
+		TEST_CASE("Vector3/subtractionWithVector3") {
 			// arrange
 			float const firstX = 0.7F;
 			float const secondX = 12.23F;
@@ -38,12 +38,12 @@ namespace sp {
 			Vector3 const result = firstVector - secondVector;
 
 			// assert
-			ASSERT_FLOAT_EQ(result.x, firstX - secondX);
-			ASSERT_FLOAT_EQ(result.y, firstY - secondY);
-			ASSERT_FLOAT_EQ(result.z, firstZ - secondZ);
+			REQUIRE(result.x == Approx(firstX - secondX));
+			REQUIRE(result.y == Approx(firstY - secondY));
+			REQUIRE(result.z == Approx(firstZ - secondZ));
 		}
 
-		TEST(Vector3, negation) {
+		TEST_CASE("Vector3/negation") {
 			// arrange
 			float const x = 0.7F;
 			float const y = 12.23F;
@@ -54,9 +54,9 @@ namespace sp {
 			Vector3 const result = -vector;
 
 			// assert
-			ASSERT_FLOAT_EQ(result.x, -x);
-			ASSERT_FLOAT_EQ(result.y, -y);
-			ASSERT_FLOAT_EQ(result.z, -z);
+			REQUIRE(result.x == Approx (-x));
+			REQUIRE(result.y == Approx(-y));
+			REQUIRE(result.z == Approx(-z));
 		}
 	}
 }

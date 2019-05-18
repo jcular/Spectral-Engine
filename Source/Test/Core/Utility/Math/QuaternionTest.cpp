@@ -1,11 +1,11 @@
-#include "gtest/gtest.h"
+#include "catch2/catch.hpp"
 #include "Core/Math/Quaternion.h"
 #include "Core/Math/Vector3.h"
 #include "Core/Math/SpMath.h"
 
 namespace sp {
 	namespace test {
-		TEST(Quaternion, multiplicationWithQuat) {
+		TEST_CASE("Quaternion/multiplicationWithQuat") {
 			// Arrange
 			Quaternion const quat{ 0.3F, 11.2F, 2.3F, 0.1F };
 
@@ -14,14 +14,14 @@ namespace sp {
 
 			// Assert
 			Quaternion const expectedResult{ 1.4F, 137.66F, 23.88F, -10.1F };
-			ASSERT_FLOAT_EQ(result.x, expectedResult.x);
-			ASSERT_FLOAT_EQ(result.y, expectedResult.y);
-			ASSERT_FLOAT_EQ(result.z, expectedResult.z);
-			ASSERT_FLOAT_EQ(result.w, expectedResult.w);
+			REQUIRE(result.x == Approx(expectedResult.x));
+			REQUIRE(result.y == Approx(expectedResult.y));
+			REQUIRE(result.z == Approx(expectedResult.z));
+			REQUIRE(result.w == Approx(expectedResult.w));
 		}
 
 
-		TEST(Quaternion, multiplicationWithVec3) {
+		TEST_CASE("Quaternion/multiplicationWithVec3") {
 			// Arrange
 			Quaternion const quat{ 0.3F, 11.2F, 2.3F, 0.1F };
 
@@ -30,10 +30,10 @@ namespace sp {
 
 			// Assert
 			Quaternion const expectedResult{ 11.18F, 0.66F, -4.06F, -14.08F };
-			ASSERT_FLOAT_EQ(result.x, expectedResult.x);
-			ASSERT_FLOAT_EQ(result.y, expectedResult.y);
-			ASSERT_FLOAT_EQ(result.z, expectedResult.z);
-			ASSERT_FLOAT_EQ(result.w, expectedResult.w);
+			REQUIRE(result.x == Approx(expectedResult.x));
+			REQUIRE(result.y == Approx(expectedResult.y));
+			REQUIRE(result.z == Approx(expectedResult.z));
+			REQUIRE(result.w == Approx(expectedResult.w));
 		}
 	}
 }

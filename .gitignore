@@ -14,5 +14,6 @@ CTestTestfile.cmake
 !.vscode/launch.json
 !.vscode/extensions.json
 
+Source/Test/Catch/*
 Source/ThirdParty/GLFW/*
 Source/ThirdParty/FreeType/*

@@ -4,14 +4,21 @@ include(CMakeSources.cmake)
 
 enable_testing()
 
-set (GTEST_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/GTest/include)
-include_directories(${GTEST_INCLUDE_DIRS})
-
 add_executable(Test ${SpectralEngine_Test_SRC})
 
-set(GTEST_LIBRARY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR}/GTest/lib/gtestd.lib)
-set(GTEST_MAIN_LIBRARY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR}/GTest/lib/gtest_maind.lib)
+# Catch:
 
-target_link_libraries(Test ${GTEST_LIBRARY_DEBUG} ${GTEST_MAIN_LIBRARY_DEBUG})
+set(Catch_INSTALL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Catch)
+
+include(ExternalProject)
+
+ExternalProject_Add(catch_external
+    PREFIX          ${Catch_INSTALL_DIR}
+    GIT_REPOSITORY  https://github.com/catchorg/Catch2
+    GIT_TAG         v2.7.2
+    INSTALL_DIR     ${Catch_INSTALL_DIR}
+    CMAKE_ARGS      -DCMAKE_INSTALL_PREFIX=${Catch_INSTALL_DIR})
+
+target_include_directories(Test PRIVATE ${Catch_INSTALL_DIR}/src/catch_external/single_include)
 
 target_link_libraries(Test Core)
