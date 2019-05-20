@@ -4,9 +4,9 @@
 cmake_minimum_required (VERSION 3.8)
 
 # Add source to this project's executable.
-add_executable (SpectralEngine "main.cpp")
+add_executable (SpectralEngine "Main.cpp")
 
-include(CmakeSources.cmake)
+include(CMakeSources.cmake)
 
 set(LIBRARIES_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Libraries/Header)
 
