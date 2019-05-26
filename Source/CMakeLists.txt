@@ -4,7 +4,7 @@
 cmake_minimum_required (VERSION 3.8)
 
 # Add source to this project's executable.
-add_executable (SpectralEngine "Main.cpp")
+add_executable(SpectralEngine "Main.cpp")
 
 include(CMakeSources.cmake)
 
@@ -17,17 +17,17 @@ add_subdirectory(Render)
 add_subdirectory(PlatformIndependence)
 add_subdirectory(Test)
 
+target_link_libraries(SpectralEngine ThirdParty)
 target_link_libraries(SpectralEngine Core)
 target_link_libraries(SpectralEngine Game)
-target_link_libraries(SpectralEngine ThirdParty)
 target_link_libraries(SpectralEngine PlatformIndependence)
 
 target_include_directories(Game PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(Core PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(Render PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(PlatformIndependence PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(SpectralEngine PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(Test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
-
 
 set(EXECUTABLE_OUTPUT_PATH "../bin/executable")
 set(LIBRARY_OUTPUT_PATH "../bin/lib")

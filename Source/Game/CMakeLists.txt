@@ -4,5 +4,6 @@ include(CmakeSources.cmake)
 
 add_library(Game STATIC ${SpectralEngine_Game_SRC})
 
+target_link_libraries(Game Core)
 target_link_libraries(Game Render)
 target_link_libraries(Game ThirdParty)
